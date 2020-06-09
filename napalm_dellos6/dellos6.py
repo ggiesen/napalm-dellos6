@@ -158,6 +158,29 @@ class DellOS6Driver(NetworkDriver):
         )
         return uptime_sec
 
+    def _get_interface_list(self):
+        """
+        Returns a list of all interfaces on the device
+        """
+
+        raw_show_int_status = self._send_command("show interfaces status")
+        raw_show_ip_int = self._send_command("show ip interface")
+
+        show_int_status = textfsm_extractor(
+            self, "show_interfaces_status", raw_show_int_status
+        )
+        show_ip_int = textfsm_extractor(
+            self, "show_ip_interface", raw_show_ip_int
+        )
+
+        interface_list = []
+        for interface in show_int_status:
+            interface_list.append(canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces))
+        for interface in show_ip_int:
+            interface_list.append(canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces))
+
+        return interface_list
+
     def get_facts(self):
         """
         Returns a dictionary containing the following information:
@@ -191,8 +214,6 @@ class DellOS6Driver(NetworkDriver):
         raw_show_sw = self._send_command("show switch")
         raw_show_sys = self._send_command("show system")
         raw_show_hosts = self._send_command("show hosts")
-        raw_show_int_status = self._send_command("show interfaces status")
-        raw_show_ip_int = self._send_command("show ip interface")
 
         show_ver = textfsm_extractor(
             self, "show_version", raw_show_ver
@@ -206,18 +227,8 @@ class DellOS6Driver(NetworkDriver):
         show_hosts = textfsm_extractor(
             self, "show_hosts", raw_show_hosts
         )
-        show_int_status = textfsm_extractor(
-            self, "show_interfaces_status", raw_show_int_status
-        )
-        show_ip_int = textfsm_extractor(
-            self, "show_ip_interface", raw_show_ip_int
-        )
 
-        interface_list = []
-        for interface in show_int_status:
-            interface_list.append(canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces))
-        for interface in show_ip_int:
-            interface_list.append(canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces))
+        interface_list = self._get_interface_list()
 
         uptime = self.parse_uptime(show_sys[0]['uptime'])
         os_version = show_sw[0]['version']
@@ -461,3 +472,128 @@ class DellOS6Driver(NetworkDriver):
             lldp[lldp_entry['interface']].append(lldp_dict)
 
         return lldp
+
+    def get_interfaces_counters(self):
+        """
+        Returns a dictionary of dictionaries where the first key is an interface name and the
+        inner dictionary contains the following keys:
+            * tx_errors (int)
+            * rx_errors (int)
+            * tx_discards (int)
+            * rx_discards (int)
+            * tx_octets (int)
+            * rx_octets (int)
+            * tx_unicast_packets (int)
+            * rx_unicast_packets (int)
+            * tx_multicast_packets (int)
+            * rx_multicast_packets (int)
+            * tx_broadcast_packets (int)
+            * rx_broadcast_packets (int)
+        Example::
+            {
+                u'Ethernet2': {
+                    'tx_multicast_packets': 699,
+                    'tx_discards': 0,
+                    'tx_octets': 88577,
+                    'tx_errors': 0,
+                    'rx_octets': 0,
+                    'tx_unicast_packets': 0,
+                    'rx_errors': 0,
+                    'tx_broadcast_packets': 0,
+                    'rx_multicast_packets': 0,
+                    'rx_broadcast_packets': 0,
+                    'rx_discards': 0,
+                    'rx_unicast_packets': 0
+                },
+                u'Management1': {
+                     'tx_multicast_packets': 0,
+                     'tx_discards': 0,
+                     'tx_octets': 159159,
+                     'tx_errors': 0,
+                     'rx_octets': 167644,
+                     'tx_unicast_packets': 1241,
+                     'rx_errors': 0,
+                     'tx_broadcast_packets': 0,
+                     'rx_multicast_packets': 0,
+                     'rx_broadcast_packets': 80,
+                     'rx_discards': 0,
+                     'rx_unicast_packets': 0
+                },
+                u'Ethernet1': {
+                     'tx_multicast_packets': 293,
+                     'tx_discards': 0,
+                     'tx_octets': 38639,
+                     'tx_errors': 0,
+                     'rx_octets': 0,
+                     'tx_unicast_packets': 0,
+                     'rx_errors': 0,
+                     'tx_broadcast_packets': 0,
+                     'rx_multicast_packets': 0,
+                     'rx_broadcast_packets': 0,
+                     'rx_discards': 0,
+                     'rx_unicast_packets': 0
+                }
+            }
+        """
+
+        interface_list = self._get_interface_list()
+
+        raw_show_int_count = self._send_command("show interfaces counters")
+        raw_show_int_count_err = self._send_command("show interfaces counters errors")
+
+        show_int_count = textfsm_extractor(
+            self, "show_interfaces_counters", raw_show_int_count
+        )
+        show_int_count_err = textfsm_extractor(
+            self, "show_interfaces_counters_errors", raw_show_int_count_err
+        )
+
+        int_counters = {}
+        for int_list in interface_list:
+
+            int_counters[int_list] = {
+                'tx_errors': -1,
+                'rx_errors': -1,
+                'tx_discards': -1,
+                'rx_discards': -1,
+                'tx_octets': -1,
+                'rx_octets': -1,
+                'tx_unicast_packets': -1,
+                'rx_unicast_packets': -1,
+                'tx_multicast_packets': -1,
+                'rx_multicast_packets': -1,
+                'tx_broadcast_packets': -1,
+                'rx_broadcast_packets': -1,
+            }
+
+            for int_count_err in show_int_count_err:
+                interface_name = canonical_interface_name(int_count_err['interface'], addl_name_map=dellos6_interfaces)
+                if interface_name == int_list:
+                    if int_count_err['out_total'].isdigit() and int(int_count_err['out_total']) >= 0:
+                        int_counters[int_list]['tx_errors'] = int(int_count_err['out_total'])
+                    if int_count_err['in_total'].isdigit() and int(int_count_err['in_total']) >= 0:
+                        int_counters[int_list]['rx_errors'] = int(int_count_err['in_total'])
+                    if int_count_err['out_discard'].isdigit() and int(int_count_err['out_discard']) >= 0:
+                        int_counters[int_list]['tx_discards'] = int(int_count_err['out_discard'])
+
+            for int_count in show_int_count:
+                interface_name = canonical_interface_name(int_count['interface'], addl_name_map=dellos6_interfaces)
+                if interface_name == int_list:
+                    if int_count['out_total_octs'].isdigit() and int(int_count['out_total_octs']) >= 0:
+                        int_counters[int_list]['tx_octets'] = int(int_count['out_total_octs'])
+                    if int_count['in_total_octs'].isdigit() and int(int_count['in_total_octs']) >= 0:
+                        int_counters[int_list]['rx_octets'] = int(int_count['in_total_octs'])
+                    if int_count['out_ucast_pkts'].isdigit() and int(int_count['out_ucast_pkts']) >= 0:
+                        int_counters[int_list]['tx_unicast_packets'] = int(int_count['out_ucast_pkts'])
+                    if int_count['in_ucast_pkts'].isdigit() and int(int_count['in_ucast_pkts']) >= 0:
+                        int_counters[int_list]['rx_unicast_packets'] = int(int_count['in_ucast_pkts'])
+                    if int_count['out_mcast_pkts'].isdigit() and int(int_count['out_mcast_pkts']) >= 0:
+                        int_counters[int_list]['tx_multicast_packets'] = int(int_count['out_mcast_pkts'])
+                    if int_count['in_mcast_pkts'].isdigit() and int(int_count['in_mcast_pkts']) >= 0:
+                        int_counters[int_list]['rx_multicast_packets'] = int(int_count['in_mcast_pkts'])
+                    if int_count['out_bcast_pkts'].isdigit() and int(int_count['out_bcast_pkts']) >= 0:
+                        int_counters[int_list]['tx_broadcast_packets'] = int(int_count['out_bcast_pkts'])
+                    if int_count['in_bcast_pkts'].isdigit() and int(int_count['in_bcast_pkts']) >= 0:
+                        int_counters[int_list]['rx_broadcast_packets'] = int(int_count['in_bcast_pkts'])
+
+        return int_counters
