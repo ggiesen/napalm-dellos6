@@ -451,7 +451,7 @@ class DellOS6Driver(NetworkDriver):
             if not hostname:
                 hostname = lldp_entry['chassis_id']
             else:
-                if hostname.rfind('...', (len(hostname) - 3), len(hostname)):
+                if hostname.rfind('...', (len(hostname) - 2), len(hostname)):
                     raw_show_lldp_remote_device_detail = self._send_command("show lldp remote-device detail " + lldp_entry['interface'])
                     show_lldp_remote_device_detail = textfsm_extractor(
                         self, "show_lldp_remote-device_detail", raw_show_lldp_remote_device_detail
