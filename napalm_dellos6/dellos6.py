@@ -31,6 +31,7 @@ from napalm.base.exceptions import (
 from napalm.base.helpers import (
     canonical_interface_name,
     textfsm_extractor,
+    mac,
 )
 
 from netmiko import ConnectHandler, FileTransfer
@@ -158,7 +159,28 @@ class DellOS6Driver(NetworkDriver):
         return uptime_sec
 
     def get_facts(self):
-        """Return a set of facts from the devices."""
+        """
+        Returns a dictionary containing the following information:
+         * uptime - Uptime of the device in seconds.
+         * vendor - Manufacturer of the device.
+         * model - Device model.
+         * hostname - Hostname of the device
+         * fqdn - Fqdn of the device
+         * os_version - String with the OS version running on the device.
+         * serial_number - Serial number of the device
+         * interface_list - List of the interfaces of the device
+        Example::
+            {
+            'uptime': 102383940,
+            'vendor': u'Dell',
+            'os_version': u'6.2.0.5',
+            'serial_number': u'CN04G4FP2829859O0195A99',
+            'model': u'N4032',
+            'hostname': u'dellos6-switch',
+            'fqdn': u'dellos6-switch',
+            'interface_list': [u'Tengigabitethernet1/0/1', u'Tengigabitethernet1/0/1', u'out-of-band']
+            }
+        """
         # default values.
         vendor = u'Dell'
         uptime = -1
@@ -217,3 +239,158 @@ class DellOS6Driver(NetworkDriver):
             "fqdn": fqdn,
             "interface_list": interface_list,
         }
+
+    def get_interfaces(self):
+        """
+        Returns a dictionary of dictionaries. The keys for the first dictionary will be the \
+        interfaces in the devices. The inner dictionary will containing the following data for \
+        each interface:
+         * is_up (True/False)
+         * is_enabled (True/False)
+         * description (string)
+         * last_flapped (float in seconds) (NOT IMPLEMENTED)
+         * speed (int in Mbit)
+         * MTU (in Bytes)
+         * mac_address (string)
+        Example::
+            {
+            u'Management1':
+                {
+                'is_up': False,
+                'is_enabled': False,
+                'description': '',
+                'last_flapped': -1.0,
+                'speed': 1000,
+                'mtu': 1500,
+                'mac_address': 'FA:16:3E:57:33:61',
+                },
+            u'Ethernet1':
+                {
+                'is_up': True,
+                'is_enabled': True,
+                'description': 'foo',
+                'last_flapped': 1429978575.1554043,
+                'speed': 1000,
+                'mtu': 1500,
+                'mac_address': 'FA:16:3E:57:33:62',
+                },
+            u'Ethernet2':
+                {
+                'is_up': True,
+                'is_enabled': True,
+                'description': 'bla',
+                'last_flapped': 1429978575.1555667,
+                'speed': 1000,
+                'mtu': 1500,
+                'mac_address': 'FA:16:3E:57:33:63',
+                },
+            u'Ethernet3':
+                {
+                'is_up': False,
+                'is_enabled': True,
+                'description': 'bar',
+                'last_flapped': -1.0,
+                'speed': 1000,
+                'mtu': 1500,
+                'mac_address': 'FA:16:3E:57:33:64',
+                }
+            }
+        """
+
+        # default values.
+        last_flapped = -1.0
+
+        raw_show_int_status = self._send_command("show interfaces status")
+        raw_show_ip_int = self._send_command("show ip interface")
+        raw_show_switch_stack_ports = self._send_command("show switch stack-ports")
+        raw_show_int_config = self._send_command("show interfaces configuration")
+        raw_show_int = self._send_command("show interfaces")
+        raw_show_int_desc = self._send_command("show interfaces description")
+
+        show_int_status = textfsm_extractor(
+            self, "show_interfaces_status", raw_show_int_status
+        )
+        show_ip_int = textfsm_extractor(
+            self, "show_ip_interface", raw_show_ip_int
+        )
+        show_switch_stack_ports = textfsm_extractor(
+            self, "show_switch_stack-ports", raw_show_switch_stack_ports
+        )
+        show_int_config = textfsm_extractor(
+            self, "show_interfaces_configuration", raw_show_int_config
+        )
+        show_int = textfsm_extractor(
+            self, "show_interfaces", raw_show_int
+        )
+        show_int_desc = textfsm_extractor(
+            self, "show_interfaces_description", raw_show_int_desc
+        )
+
+
+        interface_dict = {}
+        for interface in show_int_status:
+            interface_name = canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces)
+            if re.search('down', interface['link_state'], re.IGNORECASE):
+                is_up = False
+            if re.search('up', interface['link_state'], re.IGNORECASE):
+                is_up = True
+            interface_dict[interface_name] = {
+                "is_up": is_up,
+            }
+        for interface in show_ip_int:
+            interface_name = canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces)
+            if re.search('down', interface['link_state'], re.IGNORECASE):
+                is_up = False
+            if re.search('up', interface['link_state'], re.IGNORECASE):
+                is_up = True
+            # SVIs cannot be administratively disabled
+            is_enabled = True
+            interface_dict[interface_name] = {
+                "is_up": is_up,
+                "is_enabled": is_enabled,
+            }
+        # Set some defaults
+        for interface in interface_dict:
+            interface_dict[interface]['description'] = ''
+            interface_dict[interface]['last_flapped'] = last_flapped
+            interface_dict[interface]['mtu'] = 1500
+            interface_dict[interface]['mac_address'] = ''
+        for interface in show_switch_stack_ports:
+            interface_name = canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces)
+            if re.search('link down', interface['link_state'], re.IGNORECASE):
+                is_up = False
+            if re.search('link up', interface['link_state'], re.IGNORECASE):
+                is_up = True
+            if not interface['speed'].isdigit():
+                speed = -1
+            else:
+                # Speed is reported in Gbps
+                speed = int(interface['speed']) * 1000
+            interface_dict[interface_name]['is_up'] = is_up
+            interface_dict[interface_name]['speed'] = speed
+        for interface in show_int_config:
+            interface_name = canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces)
+            if interface_name in interface_dict:
+                if re.search('down', interface['admin_state'], re.IGNORECASE):
+                    is_enabled = False
+                if re.search('up', interface['admin_state'], re.IGNORECASE):
+                    is_enabled = True
+                if not interface['speed'].isdigit():
+                    speed = -1
+                else:
+                    speed = int(interface['speed'])
+                if not interface['mtu'].isdigit():
+                    mtu= -1
+                else:
+                    mtu = int(interface['mtu'])
+                interface_dict[interface_name]['is_enabled'] = is_enabled
+                interface_dict[interface_name]['mtu'] = mtu
+        for interface in show_int_desc:
+            interface_name = canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces)
+            if interface_name in interface_dict:
+                interface_dict[interface_name]['description'] = interface['desc']
+        for interface in show_int:
+            interface_name = canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces)
+            interface_dict[interface_name]['mac_address'] = mac(interface['mac_address'])
+
+        return interface_dict

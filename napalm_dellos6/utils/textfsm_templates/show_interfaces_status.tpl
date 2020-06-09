@@ -1,7 +1,7 @@
 Value Required INTERFACE (\S+)
 Value DESC (.*)
 Value DUPLEX (Full|Half|N\/A)
-Value SPEED (Unknown|\d+)
+Value SPEED (N\/A|Unknown|\d+)
 Value NEG (\S+)
 Value Required LINK_STATE (\S+)
 Value FLOW_CONTROL (\S+)
@@ -17,7 +17,7 @@ Start
 Port
   ^\s+State\s+Ctrl
   ^---------\s+---------------\s+------\s+-------\s+----\s+------\s+-----\s+--\s+-------------------
-  ^${INTERFACE}\s+${DESC}\s+${DUPLEX}\s+${SPEED}\s+${NEG}\s+${LINK_STATE}\s+${FLOW_CONTROL}\s+${MODE}\s+${VLAN} -> Continue.Record
+  ^${INTERFACE}\s+${DESC}\s+${DUPLEX}\s+${SPEED}\s+${NEG}\s+${LINK_STATE}\s+${FLOW_CONTROL}\s*${MODE}\s*${VLAN} -> Continue.Record
   ^\s*$$ -> Record Start
 
 Oob
