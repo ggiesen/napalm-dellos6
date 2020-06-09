@@ -394,3 +394,70 @@ class DellOS6Driver(NetworkDriver):
             interface_dict[interface_name]['mac_address'] = mac(interface['mac_address'])
 
         return interface_dict
+
+    def get_lldp_neighbors(self):
+        """
+        Returns a dictionary where the keys are local ports and the value is a list of \
+        dictionaries with the following information:
+            * hostname
+            * port
+        Example::
+            {
+            u'Ethernet2':
+                [
+                    {
+                    'hostname': u'junos-unittest',
+                    'port': u'520',
+                    }
+                ],
+            u'Ethernet3':
+                [
+                    {
+                    'hostname': u'junos-unittest',
+                    'port': u'522',
+                    }
+                ],
+            u'Ethernet1':
+                [
+                    {
+                    'hostname': u'junos-unittest',
+                    'port': u'519',
+                    },
+                    {
+                    'hostname': u'ios-xrv-unittest',
+                    'port': u'Gi0/0/0/0',
+                    }
+                ],
+            u'Management1':
+                [
+                    {
+                    'hostname': u'junos-unittest',
+                    'port': u'508',
+                    }
+                ]
+            }
+        """
+
+        raw_show_lldp_remote_device_all = self._send_command("show lldp remote-device all")
+
+        show_lldp_remote_device_all = textfsm_extractor(
+            self, "show_lldp_remote-device_all", raw_show_lldp_remote_device_all
+        )
+
+        lldp = {}
+        for lldp_entry in show_lldp_remote_device_all:
+            lldp[lldp_entry['interface']] = []
+            hostname = lldp_entry['host_name']
+            if not hostname:
+                hostname = lldp_entry['chassis_id']
+            else:
+                if hostname.rfind('...', (len(hostname) - 3), len(hostname)):
+                    raw_show_lldp_remote_device_detail = self._send_command("show lldp remote-device detail " + lldp_entry['interface'])
+                    show_lldp_remote_device_detail = textfsm_extractor(
+                        self, "show_lldp_remote-device_detail", raw_show_lldp_remote_device_detail
+                    )
+                    hostname = show_lldp_remote_device_detail[0]['host_name']
+            lldp_dict = {"port": lldp_entry['port_id'], 'hostname': hostname}
+            lldp[lldp_entry['interface']].append(lldp_dict)
+
+        return lldp
