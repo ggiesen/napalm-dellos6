@@ -1,4 +1,4 @@
-# napalm-dellos10
+# napalm-dellos6
 
 NAPALM driver for Dell EMC Networking OS6 Operating System.
 
