@@ -933,3 +933,75 @@ class DellOS6Driver(NetworkDriver):
             ntp_servers[server['server_ip']] = {}
 
         return ntp_servers
+
+    def get_ntp_stats(self):
+
+        """
+        Returns a list of NTP synchronization statistics.
+            * remote (string)
+            * referenceid (string)
+            * synchronized (True/False)
+            * stratum (int)
+            * type (string)
+            * when (string)
+            * hostpoll (int)
+            * reachability (int)
+            * delay (float)
+            * offset (float)
+            * jitter (float)
+        Example::
+            [
+                {
+                    'remote'        : u'188.114.101.4',
+                    'referenceid'   : u'188.114.100.1',
+                    'synchronized'  : True,
+                    'stratum'       : 4,
+                    'type'          : u'-',
+                    'when'          : u'107',
+                    'hostpoll'      : 256,
+                    'reachability'  : 377,
+                    'delay'         : 164.228,
+                    'offset'        : -13.866,
+                    'jitter'        : 2.695
+                }
+            ]
+        """
+
+        raw_show_sntp_stats = self._send_command("show sntp server")
+
+        show_sntp_stats = textfsm_extractor(
+            self, "show_sntp_server", raw_show_sntp_stats
+        )
+
+        ntp_stats = []
+        for server in show_sntp_stats:
+            if server['status'] == 'Success':
+                synchronized = True
+            else:
+                synchronized = False
+            ntp_stats.append(
+                {
+                    'remote': server['server_ip'],
+                    # Not supported
+                    'referenceid': '',
+                    'synchronized': synchronized,
+                    # Not supported
+                    'stratum': -1,
+                    # We only support parsing unicast servers right now
+                    'type': 'u',
+                    # We don't support parsing this right now
+                    'when': '',
+                    # Not supported
+                    'hostpoll': -1,
+                    # Not supported
+                    'reachability': -1,
+                    # Not supported
+                    'delay': -0.0,
+                    # Not supported
+                    'offset': -0.0,
+                    # Not supported
+                    'jitter': -0.0,
+                }
+            )
+
+        return ntp_stats
