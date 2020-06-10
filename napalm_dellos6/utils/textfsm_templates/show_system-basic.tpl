@@ -18,3 +18,6 @@ Start
   ^System Object ID\: ${SYS_OBJ_ID}
   ^System Model ID\: ${MODEL}
   ^Machine Type\: ${MACHINE_TYPE}
+  ^System Thermal Conditions\: -> Record
+
+EOF

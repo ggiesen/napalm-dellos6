@@ -12,5 +12,6 @@ Start
   ^${INTERFACE}\s+${REMOTE_ID}\s+${CHASSIS_ID}\s+${PORT_ID}\s+${HOST_NAME} -> Record
   ^${INTERFACE}\s+${REMOTE_ID}\s+${CHASSIS_ID}\s+${PORT_ID} -> Record
   ^\s*$$ -> Start
+  ^. -> Error
 
 EOF

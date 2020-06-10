@@ -21,4 +21,6 @@ Start
   ^CPU Version\.+ ${CPU_VER}
   ^SOC Version\.+ ${SOC_VER}
   ^HW Version\.+ ${HW_VER}
-  ^CPLD Version\.+ ${CPLD_VER}
+  ^CPLD Version\.+ ${CPLD_VER} -> Record
+
+EOF
