@@ -132,7 +132,7 @@ class DellOS6Driver(NetworkDriver):
     @staticmethod
     def parse_uptime(uptime_str):
         """
-        Extract the uptime string from the given Cisco IOS Device.
+        Extract the uptime string from the given Dell OS6 Device.
         Return the uptime in seconds as an integer
         """
         # Initialize to zero
@@ -148,7 +148,7 @@ class DellOS6Driver(NetworkDriver):
             elif re.search("m", element):
                 minutes = int(element.strip('m'))
             elif re.search("s", element):
-                minutes = int(element.strip('s'))
+                seconds = int(element.strip('s'))
 
         uptime_sec = (
             (days * DAY_SECONDS)
@@ -157,6 +157,32 @@ class DellOS6Driver(NetworkDriver):
             + seconds
         )
         return uptime_sec
+
+    @staticmethod
+    def parse_arp_age(arp_age_str):
+        """
+        Extract the ARP time string from the given Dell OS6 Device.
+        Return the ARP time in seconds as an integer
+        """
+        # Initialize to zero
+        (hours, minutes, seconds) = (0, 0, 0)
+
+        arp_age_str = arp_age_str.strip()
+        age_list = re.split(' ', arp_age_str)
+        for element in age_list:
+            if re.search("h", element):
+                hours = int(element.strip('h'))
+            elif re.search("m", element):
+                minutes = int(element.strip('m'))
+            elif re.search("s", element):
+                seconds = int(element.strip('s'))
+
+        arp_age_sec = (
+            (hours * HOUR_SECONDS)
+            + (minutes * 60)
+            + seconds
+        )
+        return arp_age_sec
 
     def _get_interface_list(self):
         """
@@ -476,6 +502,87 @@ class DellOS6Driver(NetworkDriver):
 
         return lldp
 
+    def get_environment(self):
+        """
+        Returns a dictionary where:
+            * fans is a dictionary of dictionaries where the key is the location and the values:
+                 * status (True/False) - True if it's ok, false if it's broken
+            * temperature is a dict of dictionaries where the key is the location and the values:
+                 * temperature (float) - Temperature in celsius the sensor is reporting.
+                 * is_alert (True/False) - True if the temperature is above the alert threshold
+                 * is_critical (True/False) - True if the temp is above the critical threshold
+            * power is a dictionary of dictionaries where the key is the PSU id and the values:
+                 * status (True/False) - True if it's ok, false if it's broken
+                 * capacity (float) - Capacity in W that the power supply can support
+                 * output (float) - Watts drawn by the system
+            * cpu is a dictionary of dictionaries where the key is the ID and the values
+                 * %usage
+            * memory is a dictionary with:
+                 * available_ram (int) - Total amount of RAM installed in the device
+                 * used_ram (int) - RAM in use in the device
+
+            * cpu is using 1-minute average
+            * cpu hard-coded to cpu0 (i.e. only a single CPU)
+        """
+
+        raw_show_sys = self._send_command("show system")
+        raw_show_proc_cpu = self._send_command("show process cpu")
+
+        show_sys_fans = textfsm_extractor(
+            self, "show_system-fans", raw_show_sys
+        )
+        show_sys_temps = textfsm_extractor(
+            self, "show_system-temps", raw_show_sys
+        )
+        show_sys_power = textfsm_extractor(
+            self, "show_system-power_supplies", raw_show_sys
+        )
+        show_proc_cpu = textfsm_extractor(
+            self, "show_process_cpu", raw_show_proc_cpu
+        )
+
+        environment = {}
+        environment.setdefault("fans", {})
+        environment.setdefault("temperature", {})
+        environment.setdefault("power", {})
+        environment.setdefault("cpu", {})
+        environment.setdefault("memory", {})
+
+        for fan in show_sys_fans:
+            environment["fans"].setdefault("unit " + fan["unit"], {})
+            environment["fans"]["unit " + fan["unit"]].setdefault(fan["description"], {})
+            if fan["status"] == "OK":
+                environment["fans"]["unit " + fan["unit"]][fan["description"]]["status"] = True
+            else:
+                environment["fans"]["unit " + fan["unit"]][fan["description"]]["status"] = False
+        for temp in show_sys_temps:
+            environment["temperature"].setdefault("unit " + temp["unit"], {})
+            environment["temperature"]["unit " + temp["unit"]].setdefault(temp["description"], {})
+            environment["temperature"]["unit " + temp["unit"]][temp["description"]] = {
+                "temperature": float(temp["temp"]),
+                "is_alert": False,
+                "is_critical": False,
+            }
+        for power in show_sys_power:
+            environment["power"].setdefault("unit " + power["unit"], {})
+            environment["power"]["unit " + power["unit"]].setdefault(power["description"], {})
+            environment["power"]["unit " + power["unit"]][power["description"]] = {
+                "status": False,
+                "capacity": -1.0,
+                "output": float(power["pwr_cur"]),
+            }
+            if power["status"] == "OK":
+                environment["power"]["unit " + power["unit"]][power["description"]]["status"] = True
+        environment["cpu"][0] = {}
+        environment["cpu"][0]["%usage"] = 0.0
+        environment["cpu"][0]["%usage"] = show_proc_cpu[0]['cpu_60']
+        environment["memory"] = {
+            "available_ram": int(show_proc_cpu[0]['mem_free']) * 1024,
+            "used_ram": int(show_proc_cpu[0]['mem_alloc']) * 1024,
+        }
+
+        return environment
+
     def get_interfaces_counters(self):
         """
         Returns a dictionary of dictionaries where the first key is an interface name and the
@@ -601,86 +708,6 @@ class DellOS6Driver(NetworkDriver):
 
         return int_counters
 
-    def get_environment(self):
-        """
-        Returns a dictionary where:
-            * fans is a dictionary of dictionaries where the key is the location and the values:
-                 * status (True/False) - True if it's ok, false if it's broken
-            * temperature is a dict of dictionaries where the key is the location and the values:
-                 * temperature (float) - Temperature in celsius the sensor is reporting.
-                 * is_alert (True/False) - True if the temperature is above the alert threshold
-                 * is_critical (True/False) - True if the temp is above the critical threshold
-            * power is a dictionary of dictionaries where the key is the PSU id and the values:
-                 * status (True/False) - True if it's ok, false if it's broken
-                 * capacity (float) - Capacity in W that the power supply can support
-                 * output (float) - Watts drawn by the system
-            * cpu is a dictionary of dictionaries where the key is the ID and the values
-                 * %usage
-            * memory is a dictionary with:
-                 * available_ram (int) - Total amount of RAM installed in the device
-                 * used_ram (int) - RAM in use in the device
-
-            * cpu is using 1-minute average
-            * cpu hard-coded to cpu0 (i.e. only a single CPU)
-        """
-
-        raw_show_sys = self._send_command("show system")
-        raw_show_proc_cpu = self._send_command("show process cpu")
-
-        show_sys_fans = textfsm_extractor(
-            self, "show_system-fans", raw_show_sys
-        )
-        show_sys_temps = textfsm_extractor(
-            self, "show_system-temps", raw_show_sys
-        )
-        show_sys_power = textfsm_extractor(
-            self, "show_system-power_supplies", raw_show_sys
-        )
-        show_proc_cpu = textfsm_extractor(
-            self, "show_process_cpu", raw_show_proc_cpu
-        )
-
-        environment = {}
-        environment.setdefault("fans", {})
-        environment.setdefault("temperature", {})
-        environment.setdefault("power", {})
-        environment.setdefault("cpu", {})
-        environment.setdefault("memory", {})
-
-        for fan in show_sys_fans:
-            environment["fans"].setdefault("unit " + fan["unit"], {})
-            environment["fans"]["unit " + fan["unit"]].setdefault(fan["description"], {})
-            if fan["status"] == "OK":
-                environment["fans"]["unit " + fan["unit"]][fan["description"]]["status"] = True
-            else:
-                environment["fans"]["unit " + fan["unit"]][fan["description"]]["status"] = False
-        for temp in show_sys_temps:
-            environment["temperature"].setdefault("unit " + temp["unit"], {})
-            environment["temperature"]["unit " + temp["unit"]].setdefault(temp["description"], {})
-            environment["temperature"]["unit " + temp["unit"]][temp["description"]] = {
-                "temperature": float(temp["temp"]),
-                "is_alert": False,
-                "is_critical": False,
-            }
-        for power in show_sys_power:
-            environment["power"].setdefault("unit " + power["unit"], {})
-            environment["power"]["unit " + power["unit"]].setdefault(power["description"], {})
-            environment["power"]["unit " + power["unit"]][power["description"]] = {
-                "status": False,
-                "capacity": -1.0,
-                "output": float(power["pwr_cur"]),
-            }
-            if power["status"] == "OK":
-                environment["power"]["unit " + power["unit"]][power["description"]]["status"] = True
-        environment["cpu"][0] = {}
-        environment["cpu"][0]["%usage"] = 0.0
-        environment["cpu"][0]["%usage"] = show_proc_cpu[0]['cpu_60']
-        environment["memory"] = {
-            "available_ram": int(show_proc_cpu[0]['mem_free']) * 1024,
-            "used_ram": int(show_proc_cpu[0]['mem_alloc']) * 1024,
-        }
-
-        return environment
 
     def get_lldp_neighbors_detail(self, interface=""):
         """
@@ -800,3 +827,55 @@ class DellOS6Driver(NetworkDriver):
             cli_output[command] = output
 
         return cli_output
+
+    def get_arp_table(self, vrf=""):
+
+        """
+        Returns a list of dictionaries having the following set of keys:
+            * interface (string)
+            * mac (string)
+            * ip (string)
+            * age (float)
+        'vrf' of null-string will default to all VRFs. Specific 'vrf' will return the ARP table
+        entries for that VRFs (including potentially 'default' or 'global').
+        In all cases the same data structure is returned and no reference to the VRF that was used
+        is included in the output.
+        Example::
+            [
+                {
+                    'interface' : 'MgmtEth0/RSP0/CPU0/0',
+                    'mac'       : '5C:5E:AB:DA:3C:F0',
+                    'ip'        : '172.17.17.1',
+                    'age'       : 1454496274.84
+                },
+                {
+                    'interface' : 'MgmtEth0/RSP0/CPU0/0',
+                    'mac'       : '5C:5E:AB:DA:3C:FF',
+                    'ip'        : '172.17.17.2',
+                    'age'       : 1435641582.49
+                }
+            ]
+        """
+        if vrf:
+            command = "show arp vrf {}".format(vrf)
+        else:
+            command = "show arp"
+
+        raw_show_arp = self._send_command(command)
+
+        show_arp = textfsm_extractor(
+            self, "show_arp", raw_show_arp
+        )
+
+        arp_table = []
+        for entry in show_arp:
+            arp_table.append(
+                {
+                    'interface': canonical_interface_name(entry['interface'], addl_name_map=dellos6_interfaces),
+                    'mac': mac(entry['mac_address']),
+                    'ip': entry['ip_address'],
+                    'age': float(self.parse_arp_age(entry['age'])),
+                }
+            )
+
+        return arp_table

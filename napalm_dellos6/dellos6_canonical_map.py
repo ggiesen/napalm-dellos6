@@ -1,6 +1,7 @@
 dellos6_interfaces = {
     "Fo": "Fortygigabitethernet",
     "oob": "out-of-band",
+    "Management": "out-of-band",
     "Po": "port-channel",
     "Te": "Tengigabitethernet",
     "Vl": "vlan ",
