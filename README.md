@@ -20,5 +20,5 @@ NAPALM driver for Dell EMC Networking OS6 Operating System.
 * configuration management
 * most L3
 
-This driver is in the early stages, and is a work in progres. Feel free to submit a PR to add additional getters.
+This driver is in the early stages, and is a work in progres. There are no unit tests at the moment either. Feel free to submit a PR to add additional getters.
 
