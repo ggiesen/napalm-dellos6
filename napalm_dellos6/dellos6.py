@@ -879,3 +879,57 @@ class DellOS6Driver(NetworkDriver):
             )
 
         return arp_table
+
+    def get_ntp_peers(self):
+
+        """
+        Returns the NTP peers configuration as dictionary.
+        The keys of the dictionary represent the IP Addresses of the peers.
+        Inner dictionaries do not have yet any available keys.
+        Example::
+            {
+                '192.168.0.1': {},
+                '17.72.148.53': {},
+                '37.187.56.220': {},
+                '162.158.20.18': {}
+            }
+        """
+
+        raw_show_sntp_status = self._send_command("show sntp status")
+
+        show_sntp_status = textfsm_extractor(
+            self, "show_sntp_status", raw_show_sntp_status
+        )
+
+        ntp_peers = {}
+        for peer in show_sntp_status:
+            ntp_peers[peer['server_ip']] = {}
+
+        return ntp_peers
+
+    def get_ntp_servers(self):
+
+        """
+        Returns the NTP servers configuration as dictionary.
+        The keys of the dictionary represent the IP Addresses of the servers.
+        Inner dictionaries do not have yet any available keys.
+        Example::
+            {
+                '192.168.0.1': {},
+                '17.72.148.53': {},
+                '37.187.56.220': {},
+                '162.158.20.18': {}
+            }
+        """
+
+        raw_show_sntp_server = self._send_command("show sntp server")
+
+        show_sntp_server = textfsm_extractor(
+            self, "show_sntp_server", raw_show_sntp_server
+        )
+
+        ntp_servers = {}
+        for server in show_sntp_server:
+            ntp_servers[server['server_ip']] = {}
+
+        return ntp_servers
