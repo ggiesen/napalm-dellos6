@@ -18,25 +18,26 @@ Napalm driver for DellOS6.
 
 Read https://napalm.readthedocs.io for more information.
 """
-from napalm_dellos6.dellos6_canonical_map import dellos6_interfaces
+import re
+from ipaddress import IPv4Interface, IPv6Interface
 
 from napalm.base import NetworkDriver
 from napalm.base.exceptions import (
+    CommandErrorException,
     ConnectionException,
-    SessionLockedException,
     MergeConfigException,
     ReplaceConfigException,
-    CommandErrorException,
+    SessionLockedException,
 )
 from napalm.base.helpers import (
     canonical_interface_name,
-    textfsm_extractor,
     mac,
+    textfsm_extractor,
 )
 
-from netmiko import ConnectHandler, FileTransfer
+from napalm_dellos6.dellos6_canonical_map import dellos6_interfaces
 
-import re
+from netmiko import ConnectHandler, FileTransfer
 
 # Easier to store these as constants
 HOUR_SECONDS = 3600
@@ -1005,3 +1006,138 @@ class DellOS6Driver(NetworkDriver):
             )
 
         return ntp_stats
+
+    def get_interfaces_ip(self):
+
+        """
+        Returns all configured IP addresses on all interfaces as a dictionary of dictionaries.
+        Keys of the main dictionary represent the name of the interface.
+        Values of the main dictionary represent are dictionaries that may consist of two keys
+        'ipv4' and 'ipv6' (one, both or none) which are themselves dictionaries with the IP
+        addresses as keys.
+        Each IP Address dictionary has the following keys:
+            * prefix_length (int)
+        Example::
+            {
+                u'FastEthernet8': {
+                    u'ipv4': {
+                        u'10.66.43.169': {
+                            'prefix_length': 22
+                        }
+                    }
+                },
+                u'Loopback555': {
+                    u'ipv4': {
+                        u'192.168.1.1': {
+                            'prefix_length': 24
+                        }
+                    },
+                    u'ipv6': {
+                        u'1::1': {
+                            'prefix_length': 64
+                        },
+                        u'2001:DB8:1::1': {
+                            'prefix_length': 64
+                        },
+                        u'2::': {
+                            'prefix_length': 64
+                        },
+                        u'FE80::3': {
+                            'prefix_length': u'N/A'
+                        }
+                    }
+                },
+                u'Tunnel0': {
+                    u'ipv4': {
+                        u'10.63.100.9': {
+                            'prefix_length': 24
+                        }
+                    }
+                }
+            }
+        """
+
+        raw_show_ip_int = self._send_command("show ip interface")
+        raw_show_ip_int_oob = self._send_command("show ip interface out-of-band")
+        raw_show_ipv6_int = self._send_command("show ipv6 interface")
+        raw_show_ipv6_int_oob = self._send_command("show ipv6 interface out-of-band")
+
+        show_ip_int = textfsm_extractor(
+            self, "show_ip_interface", raw_show_ip_int
+        )
+        show_ip_int_oob = textfsm_extractor(
+            self, "show_ip_interface_out-of-band", raw_show_ip_int_oob
+        )
+        show_ipv6_int = textfsm_extractor(
+            self, "show_ipv6_interface", raw_show_ipv6_int
+        )
+        show_ipv6_int_oob = textfsm_extractor(
+            self, "show_ipv6_interface_out-of-band", raw_show_ipv6_int_oob
+        )
+
+        interfaces_ip = {}
+        for int in show_ip_int:
+            interface = canonical_interface_name(int['interface'], addl_name_map=dellos6_interfaces)
+            raw_show_ip_int_vlan = self._send_command("show ip interface " + interface)
+            show_ip_int_vlan = textfsm_extractor(
+                self, "show_ip_interface_vlan", raw_show_ip_int_vlan
+            )
+            for vlan_int in show_ip_int_vlan:
+                if vlan_int['ip_addr_pri']:
+                    interfaces_ip.setdefault(interface, {})
+                    interfaces_ip[interface].setdefault('ipv4', {})
+                    ip_address = str(IPv4Interface(vlan_int['ip_addr_pri']).ip)
+                    prefix_len = IPv4Interface(vlan_int['ip_addr_pri']).network.prefixlen
+                    interfaces_ip[interface]['ipv4'][ip_address] = {
+                        'prefix_length': prefix_len,
+                    }
+                if vlan_int['ip_addr_sec']:
+                    for ip in vlan_int['ip_addr_sec']:
+                        ip_address = str(IPv4Interface(ip).ip)
+                        prefix_len = IPv4Interface(ip).network.prefixlen
+                        interfaces_ip[interface]['ipv4'][ip_address] = {
+                            'prefix_length': prefix_len
+                        }
+
+        for int in show_ipv6_int:
+            interface = canonical_interface_name(int['interface'], addl_name_map=dellos6_interfaces)
+            raw_show_ipv6_int_vlan = self._send_command("show ipv6 interface " + interface)
+            show_ipv6_int_vlan = textfsm_extractor(
+                self, "show_ipv6_interface_vlan", raw_show_ipv6_int_vlan
+            )
+            for vlan_int in show_ipv6_int_vlan:
+                if vlan_int['ipv6_pfx']:
+                    interfaces_ip.setdefault(interface, {})
+                    interfaces_ip[interface].setdefault('ipv6', {})
+                    for ipv6 in vlan_int['ipv6_pfx']:
+                        ipv6_address = str(IPv6Interface(ipv6).ip)
+                        prefix_len = IPv6Interface(ipv6).network.prefixlen
+                        interfaces_ip[interface]['ipv6'][ipv6_address] = {
+                            'prefix_length': prefix_len
+                        }
+
+        if show_ip_int_oob[0]['ip_addr']:
+            interfaces_ip.setdefault('out-of-band', {})
+            interfaces_ip['out-of-band'].setdefault('ipv4', {})
+            ip_address = show_ip_int_oob[0]['ip_addr']
+            prefix_len = IPv4Interface(show_ip_int_oob[0]['ip_addr'] + '/' + show_ip_int_oob[0]['subnet_mask']).network.prefixlen
+            interfaces_ip['out-of-band']['ipv4'][ip_address] = {
+                'prefix_length': prefix_len
+            }
+            raw_show_ipv6_int_vlan = self._send_command("show ipv6 interface " + interface)
+            show_ipv6_int_vlan = textfsm_extractor(
+                self, "show_ipv6_interface_vlan", raw_show_ipv6_int_vlan
+            )
+
+        print(show_ipv6_int_oob)
+        if show_ipv6_int_oob[0]['ipv6_pfx']:
+            interfaces_ip.setdefault('out-of-band', {})
+            interfaces_ip['out-of-band'].setdefault('ipv6', {})
+            for ipv6 in show_ipv6_int_oob[0]['ipv6_pfx']:
+                ipv6_address = str(IPv6Interface(ipv6).ip)
+                prefix_len = IPv6Interface(ipv6).network.prefixlen
+                interfaces_ip['out-of-band']['ipv6'][ipv6_address] = {
+                    'prefix_length': prefix_len
+                }
+
+        return interfaces_ip
