@@ -15,10 +15,10 @@ NAPALM driver for Dell EMC Networking OS6 Operating System.
 * get_ntp_servers
 * get_ntp_stats
 
-### Missing APIs.
+### Missing APIs
 
 * configuration management
 * most L3
 
-This driver is in the early stages, and is a work in progres. There are no unit tests at the moment either. Feel free to submit a PR to add additional getters.
+This driver is in the early stages, and is a work in progress. There are no unit tests at the moment either. Feel free to submit a PR to add additional getters.
 
