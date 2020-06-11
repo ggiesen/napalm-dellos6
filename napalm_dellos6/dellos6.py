@@ -1129,7 +1129,6 @@ class DellOS6Driver(NetworkDriver):
                 self, "show_ipv6_interface_vlan", raw_show_ipv6_int_vlan
             )
 
-        print(show_ipv6_int_oob)
         if show_ipv6_int_oob[0]['ipv6_pfx']:
             interfaces_ip.setdefault('out-of-band', {})
             interfaces_ip['out-of-band'].setdefault('ipv6', {})
