@@ -1,0 +1,26 @@
+
+Static ARP entries are only active
+when the IP address is reachable on a local subnet
+
+
+Age Time (seconds)............................. 1200
+Response Time (seconds)........................ 1
+Retries........................................ 4
+Cache Size..................................... 4096
+Dynamic Renew Mode ............................ Enable
+Total Entry Count Current / Peak .............. 10 / 10
+Static Entry Count Configured / Active / Max .. 0 / 0 / 128
+
+IP Address       MAC Address        Interface       Type      Age
+---------------  -----------------  --------------  --------  -----------
+192.0.2.5        F8B1.5695.CFF1     Vl3840          Local         n/a
+192.0.2.9        F8B1.5695.CFF1     Vl3840          Local         n/a
+10.99.39.1       0000.5E00.0F28     Vl3840          Gateway    0h 13m 33s
+10.99.39.2       0022.56CC.FF6E     Vl3840          Dynamic    0h  9m 45s
+10.99.39.3       5475.D066.6F7C     Vl3840          Dynamic    0h 16m 37s
+10.99.39.6       0021.A1B2.5FC4     Vl3840          Dynamic    0h 16m 46s
+10.99.39.15      0041.D217.2F71     Vl3840          Dynamic    0h 11m 10s
+10.99.39.17      F8B1.5695.CFF1     Vl3840          Local         n/a
+10.99.39.18      0050.5692.9F70     Vl3840          Dynamic    0h 11m  2s
+10.99.39.19      00C8.8B16.FF9D     Vl3840          Dynamic    0h  3m 20s
+10.238.12.1      00F2.8BE7.2F10     Management      Dynamic   n/a
