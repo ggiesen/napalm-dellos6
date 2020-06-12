@@ -9,16 +9,18 @@ from napalm.base.test.double import BaseTestDouble
 from napalm_dellos6 import dellos6
 
 
-@pytest.fixture(scope='class')
+@pytest.fixture(scope="class")
 def set_device_parameters(request):
     """Set up the class."""
+
     def fin():
         request.cls.device.close()
+
     request.addfinalizer(fin)
 
     request.cls.driver = dellos6.DellOS6Driver
     request.cls.patched_driver = PatchedDellOS6Driver
-    request.cls.vendor = 'dellos6'
+    request.cls.vendor = "dellos6"
     parent_conftest.set_device_parameters(request)
 
 
@@ -34,24 +36,24 @@ class PatchedDellOS6Driver(dellos6.DellOS6Driver):
         """Patched DellOS6 Driver constructor."""
         super().__init__(hostname, username, password, timeout, optional_args)
 
-        self.patched_attrs = ['device']
+        self.patched_attrs = ["device"]
         self.device = FakeDellOS6Device()
 
 
 class FakeDellOS6Device(BaseTestDouble):
     """DellOS6 device test double."""
 
-    def run_commands(self, command_list, encoding='json'):
+    def run_commands(self, command_list, encoding="json"):
         """Fake run_commands."""
         result = list()
 
         for command in command_list:
-            filename = '{}.{}'.format(self.sanitize_text(command), encoding)
+            filename = "{}.{}".format(self.sanitize_text(command), encoding)
             full_path = self.find_file(filename)
 
-            if encoding == 'json':
+            if encoding == "json":
                 result.append(self.read_json_file(full_path))
             else:
-                result.append({'output': self.read_txt_file(full_path)})
+                result.append({"output": self.read_txt_file(full_path)})
 
         return result

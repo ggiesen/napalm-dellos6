@@ -15,4 +15,4 @@
 """napalm-dellos6 package."""
 from napalm_dellos6.dellos6 import DellOS6Driver  # noqa
 
-__all__ = ('DellOS6Driver',)
+__all__ = ("DellOS6Driver",)

@@ -45,6 +45,7 @@ DAY_SECONDS = 24 * HOUR_SECONDS
 WEEK_SECONDS = 7 * DAY_SECONDS
 YEAR_SECONDS = 365 * DAY_SECONDS
 
+
 class DellOS6Driver(NetworkDriver):
     """Napalm driver for DellOS6."""
 
@@ -60,25 +61,25 @@ class DellOS6Driver(NetworkDriver):
         self.password = password
         self.timeout = timeout
 
-        self.transport = optional_args.get('transport', 'ssh')
+        self.transport = optional_args.get("transport", "ssh")
 
         # Netmiko possible arguments
         netmiko_argument_map = {
-            'port': None,
-            'secret': '',
-            'verbose': False,
-            'keepalive': 30,
-            'global_delay_factor': 3,
-            'use_keys': False,
-            'key_file': None,
-            'ssh_strict': False,
-            'system_host_keys': False,
-            'alt_host_keys': False,
-            'alt_key_file': '',
-            'ssh_config_file': None,
-            'allow_agent': False,
-            'session_timeout': 90,
-            'timeout': 120
+            "port": None,
+            "secret": "",
+            "verbose": False,
+            "keepalive": 30,
+            "global_delay_factor": 3,
+            "use_keys": False,
+            "key_file": None,
+            "ssh_strict": False,
+            "system_host_keys": False,
+            "alt_host_keys": False,
+            "alt_key_file": "",
+            "ssh_config_file": None,
+            "allow_agent": False,
+            "session_timeout": 90,
+            "timeout": 120,
         }
 
         # Build dict of any optional Netmiko args
@@ -91,10 +92,8 @@ class DellOS6Driver(NetworkDriver):
             except KeyError:
                 pass
 
-        default_port = {
-            'ssh': 22
-        }
-        self.port = optional_args.get('port', default_port[self.transport])
+        default_port = {"ssh": 22}
+        self.port = optional_args.get("port", default_port[self.transport])
 
         self.device = None
         self.config_replace = False
@@ -103,15 +102,16 @@ class DellOS6Driver(NetworkDriver):
 
     def open(self):
         """Open a connection to the device."""
-        device_type = 'dell_os6'
-        self.device = ConnectHandler(device_type=device_type,
-                                     host=self.hostname,
-                                     username=self.username,
-                                     password=self.password,
-                                     **self.netmiko_optional_args)
+        device_type = "dell_os6"
+        self.device = ConnectHandler(
+            device_type=device_type,
+            host=self.hostname,
+            username=self.username,
+            password=self.password,
+            **self.netmiko_optional_args
+        )
         # ensure in enable mode
         self.device.enable()
-
 
     def close(self):
         """To close the connection."""
@@ -140,22 +140,19 @@ class DellOS6Driver(NetworkDriver):
         (days, hours, minutes, seconds) = (0, 0, 0, 0)
 
         uptime_str = uptime_str.strip()
-        time_list = re.split(', |:', uptime_str)
+        time_list = re.split(", |:", uptime_str)
         for element in time_list:
             if re.search("days", element):
-                days = int(element.strip(' days'))
+                days = int(element.strip(" days"))
             elif re.search("h", element):
-                hours = int(element.strip('h'))
+                hours = int(element.strip("h"))
             elif re.search("m", element):
-                minutes = int(element.strip('m'))
+                minutes = int(element.strip("m"))
             elif re.search("s", element):
-                seconds = int(element.strip('s'))
+                seconds = int(element.strip("s"))
 
         uptime_sec = (
-            (days * DAY_SECONDS)
-            + (hours * HOUR_SECONDS)
-            + (minutes * 60)
-            + seconds
+            (days * DAY_SECONDS) + (hours * HOUR_SECONDS) + (minutes * 60) + seconds
         )
         return uptime_sec
 
@@ -169,20 +166,16 @@ class DellOS6Driver(NetworkDriver):
         (hours, minutes, seconds) = (0, 0, 0)
 
         arp_age_str = arp_age_str.strip()
-        age_list = re.split(' ', arp_age_str)
+        age_list = re.split(" ", arp_age_str)
         for element in age_list:
             if re.search("h", element):
-                hours = int(element.strip('h'))
+                hours = int(element.strip("h"))
             elif re.search("m", element):
-                minutes = int(element.strip('m'))
+                minutes = int(element.strip("m"))
             elif re.search("s", element):
-                seconds = int(element.strip('s'))
+                seconds = int(element.strip("s"))
 
-        arp_age_sec = (
-            (hours * HOUR_SECONDS)
-            + (minutes * 60)
-            + seconds
-        )
+        arp_age_sec = (hours * HOUR_SECONDS) + (minutes * 60) + seconds
         return arp_age_sec
 
     def _get_interface_list(self):
@@ -196,15 +189,21 @@ class DellOS6Driver(NetworkDriver):
         show_int_status = textfsm_extractor(
             self, "show_interfaces_status", raw_show_int_status
         )
-        show_ip_int = textfsm_extractor(
-            self, "show_ip_interface", raw_show_ip_int
-        )
+        show_ip_int = textfsm_extractor(self, "show_ip_interface", raw_show_ip_int)
 
         interface_list = []
         for interface in show_int_status:
-            interface_list.append(canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces))
+            interface_list.append(
+                canonical_interface_name(
+                    interface["interface"], addl_name_map=dellos6_interfaces
+                )
+            )
         for interface in show_ip_int:
-            interface_list.append(canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces))
+            interface_list.append(
+                canonical_interface_name(
+                    interface["interface"], addl_name_map=dellos6_interfaces
+                )
+            )
 
         return interface_list
 
@@ -232,7 +231,7 @@ class DellOS6Driver(NetworkDriver):
             }
         """
         # default values.
-        vendor = u'Dell'
+        vendor = u"Dell"
         uptime = -1
         model, serial_number, fqdn, os_version, hostname = (self.UNKNOWN,) * 5
 
@@ -242,30 +241,22 @@ class DellOS6Driver(NetworkDriver):
         raw_show_sys = self._send_command("show system")
         raw_show_hosts = self._send_command("show hosts")
 
-        show_ver = textfsm_extractor(
-            self, "show_version", raw_show_ver
-        )
-        show_sw = textfsm_extractor(
-            self, "show_switch", raw_show_sw
-        )
-        show_sys = textfsm_extractor(
-            self, "show_system-basic", raw_show_sys
-        )
-        show_hosts = textfsm_extractor(
-            self, "show_hosts", raw_show_hosts
-        )
+        show_ver = textfsm_extractor(self, "show_version", raw_show_ver)
+        show_sw = textfsm_extractor(self, "show_switch", raw_show_sw)
+        show_sys = textfsm_extractor(self, "show_system-basic", raw_show_sys)
+        show_hosts = textfsm_extractor(self, "show_hosts", raw_show_hosts)
 
         interface_list = self._get_interface_list()
 
-        uptime = self.parse_uptime(show_sys[0]['uptime'])
-        os_version = ''
+        uptime = self.parse_uptime(show_sys[0]["uptime"])
+        os_version = ""
         for switch in show_sw:
-            if switch['status_mgmt'] == 'Mgmt Sw':
-                os_version = switch['version']
-        serial_number = show_ver[0]['serial_num']
-        model = show_ver[0]['model']
-        hostname = show_sys[0]['sys_name']
-        domain_name = show_hosts[0]['domain']
+            if switch["status_mgmt"] == "Mgmt Sw":
+                os_version = switch["version"]
+        serial_number = show_ver[0]["serial_num"]
+        model = show_ver[0]["model"]
+        hostname = show_sys[0]["sys_name"]
+        domain_name = show_hosts[0]["domain"]
 
         if domain_name != "Unknown" and hostname != "Unknown":
             fqdn = "{}.{}".format(hostname, domain_name)
@@ -351,38 +342,37 @@ class DellOS6Driver(NetworkDriver):
         show_int_status = textfsm_extractor(
             self, "show_interfaces_status", raw_show_int_status
         )
-        show_ip_int = textfsm_extractor(
-            self, "show_ip_interface", raw_show_ip_int
-        )
+        show_ip_int = textfsm_extractor(self, "show_ip_interface", raw_show_ip_int)
         show_switch_stack_ports = textfsm_extractor(
             self, "show_switch_stack-ports", raw_show_switch_stack_ports
         )
         show_int_config = textfsm_extractor(
             self, "show_interfaces_configuration", raw_show_int_config
         )
-        show_int = textfsm_extractor(
-            self, "show_interfaces", raw_show_int
-        )
+        show_int = textfsm_extractor(self, "show_interfaces", raw_show_int)
         show_int_desc = textfsm_extractor(
             self, "show_interfaces_description", raw_show_int_desc
         )
 
-
         interface_dict = {}
         for interface in show_int_status:
-            interface_name = canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces)
-            if re.search('down', interface['link_state'], re.IGNORECASE):
+            interface_name = canonical_interface_name(
+                interface["interface"], addl_name_map=dellos6_interfaces
+            )
+            if re.search("down", interface["link_state"], re.IGNORECASE):
                 is_up = False
-            if re.search('up', interface['link_state'], re.IGNORECASE):
+            if re.search("up", interface["link_state"], re.IGNORECASE):
                 is_up = True
             interface_dict[interface_name] = {
                 "is_up": is_up,
             }
         for interface in show_ip_int:
-            interface_name = canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces)
-            if re.search('down', interface['link_state'], re.IGNORECASE):
+            interface_name = canonical_interface_name(
+                interface["interface"], addl_name_map=dellos6_interfaces
+            )
+            if re.search("down", interface["link_state"], re.IGNORECASE):
                 is_up = False
-            if re.search('up', interface['link_state'], re.IGNORECASE):
+            if re.search("up", interface["link_state"], re.IGNORECASE):
                 is_up = True
             # SVIs cannot be administratively disabled
             is_enabled = True
@@ -392,47 +382,57 @@ class DellOS6Driver(NetworkDriver):
             }
         # Set some defaults
         for interface in interface_dict:
-            interface_dict[interface]['description'] = ''
-            interface_dict[interface]['last_flapped'] = last_flapped
-            interface_dict[interface]['mtu'] = 1500
-            interface_dict[interface]['mac_address'] = ''
+            interface_dict[interface]["description"] = ""
+            interface_dict[interface]["last_flapped"] = last_flapped
+            interface_dict[interface]["mtu"] = 1500
+            interface_dict[interface]["mac_address"] = ""
         for interface in show_switch_stack_ports:
-            interface_name = canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces)
-            if re.search('link down', interface['link_state'], re.IGNORECASE):
+            interface_name = canonical_interface_name(
+                interface["interface"], addl_name_map=dellos6_interfaces
+            )
+            if re.search("link down", interface["link_state"], re.IGNORECASE):
                 is_up = False
-            if re.search('link up', interface['link_state'], re.IGNORECASE):
+            if re.search("link up", interface["link_state"], re.IGNORECASE):
                 is_up = True
-            if not interface['speed'].isdigit():
+            if not interface["speed"].isdigit():
                 speed = -1
             else:
                 # Speed is reported in Gbps
-                speed = int(interface['speed']) * 1000
-            interface_dict[interface_name]['is_up'] = is_up
-            interface_dict[interface_name]['speed'] = speed
+                speed = int(interface["speed"]) * 1000
+            interface_dict[interface_name]["is_up"] = is_up
+            interface_dict[interface_name]["speed"] = speed
         for interface in show_int_config:
-            interface_name = canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces)
+            interface_name = canonical_interface_name(
+                interface["interface"], addl_name_map=dellos6_interfaces
+            )
             if interface_name in interface_dict:
-                if re.search('down', interface['admin_state'], re.IGNORECASE):
+                if re.search("down", interface["admin_state"], re.IGNORECASE):
                     is_enabled = False
-                if re.search('up', interface['admin_state'], re.IGNORECASE):
+                if re.search("up", interface["admin_state"], re.IGNORECASE):
                     is_enabled = True
-                if not interface['speed'].isdigit():
+                if not interface["speed"].isdigit():
                     speed = -1
                 else:
-                    speed = int(interface['speed'])
-                if not interface['mtu'].isdigit():
-                    mtu= -1
+                    speed = int(interface["speed"])
+                if not interface["mtu"].isdigit():
+                    mtu = -1
                 else:
-                    mtu = int(interface['mtu'])
-                interface_dict[interface_name]['is_enabled'] = is_enabled
-                interface_dict[interface_name]['mtu'] = mtu
+                    mtu = int(interface["mtu"])
+                interface_dict[interface_name]["is_enabled"] = is_enabled
+                interface_dict[interface_name]["mtu"] = mtu
         for interface in show_int_desc:
-            interface_name = canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces)
+            interface_name = canonical_interface_name(
+                interface["interface"], addl_name_map=dellos6_interfaces
+            )
             if interface_name in interface_dict:
-                interface_dict[interface_name]['description'] = interface['desc']
+                interface_dict[interface_name]["description"] = interface["desc"]
         for interface in show_int:
-            interface_name = canonical_interface_name(interface['interface'], addl_name_map=dellos6_interfaces)
-            interface_dict[interface_name]['mac_address'] = mac(interface['mac_address'])
+            interface_name = canonical_interface_name(
+                interface["interface"], addl_name_map=dellos6_interfaces
+            )
+            interface_dict[interface_name]["mac_address"] = mac(
+                interface["mac_address"]
+            )
 
         return interface_dict
 
@@ -479,7 +479,9 @@ class DellOS6Driver(NetworkDriver):
             }
         """
 
-        raw_show_lldp_remote_device_all = self._send_command("show lldp remote-device all")
+        raw_show_lldp_remote_device_all = self._send_command(
+            "show lldp remote-device all"
+        )
 
         show_lldp_remote_device_all = textfsm_extractor(
             self, "show_lldp_remote-device_all", raw_show_lldp_remote_device_all
@@ -487,19 +489,23 @@ class DellOS6Driver(NetworkDriver):
 
         lldp = {}
         for lldp_entry in show_lldp_remote_device_all:
-            lldp[lldp_entry['interface']] = []
-            hostname = lldp_entry['host_name']
+            lldp[lldp_entry["interface"]] = []
+            hostname = lldp_entry["host_name"]
             if not hostname:
-                hostname = lldp_entry['chassis_id']
+                hostname = lldp_entry["chassis_id"]
             else:
-                if hostname.rfind('...', (len(hostname) - 2), len(hostname)):
-                    raw_show_lldp_remote_device_detail = self._send_command("show lldp remote-device detail " + lldp_entry['interface'])
-                    show_lldp_remote_device_detail = textfsm_extractor(
-                        self, "show_lldp_remote-device_detail", raw_show_lldp_remote_device_detail
+                if hostname.rfind("...", (len(hostname) - 2), len(hostname)):
+                    raw_show_lldp_remote_device_detail = self._send_command(
+                        "show lldp remote-device detail " + lldp_entry["interface"]
                     )
-                    hostname = show_lldp_remote_device_detail[0]['host_name']
-            lldp_dict = {"port": lldp_entry['port_id'], 'hostname': hostname}
-            lldp[lldp_entry['interface']].append(lldp_dict)
+                    show_lldp_remote_device_detail = textfsm_extractor(
+                        self,
+                        "show_lldp_remote-device_detail",
+                        raw_show_lldp_remote_device_detail,
+                    )
+                    hostname = show_lldp_remote_device_detail[0]["host_name"]
+            lldp_dict = {"port": lldp_entry["port_id"], "hostname": hostname}
+            lldp[lldp_entry["interface"]].append(lldp_dict)
 
         return lldp
 
@@ -529,18 +535,12 @@ class DellOS6Driver(NetworkDriver):
         raw_show_sys = self._send_command("show system")
         raw_show_proc_cpu = self._send_command("show process cpu")
 
-        show_sys_fans = textfsm_extractor(
-            self, "show_system-fans", raw_show_sys
-        )
-        show_sys_temps = textfsm_extractor(
-            self, "show_system-temps", raw_show_sys
-        )
+        show_sys_fans = textfsm_extractor(self, "show_system-fans", raw_show_sys)
+        show_sys_temps = textfsm_extractor(self, "show_system-temps", raw_show_sys)
         show_sys_power = textfsm_extractor(
             self, "show_system-power_supplies", raw_show_sys
         )
-        show_proc_cpu = textfsm_extractor(
-            self, "show_process_cpu", raw_show_proc_cpu
-        )
+        show_proc_cpu = textfsm_extractor(self, "show_process_cpu", raw_show_proc_cpu)
 
         environment = {}
         environment.setdefault("fans", {})
@@ -551,14 +551,22 @@ class DellOS6Driver(NetworkDriver):
 
         for fan in show_sys_fans:
             environment["fans"].setdefault("unit " + fan["unit"], {})
-            environment["fans"]["unit " + fan["unit"]].setdefault(fan["description"], {})
+            environment["fans"]["unit " + fan["unit"]].setdefault(
+                fan["description"], {}
+            )
             if fan["status"] == "OK":
-                environment["fans"]["unit " + fan["unit"]][fan["description"]]["status"] = True
+                environment["fans"]["unit " + fan["unit"]][fan["description"]][
+                    "status"
+                ] = True
             else:
-                environment["fans"]["unit " + fan["unit"]][fan["description"]]["status"] = False
+                environment["fans"]["unit " + fan["unit"]][fan["description"]][
+                    "status"
+                ] = False
         for temp in show_sys_temps:
             environment["temperature"].setdefault("unit " + temp["unit"], {})
-            environment["temperature"]["unit " + temp["unit"]].setdefault(temp["description"], {})
+            environment["temperature"]["unit " + temp["unit"]].setdefault(
+                temp["description"], {}
+            )
             environment["temperature"]["unit " + temp["unit"]][temp["description"]] = {
                 "temperature": float(temp["temp"]),
                 "is_alert": False,
@@ -566,20 +574,24 @@ class DellOS6Driver(NetworkDriver):
             }
         for power in show_sys_power:
             environment["power"].setdefault("unit " + power["unit"], {})
-            environment["power"]["unit " + power["unit"]].setdefault(power["description"], {})
+            environment["power"]["unit " + power["unit"]].setdefault(
+                power["description"], {}
+            )
             environment["power"]["unit " + power["unit"]][power["description"]] = {
                 "status": False,
                 "capacity": -1.0,
                 "output": float(power["pwr_cur"]),
             }
             if power["status"] == "OK":
-                environment["power"]["unit " + power["unit"]][power["description"]]["status"] = True
+                environment["power"]["unit " + power["unit"]][power["description"]][
+                    "status"
+                ] = True
         environment["cpu"][0] = {}
         environment["cpu"][0]["%usage"] = 0.0
-        environment["cpu"][0]["%usage"] = show_proc_cpu[0]['cpu_60']
+        environment["cpu"][0]["%usage"] = show_proc_cpu[0]["cpu_60"]
         environment["memory"] = {
-            "available_ram": int(show_proc_cpu[0]['mem_free']) * 1024,
-            "used_ram": int(show_proc_cpu[0]['mem_alloc']) * 1024,
+            "available_ram": int(show_proc_cpu[0]["mem_free"]) * 1024,
+            "used_ram": int(show_proc_cpu[0]["mem_alloc"]) * 1024,
         }
 
         return environment
@@ -663,52 +675,110 @@ class DellOS6Driver(NetworkDriver):
         for int_list in interface_list:
 
             int_counters[int_list] = {
-                'tx_errors': -1,
-                'rx_errors': -1,
-                'tx_discards': -1,
-                'rx_discards': -1,
-                'tx_octets': -1,
-                'rx_octets': -1,
-                'tx_unicast_packets': -1,
-                'rx_unicast_packets': -1,
-                'tx_multicast_packets': -1,
-                'rx_multicast_packets': -1,
-                'tx_broadcast_packets': -1,
-                'rx_broadcast_packets': -1,
+                "tx_errors": -1,
+                "rx_errors": -1,
+                "tx_discards": -1,
+                "rx_discards": -1,
+                "tx_octets": -1,
+                "rx_octets": -1,
+                "tx_unicast_packets": -1,
+                "rx_unicast_packets": -1,
+                "tx_multicast_packets": -1,
+                "rx_multicast_packets": -1,
+                "tx_broadcast_packets": -1,
+                "rx_broadcast_packets": -1,
             }
 
             for int_count_err in show_int_count_err:
-                interface_name = canonical_interface_name(int_count_err['interface'], addl_name_map=dellos6_interfaces)
+                interface_name = canonical_interface_name(
+                    int_count_err["interface"], addl_name_map=dellos6_interfaces
+                )
                 if interface_name == int_list:
-                    if int_count_err['out_total'].isdigit() and int(int_count_err['out_total']) >= 0:
-                        int_counters[int_list]['tx_errors'] = int(int_count_err['out_total'])
-                    if int_count_err['in_total'].isdigit() and int(int_count_err['in_total']) >= 0:
-                        int_counters[int_list]['rx_errors'] = int(int_count_err['in_total'])
-                    if int_count_err['out_discard'].isdigit() and int(int_count_err['out_discard']) >= 0:
-                        int_counters[int_list]['tx_discards'] = int(int_count_err['out_discard'])
+                    if (
+                        int_count_err["out_total"].isdigit()
+                        and int(int_count_err["out_total"]) >= 0
+                    ):
+                        int_counters[int_list]["tx_errors"] = int(
+                            int_count_err["out_total"]
+                        )
+                    if (
+                        int_count_err["in_total"].isdigit()
+                        and int(int_count_err["in_total"]) >= 0
+                    ):
+                        int_counters[int_list]["rx_errors"] = int(
+                            int_count_err["in_total"]
+                        )
+                    if (
+                        int_count_err["out_discard"].isdigit()
+                        and int(int_count_err["out_discard"]) >= 0
+                    ):
+                        int_counters[int_list]["tx_discards"] = int(
+                            int_count_err["out_discard"]
+                        )
 
             for int_count in show_int_count:
-                interface_name = canonical_interface_name(int_count['interface'], addl_name_map=dellos6_interfaces)
+                interface_name = canonical_interface_name(
+                    int_count["interface"], addl_name_map=dellos6_interfaces
+                )
                 if interface_name == int_list:
-                    if int_count['out_total_octs'].isdigit() and int(int_count['out_total_octs']) >= 0:
-                        int_counters[int_list]['tx_octets'] = int(int_count['out_total_octs'])
-                    if int_count['in_total_octs'].isdigit() and int(int_count['in_total_octs']) >= 0:
-                        int_counters[int_list]['rx_octets'] = int(int_count['in_total_octs'])
-                    if int_count['out_ucast_pkts'].isdigit() and int(int_count['out_ucast_pkts']) >= 0:
-                        int_counters[int_list]['tx_unicast_packets'] = int(int_count['out_ucast_pkts'])
-                    if int_count['in_ucast_pkts'].isdigit() and int(int_count['in_ucast_pkts']) >= 0:
-                        int_counters[int_list]['rx_unicast_packets'] = int(int_count['in_ucast_pkts'])
-                    if int_count['out_mcast_pkts'].isdigit() and int(int_count['out_mcast_pkts']) >= 0:
-                        int_counters[int_list]['tx_multicast_packets'] = int(int_count['out_mcast_pkts'])
-                    if int_count['in_mcast_pkts'].isdigit() and int(int_count['in_mcast_pkts']) >= 0:
-                        int_counters[int_list]['rx_multicast_packets'] = int(int_count['in_mcast_pkts'])
-                    if int_count['out_bcast_pkts'].isdigit() and int(int_count['out_bcast_pkts']) >= 0:
-                        int_counters[int_list]['tx_broadcast_packets'] = int(int_count['out_bcast_pkts'])
-                    if int_count['in_bcast_pkts'].isdigit() and int(int_count['in_bcast_pkts']) >= 0:
-                        int_counters[int_list]['rx_broadcast_packets'] = int(int_count['in_bcast_pkts'])
+                    if (
+                        int_count["out_total_octs"].isdigit()
+                        and int(int_count["out_total_octs"]) >= 0
+                    ):
+                        int_counters[int_list]["tx_octets"] = int(
+                            int_count["out_total_octs"]
+                        )
+                    if (
+                        int_count["in_total_octs"].isdigit()
+                        and int(int_count["in_total_octs"]) >= 0
+                    ):
+                        int_counters[int_list]["rx_octets"] = int(
+                            int_count["in_total_octs"]
+                        )
+                    if (
+                        int_count["out_ucast_pkts"].isdigit()
+                        and int(int_count["out_ucast_pkts"]) >= 0
+                    ):
+                        int_counters[int_list]["tx_unicast_packets"] = int(
+                            int_count["out_ucast_pkts"]
+                        )
+                    if (
+                        int_count["in_ucast_pkts"].isdigit()
+                        and int(int_count["in_ucast_pkts"]) >= 0
+                    ):
+                        int_counters[int_list]["rx_unicast_packets"] = int(
+                            int_count["in_ucast_pkts"]
+                        )
+                    if (
+                        int_count["out_mcast_pkts"].isdigit()
+                        and int(int_count["out_mcast_pkts"]) >= 0
+                    ):
+                        int_counters[int_list]["tx_multicast_packets"] = int(
+                            int_count["out_mcast_pkts"]
+                        )
+                    if (
+                        int_count["in_mcast_pkts"].isdigit()
+                        and int(int_count["in_mcast_pkts"]) >= 0
+                    ):
+                        int_counters[int_list]["rx_multicast_packets"] = int(
+                            int_count["in_mcast_pkts"]
+                        )
+                    if (
+                        int_count["out_bcast_pkts"].isdigit()
+                        and int(int_count["out_bcast_pkts"]) >= 0
+                    ):
+                        int_counters[int_list]["tx_broadcast_packets"] = int(
+                            int_count["out_bcast_pkts"]
+                        )
+                    if (
+                        int_count["in_bcast_pkts"].isdigit()
+                        and int(int_count["in_bcast_pkts"]) >= 0
+                    ):
+                        int_counters[int_list]["rx_broadcast_packets"] = int(
+                            int_count["in_bcast_pkts"]
+                        )
 
         return int_counters
-
 
     def get_lldp_neighbors_detail(self, interface=""):
         """
@@ -751,7 +821,9 @@ class DellOS6Driver(NetworkDriver):
                 ]
             }
         """
-        raw_show_lldp_remote_device_all = self._send_command("show lldp remote-device all")
+        raw_show_lldp_remote_device_all = self._send_command(
+            "show lldp remote-device all"
+        )
 
         show_lldp_remote_device_all = textfsm_extractor(
             self, "show_lldp_remote-device_all", raw_show_lldp_remote_device_all
@@ -759,29 +831,41 @@ class DellOS6Driver(NetworkDriver):
 
         lldp = {}
         for lldp_entry in show_lldp_remote_device_all:
-            lldp[lldp_entry['interface']] = {}
-            raw_show_lldp_remote_device_detail = self._send_command("show lldp remote-device detail " + lldp_entry['interface'])
+            lldp[lldp_entry["interface"]] = {}
+            raw_show_lldp_remote_device_detail = self._send_command(
+                "show lldp remote-device detail " + lldp_entry["interface"]
+            )
             show_lldp_remote_device_detail = textfsm_extractor(
-                self, "show_lldp_remote-device_detail", raw_show_lldp_remote_device_detail
+                self,
+                "show_lldp_remote-device_detail",
+                raw_show_lldp_remote_device_detail,
             )
             print(raw_show_lldp_remote_device_detail)
             print(show_lldp_remote_device_detail)
-            parent_interface = ''
-            remote_chassis_id = lldp_entry['chassis_id']
-            remote_system_name = show_lldp_remote_device_detail[0]['host_name']
-            remote_port = show_lldp_remote_device_detail[0]['port_id']
-            remote_port_description = show_lldp_remote_device_detail[0]['port_desc']
-            remote_system_description = show_lldp_remote_device_detail[0]['sys_desc']
-            if show_lldp_remote_device_detail[0]['sys_cap_sup']:
-                remote_system_capab = show_lldp_remote_device_detail[0]['sys_cap_sup'].replace(" ", "").split(",")
+            parent_interface = ""
+            remote_chassis_id = lldp_entry["chassis_id"]
+            remote_system_name = show_lldp_remote_device_detail[0]["host_name"]
+            remote_port = show_lldp_remote_device_detail[0]["port_id"]
+            remote_port_description = show_lldp_remote_device_detail[0]["port_desc"]
+            remote_system_description = show_lldp_remote_device_detail[0]["sys_desc"]
+            if show_lldp_remote_device_detail[0]["sys_cap_sup"]:
+                remote_system_capab = (
+                    show_lldp_remote_device_detail[0]["sys_cap_sup"]
+                    .replace(" ", "")
+                    .split(",")
+                )
             else:
                 remote_system_capab = []
-            if show_lldp_remote_device_detail[0]['sys_cap_oper']:
-                remote_system_enable_capab = show_lldp_remote_device_detail[0]['sys_cap_oper'].replace(" ", "").split(",")
+            if show_lldp_remote_device_detail[0]["sys_cap_oper"]:
+                remote_system_enable_capab = (
+                    show_lldp_remote_device_detail[0]["sys_cap_oper"]
+                    .replace(" ", "")
+                    .split(",")
+                )
             else:
                 remote_system_enable_capab = []
 
-            lldp[lldp_entry['interface']] = {
+            lldp[lldp_entry["interface"]] = {
                 "parent_interface": parent_interface,
                 "remote_chassis_id": remote_chassis_id,
                 "remote_system_name": remote_system_name,
@@ -864,18 +948,18 @@ class DellOS6Driver(NetworkDriver):
 
         raw_show_arp = self._send_command(command)
 
-        show_arp = textfsm_extractor(
-            self, "show_arp", raw_show_arp
-        )
+        show_arp = textfsm_extractor(self, "show_arp", raw_show_arp)
 
         arp_table = []
         for entry in show_arp:
             arp_table.append(
                 {
-                    'interface': canonical_interface_name(entry['interface'], addl_name_map=dellos6_interfaces),
-                    'mac': mac(entry['mac_address']),
-                    'ip': entry['ip_address'],
-                    'age': float(self.parse_arp_age(entry['age'])),
+                    "interface": canonical_interface_name(
+                        entry["interface"], addl_name_map=dellos6_interfaces
+                    ),
+                    "mac": mac(entry["mac_address"]),
+                    "ip": entry["ip_address"],
+                    "age": float(self.parse_arp_age(entry["age"])),
                 }
             )
 
@@ -904,7 +988,7 @@ class DellOS6Driver(NetworkDriver):
 
         ntp_peers = {}
         for peer in show_sntp_status:
-            ntp_peers[peer['server_ip']] = {}
+            ntp_peers[peer["server_ip"]] = {}
 
         return ntp_peers
 
@@ -931,7 +1015,7 @@ class DellOS6Driver(NetworkDriver):
 
         ntp_servers = {}
         for server in show_sntp_server:
-            ntp_servers[server['server_ip']] = {}
+            ntp_servers[server["server_ip"]] = {}
 
         return ntp_servers
 
@@ -976,32 +1060,32 @@ class DellOS6Driver(NetworkDriver):
 
         ntp_stats = []
         for server in show_sntp_stats:
-            if server['status'] == 'Success':
+            if server["status"] == "Success":
                 synchronized = True
             else:
                 synchronized = False
             ntp_stats.append(
                 {
-                    'remote': server['server_ip'],
+                    "remote": server["server_ip"],
                     # Not supported
-                    'referenceid': '',
-                    'synchronized': synchronized,
+                    "referenceid": "",
+                    "synchronized": synchronized,
                     # Not supported
-                    'stratum': -1,
+                    "stratum": -1,
                     # We only support parsing unicast servers right now
-                    'type': 'u',
+                    "type": "u",
                     # We don't support parsing this right now
-                    'when': '',
+                    "when": "",
                     # Not supported
-                    'hostpoll': -1,
+                    "hostpoll": -1,
                     # Not supported
-                    'reachability': -1,
+                    "reachability": -1,
                     # Not supported
-                    'delay': -0.0,
+                    "delay": -0.0,
                     # Not supported
-                    'offset': -0.0,
+                    "offset": -0.0,
                     # Not supported
-                    'jitter': -0.0,
+                    "jitter": -0.0,
                 }
             )
 
@@ -1062,9 +1146,7 @@ class DellOS6Driver(NetworkDriver):
         raw_show_ipv6_int = self._send_command("show ipv6 interface")
         raw_show_ipv6_int_oob = self._send_command("show ipv6 interface out-of-band")
 
-        show_ip_int = textfsm_extractor(
-            self, "show_ip_interface", raw_show_ip_int
-        )
+        show_ip_int = textfsm_extractor(self, "show_ip_interface", raw_show_ip_int)
         show_ip_int_oob = textfsm_extractor(
             self, "show_ip_interface_out-of-band", raw_show_ip_int_oob
         )
@@ -1077,66 +1159,78 @@ class DellOS6Driver(NetworkDriver):
 
         interfaces_ip = {}
         for int in show_ip_int:
-            interface = canonical_interface_name(int['interface'], addl_name_map=dellos6_interfaces)
+            interface = canonical_interface_name(
+                int["interface"], addl_name_map=dellos6_interfaces
+            )
             raw_show_ip_int_vlan = self._send_command("show ip interface " + interface)
             show_ip_int_vlan = textfsm_extractor(
                 self, "show_ip_interface_vlan", raw_show_ip_int_vlan
             )
             for vlan_int in show_ip_int_vlan:
-                if vlan_int['ip_addr_pri']:
+                if vlan_int["ip_addr_pri"]:
                     interfaces_ip.setdefault(interface, {})
-                    interfaces_ip[interface].setdefault('ipv4', {})
-                    ip_address = str(IPv4Interface(vlan_int['ip_addr_pri']).ip)
-                    prefix_len = IPv4Interface(vlan_int['ip_addr_pri']).network.prefixlen
-                    interfaces_ip[interface]['ipv4'][ip_address] = {
-                        'prefix_length': prefix_len,
+                    interfaces_ip[interface].setdefault("ipv4", {})
+                    ip_address = str(IPv4Interface(vlan_int["ip_addr_pri"]).ip)
+                    prefix_len = IPv4Interface(
+                        vlan_int["ip_addr_pri"]
+                    ).network.prefixlen
+                    interfaces_ip[interface]["ipv4"][ip_address] = {
+                        "prefix_length": prefix_len,
                     }
-                if vlan_int['ip_addr_sec']:
-                    for ip in vlan_int['ip_addr_sec']:
+                if vlan_int["ip_addr_sec"]:
+                    for ip in vlan_int["ip_addr_sec"]:
                         ip_address = str(IPv4Interface(ip).ip)
                         prefix_len = IPv4Interface(ip).network.prefixlen
-                        interfaces_ip[interface]['ipv4'][ip_address] = {
-                            'prefix_length': prefix_len
+                        interfaces_ip[interface]["ipv4"][ip_address] = {
+                            "prefix_length": prefix_len
                         }
 
         for int in show_ipv6_int:
-            interface = canonical_interface_name(int['interface'], addl_name_map=dellos6_interfaces)
-            raw_show_ipv6_int_vlan = self._send_command("show ipv6 interface " + interface)
+            interface = canonical_interface_name(
+                int["interface"], addl_name_map=dellos6_interfaces
+            )
+            raw_show_ipv6_int_vlan = self._send_command(
+                "show ipv6 interface " + interface
+            )
             show_ipv6_int_vlan = textfsm_extractor(
                 self, "show_ipv6_interface_vlan", raw_show_ipv6_int_vlan
             )
             for vlan_int in show_ipv6_int_vlan:
-                if vlan_int['ipv6_pfx']:
+                if vlan_int["ipv6_pfx"]:
                     interfaces_ip.setdefault(interface, {})
-                    interfaces_ip[interface].setdefault('ipv6', {})
-                    for ipv6 in vlan_int['ipv6_pfx']:
+                    interfaces_ip[interface].setdefault("ipv6", {})
+                    for ipv6 in vlan_int["ipv6_pfx"]:
                         ipv6_address = str(IPv6Interface(ipv6).ip)
                         prefix_len = IPv6Interface(ipv6).network.prefixlen
-                        interfaces_ip[interface]['ipv6'][ipv6_address] = {
-                            'prefix_length': prefix_len
+                        interfaces_ip[interface]["ipv6"][ipv6_address] = {
+                            "prefix_length": prefix_len
                         }
 
-        if show_ip_int_oob[0]['ip_addr']:
-            interfaces_ip.setdefault('out-of-band', {})
-            interfaces_ip['out-of-band'].setdefault('ipv4', {})
-            ip_address = show_ip_int_oob[0]['ip_addr']
-            prefix_len = IPv4Interface(show_ip_int_oob[0]['ip_addr'] + '/' + show_ip_int_oob[0]['subnet_mask']).network.prefixlen
-            interfaces_ip['out-of-band']['ipv4'][ip_address] = {
-                'prefix_length': prefix_len
+        if show_ip_int_oob[0]["ip_addr"]:
+            interfaces_ip.setdefault("out-of-band", {})
+            interfaces_ip["out-of-band"].setdefault("ipv4", {})
+            ip_address = show_ip_int_oob[0]["ip_addr"]
+            prefix_len = IPv4Interface(
+                show_ip_int_oob[0]["ip_addr"] + "/" + show_ip_int_oob[0]["subnet_mask"]
+            ).network.prefixlen
+            interfaces_ip["out-of-band"]["ipv4"][ip_address] = {
+                "prefix_length": prefix_len
             }
-            raw_show_ipv6_int_vlan = self._send_command("show ipv6 interface " + interface)
+            raw_show_ipv6_int_vlan = self._send_command(
+                "show ipv6 interface " + interface
+            )
             show_ipv6_int_vlan = textfsm_extractor(
                 self, "show_ipv6_interface_vlan", raw_show_ipv6_int_vlan
             )
 
-        if show_ipv6_int_oob[0]['ipv6_pfx']:
-            interfaces_ip.setdefault('out-of-band', {})
-            interfaces_ip['out-of-band'].setdefault('ipv6', {})
-            for ipv6 in show_ipv6_int_oob[0]['ipv6_pfx']:
+        if show_ipv6_int_oob[0]["ipv6_pfx"]:
+            interfaces_ip.setdefault("out-of-band", {})
+            interfaces_ip["out-of-band"].setdefault("ipv6", {})
+            for ipv6 in show_ipv6_int_oob[0]["ipv6_pfx"]:
                 ipv6_address = str(IPv6Interface(ipv6).ip)
                 prefix_len = IPv6Interface(ipv6).network.prefixlen
-                interfaces_ip['out-of-band']['ipv6'][ipv6_address] = {
-                    'prefix_length': prefix_len
+                interfaces_ip["out-of-band"]["ipv6"][ipv6_address] = {
+                    "prefix_length": prefix_len
                 }
 
         return interfaces_ip
