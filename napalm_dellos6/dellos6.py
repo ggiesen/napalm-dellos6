@@ -23,10 +23,7 @@ import socket
 from ipaddress import IPv4Interface, IPv6Interface
 
 from napalm.base import NetworkDriver
-from napalm.base.exceptions import (
-    CommandErrorException,
-    ConnectionClosedException,
-)
+from napalm.base.exceptions import CommandErrorException, ConnectionClosedException
 from napalm.base.helpers import canonical_interface_name, mac, textfsm_extractor
 
 from napalm_dellos6.dellos6_canonical_map import dellos6_interfaces
