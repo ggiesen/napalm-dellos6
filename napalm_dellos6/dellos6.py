@@ -19,20 +19,19 @@ Napalm driver for DellOS6.
 Read https://napalm.readthedocs.io for more information.
 """
 import re
+import socket
 from ipaddress import IPv4Interface, IPv6Interface
 
 from napalm.base import NetworkDriver
 from napalm.base.exceptions import (
     CommandErrorException,
-    MergeConfigException,
-    ReplaceConfigException,
-    SessionLockedException,
+    ConnectionClosedException,
 )
 from napalm.base.helpers import canonical_interface_name, mac, textfsm_extractor
 
 from napalm_dellos6.dellos6_canonical_map import dellos6_interfaces
 
-from netmiko import ConnectHandler, FileTransfer
+from netmiko import ConnectHandler
 
 # Easier to store these as constants
 HOUR_SECONDS = 3600
@@ -222,7 +221,7 @@ class DellOS6Driver(NetworkDriver):
             'model': u'N4032',
             'hostname': u'dellos6-switch',
             'fqdn': u'dellos6-switch',
-            'interface_list': [u'Tengigabitethernet1/0/1', u'Tengigabitethernet1/0/1', u'out-of-band']
+            'interface_list': [u'Tengigabitethernet1/0/1', u'out-of-band']
             }
         """
         # default values.
