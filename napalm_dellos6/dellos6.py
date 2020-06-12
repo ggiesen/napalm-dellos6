@@ -29,11 +29,7 @@ from napalm.base.exceptions import (
     ReplaceConfigException,
     SessionLockedException,
 )
-from napalm.base.helpers import (
-    canonical_interface_name,
-    mac,
-    textfsm_extractor,
-)
+from napalm.base.helpers import canonical_interface_name, mac, textfsm_extractor
 
 from napalm_dellos6.dellos6_canonical_map import dellos6_interfaces
 
@@ -363,9 +359,7 @@ class DellOS6Driver(NetworkDriver):
                 is_up = False
             if re.search("up", interface["link_state"], re.IGNORECASE):
                 is_up = True
-            interface_dict[interface_name] = {
-                "is_up": is_up,
-            }
+            interface_dict[interface_name] = {"is_up": is_up}
         for interface in show_ip_int:
             interface_name = canonical_interface_name(
                 interface["interface"], addl_name_map=dellos6_interfaces
@@ -376,10 +370,7 @@ class DellOS6Driver(NetworkDriver):
                 is_up = True
             # SVIs cannot be administratively disabled
             is_enabled = True
-            interface_dict[interface_name] = {
-                "is_up": is_up,
-                "is_enabled": is_enabled,
-            }
+            interface_dict[interface_name] = {"is_up": is_up, "is_enabled": is_enabled}
         # Set some defaults
         for interface in interface_dict:
             interface_dict[interface]["description"] = ""
@@ -1175,7 +1166,7 @@ class DellOS6Driver(NetworkDriver):
                         vlan_int["ip_addr_pri"]
                     ).network.prefixlen
                     interfaces_ip[interface]["ipv4"][ip_address] = {
-                        "prefix_length": prefix_len,
+                        "prefix_length": prefix_len
                     }
                 if vlan_int["ip_addr_sec"]:
                     for ip in vlan_int["ip_addr_sec"]:

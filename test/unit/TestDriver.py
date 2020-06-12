@@ -32,9 +32,7 @@ class TestConfigDriver(unittest.TestCase, TestConfigNetworkDriver):
         password = "vagrant"
         cls.vendor = "dellos6"
 
-        optional_args = {
-            "port": 12443,
-        }
+        optional_args = {"port": 12443}
         cls.device = dellos6.DellOS6Driver(
             hostname, username, password, timeout=60, optional_args=optional_args
         )
@@ -57,9 +55,7 @@ class TestGetterDriver(unittest.TestCase, TestGettersNetworkDriver):
         password = "vagrant"
         cls.vendor = "dellos6"
 
-        optional_args = {
-            "port": 12443,
-        }
+        optional_args = {"port": 12443}
         cls.device = dellos6.DellOS6Driver(
             hostname, username, password, timeout=60, optional_args=optional_args
         )
