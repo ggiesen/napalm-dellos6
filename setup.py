@@ -9,9 +9,6 @@ with open("requirements.txt", "r") as fs:
 
 __author__ = 'Gary T. Giesen <ggiesen@centrilogic.com>'
 
-install_reqs = parse_requirements('requirements.txt', session=uuid.uuid1())
-reqs = [str(ir.req) for ir in install_reqs]
-
 setup(
     name="napalm-dellos6",
     version="0.0.1",
