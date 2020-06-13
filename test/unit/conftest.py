@@ -40,8 +40,40 @@ class PatchedDellOS6Driver(dellos6.DellOS6Driver):
         self.device = FakeDellOS6Device()
 
 
+    def disconnect(self):
+        pass
+
+    def is_alive(self):
+        return {
+            'is_alive': True  # In testing everything works..
+        }
+
+    def open(self):
+        pass
+
+
 class FakeDellOS6Device(BaseTestDouble):
     """DellOS6 device test double."""
+
+    def send_command(self, command, **kwargs):
+        # cmd = re.sub(r'[\[\]\*\^\+\s\|/]', '_', command)
+        filename = '{}.txt'.format(self.sanitize_text(command))
+        full_path = self.find_file(filename)
+        result = self.read_txt_file(full_path)
+        return str(result)
+
+    def send_command_expect(self, command):
+        # cmd = re.sub(r'[\[\]\*\^\+\s\|/]', '_', command)
+        filename = '{}.txt'.format(self.sanitize_text(command))
+        full_path = self.find_file(filename)
+        result = self.read_txt_file(full_path)
+        return str(result)
+
+    def disconnect(self):
+        pass
+
+    def set_base_prompt(self):
+        return "#"
 
     def run_commands(self, command_list, encoding="json"):
         """Fake run_commands."""
