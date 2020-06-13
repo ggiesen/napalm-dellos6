@@ -39,7 +39,6 @@ class PatchedDellOS6Driver(dellos6.DellOS6Driver):
         self.patched_attrs = ["device"]
         self.device = FakeDellOS6Device()
 
-
     def disconnect(self):
         pass
 
