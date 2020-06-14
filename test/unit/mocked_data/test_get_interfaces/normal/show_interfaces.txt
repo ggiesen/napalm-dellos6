@@ -1,0 +1,1716 @@
+
+Interface Name : .............................. Te1/0/1
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 0
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 0
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 21008
+Transmitted Input Rate Packets/Sec : .......... 11476
+Total Packets Received Without Errors.......... 935551
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 935551
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 935551
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/2
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 0
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 0
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 23608
+Transmitted Input Rate Packets/Sec : .......... 12897
+Total Packets Received Without Errors.......... 935295
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 934823
+Broadcast Packets Received..................... 472
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 935294
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/3
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 296
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 24008
+Transmitted Input Rate Packets/Sec : .......... 13114
+Total Packets Received Without Errors.......... 14970709
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 14970709
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/4
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 47240
+Received Input Rate Packets/Sec : ............. 3
+Transmitted Input Rate Bits/Sec : ............. 5344
+Transmitted Input Rate Packets/Sec : .......... 5
+Total Packets Received Without Errors.......... 251387099
+Unicast Packets Received....................... 236378477
+Multicast Packets Received..................... 14967439
+Broadcast Packets Received..................... 41183
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 332694426
+Unicast Packets Transmitted.................... 216256628
+Multicast Packets Transmitted.................. 99068446
+Broadcast Packets Transmitted.................. 17369352
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/5
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 296
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 2016
+Transmitted Input Rate Packets/Sec : .......... 3
+Total Packets Received Without Errors.......... 15736477
+Unicast Packets Received....................... 716380
+Multicast Packets Received..................... 14967392
+Broadcast Packets Received..................... 52705
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 116424782
+Unicast Packets Transmitted.................... 746
+Multicast Packets Transmitted.................. 99059741
+Broadcast Packets Transmitted.................. 17364295
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/6
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 110512
+Received Input Rate Packets/Sec : ............. 4
+Transmitted Input Rate Bits/Sec : ............. 6152
+Transmitted Input Rate Packets/Sec : .......... 6
+Total Packets Received Without Errors.......... 171606340
+Unicast Packets Received....................... 156595597
+Multicast Packets Received..................... 14967261
+Broadcast Packets Received..................... 43482
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 228555267
+Unicast Packets Transmitted.................... 112128120
+Multicast Packets Transmitted.................. 99061802
+Broadcast Packets Transmitted.................. 17365345
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/7
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 15088
+Received Input Rate Packets/Sec : ............. 22309
+Transmitted Input Rate Bits/Sec : ............. 24416
+Transmitted Input Rate Packets/Sec : .......... 13334
+Total Packets Received Without Errors.......... 0
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 0
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/8
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 0
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 24416
+Transmitted Input Rate Packets/Sec : .......... 13334
+Total Packets Received Without Errors.......... 8283678
+Unicast Packets Received....................... 7371323
+Multicast Packets Received..................... 912292
+Broadcast Packets Received..................... 63
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/9
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 288
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 2496
+Transmitted Input Rate Packets/Sec : .......... 3
+Total Packets Received Without Errors.......... 93195598
+Unicast Packets Received....................... 92247467
+Multicast Packets Received..................... 927607
+Broadcast Packets Received..................... 20524
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 184776444
+Unicast Packets Transmitted.................... 54448071
+Multicast Packets Transmitted.................. 112957365
+Broadcast Packets Transmitted.................. 17371008
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/10
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 0
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 2272
+Transmitted Input Rate Packets/Sec : .......... 3
+Total Packets Received Without Errors.......... 1681107
+Unicast Packets Received....................... 700818
+Multicast Packets Received..................... 927599
+Broadcast Packets Received..................... 52690
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 130331381
+Unicast Packets Transmitted.................... 1002
+Multicast Packets Transmitted.................. 112958621
+Broadcast Packets Transmitted.................. 17371758
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/11
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 0
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 24416
+Transmitted Input Rate Packets/Sec : .......... 13334
+Total Packets Received Without Errors.......... 927653
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 927653
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/12
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Trunk Mode
+VLAN Membership: .............................. (1),699,707,710,3840,4000-4002
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 170968
+Received Input Rate Packets/Sec : ............. 180
+Transmitted Input Rate Bits/Sec : ............. 2469792
+Transmitted Input Rate Packets/Sec : .......... 327
+Total Packets Received Without Errors.......... 1413309655
+Unicast Packets Received....................... 1411321298
+Multicast Packets Received..................... 1800207
+Broadcast Packets Received..................... 188150
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 12515
+Total Packets Transmitted Successfully......... 4319252482
+Unicast Packets Transmitted.................... 3941657641
+Multicast Packets Transmitted.................. 294527212
+Broadcast Packets Transmitted.................. 83067629
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/13
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Trunk Mode
+VLAN Membership: .............................. (1),699,707,710,3840,4000-4002
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 6401152
+Received Input Rate Packets/Sec : ............. 668
+Transmitted Input Rate Bits/Sec : ............. 216856
+Transmitted Input Rate Packets/Sec : .......... 317
+Total Packets Received Without Errors.......... 35811017715
+Unicast Packets Received....................... 35810221771
+Multicast Packets Received..................... 383327
+Broadcast Packets Received..................... 412617
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 227
+Total Packets Transmitted Successfully......... 40447895989
+Unicast Packets Transmitted.................... 40065543384
+Multicast Packets Transmitted.................. 299459641
+Broadcast Packets Transmitted.................. 82892964
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/14
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 0
+Received Input Rate Packets/Sec : ............. 42597
+Transmitted Input Rate Bits/Sec : ............. 2272
+Transmitted Input Rate Packets/Sec : .......... 3
+Total Packets Received Without Errors.......... 0
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 0
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 131120934
+Unicast Packets Transmitted.................... 159
+Multicast Packets Transmitted.................. 113383445
+Broadcast Packets Transmitted.................. 17737330
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/15
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 443736
+Received Input Rate Packets/Sec : ............. 4
+Transmitted Input Rate Bits/Sec : ............. 6800
+Transmitted Input Rate Packets/Sec : .......... 6
+Total Packets Received Without Errors.......... 189937188
+Unicast Packets Received....................... 189890309
+Multicast Packets Received..................... 6
+Broadcast Packets Received..................... 46873
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 285956892
+Unicast Packets Transmitted.................... 154836121
+Multicast Packets Transmitted.................. 113383455
+Broadcast Packets Transmitted.................. 17737316
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/16
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 0
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 2272
+Transmitted Input Rate Packets/Sec : .......... 3
+Total Packets Received Without Errors.......... 46401
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 0
+Broadcast Packets Received..................... 46401
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 131127304
+Unicast Packets Transmitted.................... 159
+Multicast Packets Transmitted.................. 113386895
+Broadcast Packets Transmitted.................. 17740250
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/17
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 95880
+Received Input Rate Packets/Sec : ............. 2
+Transmitted Input Rate Bits/Sec : ............. 6280
+Transmitted Input Rate Packets/Sec : .......... 6
+Total Packets Received Without Errors.......... 19074873614
+Unicast Packets Received....................... 19074873594
+Multicast Packets Received..................... 4
+Broadcast Packets Received..................... 16
+Total Packets Received with MAC Errors......... 1
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 1
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 23710431435
+Unicast Packets Transmitted.................... 23579304284
+Multicast Packets Transmitted.................. 113386901
+Broadcast Packets Transmitted.................. 17740250
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/18
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 4528
+Received Input Rate Packets/Sec : ............. 23046
+Transmitted Input Rate Bits/Sec : ............. 24824
+Transmitted Input Rate Packets/Sec : .......... 13558
+Total Packets Received Without Errors.......... 0
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 0
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/19
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 4528
+Received Input Rate Packets/Sec : ............. 23046
+Transmitted Input Rate Bits/Sec : ............. 24824
+Transmitted Input Rate Packets/Sec : .......... 13558
+Total Packets Received Without Errors.......... 0
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 0
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/20
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 4528
+Received Input Rate Packets/Sec : ............. 23046
+Transmitted Input Rate Bits/Sec : ............. 24824
+Transmitted Input Rate Packets/Sec : .......... 13558
+Total Packets Received Without Errors.......... 0
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 0
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/21
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Trunk Mode
+VLAN Membership: .............................. (1),2-4096
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 1000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 202192
+Received Input Rate Packets/Sec : ............. 217
+Transmitted Input Rate Bits/Sec : ............. 3971608
+Transmitted Input Rate Packets/Sec : .......... 476
+Total Packets Received Without Errors.......... 18194674706
+Unicast Packets Received....................... 18000201140
+Multicast Packets Received..................... 188781770
+Broadcast Packets Received..................... 5691796
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 143745073
+Total Packets Transmitted Successfully......... 25683160836
+Unicast Packets Transmitted.................... 25679765107
+Multicast Packets Transmitted.................. 2793945
+Broadcast Packets Transmitted.................. 601784
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te1/0/22
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 4456
+Received Input Rate Packets/Sec : ............. 22665
+Transmitted Input Rate Bits/Sec : ............. 24416
+Transmitted Input Rate Packets/Sec : .......... 13334
+Total Packets Received Without Errors.......... 0
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 0
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/1
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 0
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 38324792
+Received Input Rate Packets/Sec : ............. 4328
+Transmitted Input Rate Bits/Sec : ............. 75690088
+Transmitted Input Rate Packets/Sec : .......... 6047
+Total Packets Received Without Errors.......... 186309374862
+Unicast Packets Received....................... 186297005501
+Multicast Packets Received..................... 935880
+Broadcast Packets Received..................... 11433481
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 3434
+Total Packets Transmitted Successfully......... 325293322401
+Unicast Packets Transmitted.................... 325172003036
+Multicast Packets Transmitted.................. 114695836
+Broadcast Packets Transmitted.................. 6623529
+Transmit Packets Discarded..................... 1
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 1
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/2
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 0
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 80
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 2320
+Transmitted Input Rate Packets/Sec : .......... 3
+Total Packets Received Without Errors.......... 7194973
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 935647
+Broadcast Packets Received..................... 6259326
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 2587
+Total Packets Transmitted Successfully......... 130211493
+Unicast Packets Transmitted.................... 3724481
+Multicast Packets Transmitted.................. 114690085
+Broadcast Packets Transmitted.................. 11796927
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/3
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 389984
+Received Input Rate Packets/Sec : ............. 34
+Transmitted Input Rate Bits/Sec : ............. 45224
+Transmitted Input Rate Packets/Sec : .......... 12
+Total Packets Received Without Errors.......... 1506866310
+Unicast Packets Received....................... 1491891137
+Multicast Packets Received..................... 14974191
+Broadcast Packets Received..................... 982
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 806279097
+Unicast Packets Transmitted.................... 688497660
+Multicast Packets Transmitted.................. 99722141
+Broadcast Packets Transmitted.................. 18059296
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/4
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 296
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 2016
+Transmitted Input Rate Packets/Sec : .......... 3
+Total Packets Received Without Errors.......... 15021759
+Unicast Packets Received....................... 50791
+Multicast Packets Received..................... 14970910
+Broadcast Packets Received..................... 58
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 117817048
+Unicast Packets Transmitted.................... 31470
+Multicast Packets Transmitted.................. 99725403
+Broadcast Packets Transmitted.................. 18060175
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/5
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 174912
+Received Input Rate Packets/Sec : ............. 10
+Transmitted Input Rate Bits/Sec : ............. 14408
+Transmitted Input Rate Packets/Sec : .......... 9
+Total Packets Received Without Errors.......... 318155603
+Unicast Packets Received....................... 303184687
+Multicast Packets Received..................... 14970864
+Broadcast Packets Received..................... 52
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 293009932
+Unicast Packets Transmitted.................... 175224294
+Multicast Packets Transmitted.................. 99725431
+Broadcast Packets Transmitted.................. 18060207
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/6
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 296
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 2016
+Transmitted Input Rate Packets/Sec : .......... 3
+Total Packets Received Without Errors.......... 15005138
+Unicast Packets Received....................... 34340
+Multicast Packets Received..................... 14970737
+Broadcast Packets Received..................... 61
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 117804209
+Unicast Packets Transmitted.................... 18475
+Multicast Packets Transmitted.................. 99725559
+Broadcast Packets Transmitted.................. 18060175
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/7
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 0
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 0
+Transmitted Input Rate Packets/Sec : .......... 0
+Total Packets Received Without Errors.......... 0
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 0
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/8
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 288
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 2496
+Transmitted Input Rate Packets/Sec : .......... 4
+Total Packets Received Without Errors.......... 10311497
+Unicast Packets Received....................... 9383619
+Multicast Packets Received..................... 927823
+Broadcast Packets Received..................... 55
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 138862757
+Unicast Packets Transmitted.................... 7034060
+Multicast Packets Transmitted.................. 113768486
+Broadcast Packets Transmitted.................. 18060211
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/9
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 0
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 2272
+Transmitted Input Rate Packets/Sec : .......... 3
+Total Packets Received Without Errors.......... 943417
+Unicast Packets Received....................... 15528
+Multicast Packets Received..................... 927836
+Broadcast Packets Received..................... 53
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 131837765
+Unicast Packets Transmitted.................... 9175
+Multicast Packets Transmitted.................. 113768430
+Broadcast Packets Transmitted.................. 18060160
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/10
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 160656
+Received Input Rate Packets/Sec : ............. 8
+Transmitted Input Rate Bits/Sec : ............. 31208
+Transmitted Input Rate Packets/Sec : .......... 9
+Total Packets Received Without Errors.......... 426303013
+Unicast Packets Received....................... 425375126
+Multicast Packets Received..................... 927829
+Broadcast Packets Received..................... 58
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 362850678
+Unicast Packets Transmitted.................... 231022089
+Multicast Packets Transmitted.................. 113768434
+Broadcast Packets Transmitted.................. 18060155
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/11
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 11464288
+Received Input Rate Packets/Sec : ............. 234
+Transmitted Input Rate Bits/Sec : ............. 1834592
+Transmitted Input Rate Packets/Sec : .......... 151
+Total Packets Received Without Errors.......... 27767222622
+Unicast Packets Received....................... 27766294079
+Multicast Packets Received..................... 927884
+Broadcast Packets Received..................... 659
+Total Packets Received with MAC Errors......... 10
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 10
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 17823484071
+Unicast Packets Transmitted.................... 17691655973
+Multicast Packets Transmitted.................. 113768489
+Broadcast Packets Transmitted.................. 18059609
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/12
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Trunk Mode
+VLAN Membership: .............................. (1),699,707,710,3840,4000-4002
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 40207400
+Received Input Rate Packets/Sec : ............. 3726
+Transmitted Input Rate Bits/Sec : ............. 30475368
+Transmitted Input Rate Packets/Sec : .......... 3314
+Total Packets Received Without Errors.......... 222622075543
+Unicast Packets Received....................... 222593306608
+Multicast Packets Received..................... 212980
+Broadcast Packets Received..................... 28555955
+Total Packets Received with MAC Errors......... 92925
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 1938
+Alignment Errors............................... 0
+FCS Errors..................................... 90987
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 637996
+Total Packets Transmitted Successfully......... 123592987967
+Unicast Packets Transmitted.................... 123237763038
+Multicast Packets Transmitted.................. 300071198
+Broadcast Packets Transmitted.................. 55153731
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/13
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Trunk Mode
+VLAN Membership: .............................. (1),699,707,710,3840,4000-4002
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 10000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 22995752
+Received Input Rate Packets/Sec : ............. 2369
+Transmitted Input Rate Bits/Sec : ............. 6410920
+Transmitted Input Rate Packets/Sec : .......... 1229
+Total Packets Received Without Errors.......... 136659202454
+Unicast Packets Received....................... 136631054811
+Multicast Packets Received..................... 1368
+Broadcast Packets Received..................... 28146275
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 7658
+Total Packets Transmitted Successfully......... 72587681314
+Unicast Packets Transmitted.................... 72232054873
+Multicast Packets Transmitted.................. 300067304
+Broadcast Packets Transmitted.................. 55559137
+Transmit Packets Discarded..................... 616008
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 616008
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/14
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 0
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 0
+Transmitted Input Rate Packets/Sec : .......... 0
+Total Packets Received Without Errors.......... 0
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 0
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/15
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 0
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 0
+Transmitted Input Rate Packets/Sec : .......... 0
+Total Packets Received Without Errors.......... 0
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 0
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/16
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 0
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 0
+Transmitted Input Rate Packets/Sec : .......... 0
+Total Packets Received Without Errors.......... 0
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 0
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/17
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 0
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 0
+Transmitted Input Rate Packets/Sec : .......... 0
+Total Packets Received Without Errors.......... 0
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 0
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/18
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 0
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 0
+Transmitted Input Rate Packets/Sec : .......... 0
+Total Packets Received Without Errors.......... 0
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 0
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/19
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 0
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 0
+Transmitted Input Rate Packets/Sec : .......... 0
+Total Packets Received Without Errors.......... 0
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 0
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/20
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 0
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 0
+Transmitted Input Rate Packets/Sec : .......... 0
+Total Packets Received Without Errors.......... 0
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 0
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/21
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Up
+VLAN Membership Mode: ......................... Trunk Mode
+VLAN Membership: .............................. (1),2-4096
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... Full
+Port Speed : .................................. 1000
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 239112
+Received Input Rate Packets/Sec : ............. 209
+Transmitted Input Rate Bits/Sec : ............. 304320
+Transmitted Input Rate Packets/Sec : .......... 172
+Total Packets Received Without Errors.......... 30817778732
+Unicast Packets Received....................... 30191994962
+Multicast Packets Received..................... 622567019
+Broadcast Packets Received..................... 3216751
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 637220174
+Total Packets Transmitted Successfully......... 44443064031
+Unicast Packets Transmitted.................... 44434384417
+Multicast Packets Transmitted.................. 8532820
+Broadcast Packets Transmitted.................. 146794
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0
+
+Interface Name : .............................. Te2/0/22
+SOC Hardware Info :............................ BCM56842_A1
+Link Status : ................................. Down
+VLAN Membership Mode: ......................... Access Mode
+VLAN Membership: .............................. 1
+MTU Size : .................................... 9216
+Port Mode [Duplex] : .......................... N/A
+Port Speed : .................................. Unknown
+Link Debounce Flaps : .........................
+Auto-Negotation Status : ...................... Auto
+Burned MAC Address : .......................... F8B1.5695.CFF0
+L3 MAC Address................................. F8B1.5695.CFF1
+Sample load interval : ........................ 300
+Received Input Rate Bits/Sec : ................ 0
+Received Input Rate Packets/Sec : ............. 0
+Transmitted Input Rate Bits/Sec : ............. 0
+Transmitted Input Rate Packets/Sec : .......... 0
+Total Packets Received Without Errors.......... 0
+Unicast Packets Received....................... 0
+Multicast Packets Received..................... 0
+Broadcast Packets Received..................... 0
+Total Packets Received with MAC Errors......... 0
+Jabbers Received............................... 0
+Fragments/Undersize Received................... 0
+Alignment Errors............................... 0
+FCS Errors..................................... 0
+Overruns....................................... 0
+Total Received Packets Not Forwarded........... 0
+Total Packets Transmitted Successfully......... 0
+Unicast Packets Transmitted.................... 0
+Multicast Packets Transmitted.................. 0
+Broadcast Packets Transmitted.................. 0
+Transmit Packets Discarded..................... 0
+Total Transmit Errors.......................... 0
+Total Transmit Packets Discarded............... 0
+Single Collision Frames........................ 0
+Multiple Collision Frames...................... 0
+Excessive Collision Frames..................... 0

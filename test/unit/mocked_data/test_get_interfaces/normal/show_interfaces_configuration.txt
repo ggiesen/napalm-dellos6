@@ -1,0 +1,191 @@
+
+Port      Description                    Duplex Speed   Neg  MTU   Admin
+                                                                   State
+--------- ------------------------------ ------ ------- ---- ----- -----
+Te1/0/1   Interface 1                    N/A    Unknown Auto 9216  Up
+Te1/0/2   Interface 2                    N/A    Unknown Auto 9216  Up
+Te1/0/3   Interface 3                    N/A    Unknown Auto 9216  Up
+Te1/0/4   Interface 4                    Full   10000   Auto 9216  Up
+Te1/0/5   Interface 5                    Full   10000   Auto 9216  Up
+Te1/0/6   Interface 6                    Full   10000   Auto 9216  Up
+Te1/0/7   Interface 7                    N/A    Unknown Auto 9216  Up
+Te1/0/8     blah                         N/A    Unknown Auto 9216  Down
+Te1/0/9                                  Full   10000   Auto 9216  Up
+Te1/0/10                                 Full   10000   Auto 9216  Up
+Te1/0/11  Interface 11                   N/A    Unknown Auto 9216  Up
+Te1/0/12  Interface 12                   Full   10000   Auto 9216  Up
+Te1/0/13  Interface 13                   Full   10000   Auto 9216  Up
+Te1/0/14  Interface 14                   Full   10000   Auto 9216  Up
+Te1/0/15  Interface 15                   Full   10000   Auto 9216  Up
+Te1/0/16  Interface 16                   Full   10000   Auto 9216  Up
+Te1/0/17  Interface 17                   Full   10000   Auto 9216  Up
+Te1/0/18                                 N/A    Unknown Auto 9216  Down
+Te1/0/19                                 N/A    Unknown Auto 9216  Down
+Te1/0/20                                 N/A    Unknown Auto 9216  Down
+Te1/0/21  Interface 21                   Full   1000    Auto 9216  Up
+Te1/0/22                                 N/A    Unknown Auto 9216  Down
+Te1/0/23  Interface 23                   N/A    Unknown Auto 9216  Up
+Te1/0/24  Interface 24                   N/A    Unknown Auto 9216  Up
+Te2/0/1                                  Full   10000   Auto 9216  Up
+Te2/0/2                                  Full   10000   Auto 9216  Up
+Te2/0/3                                  Full   10000   Auto 9216  Up
+Te2/0/4                                  Full   10000   Auto 9216  Up
+Te2/0/5                                  Full   10000   Auto 9216  Up
+Te2/0/6                                  Full   10000   Auto 9216  Up
+Te2/0/7                                  N/A    Unknown Auto 9216  Up
+Te2/0/8                                  Full   10000   Auto 9216  Up
+Te2/0/9                                  Full   10000   Auto 9216  Up
+Te2/0/10                                 Full   10000   Auto 9216  Up
+Te2/0/11  Interface 11                   Full   10000   Auto 9216  Up
+Te2/0/12  Interface 12                   Full   10000   Auto 9216  Up
+Te2/0/13  Interface 13                   Full   10000   Auto 9216  Up
+Te2/0/14                                 N/A    Unknown Auto 9216  Down
+Te2/0/15                                 N/A    Unknown Auto 9216  Down
+Te2/0/16                                 N/A    Unknown Auto 9216  Down
+Te2/0/17                                 N/A    Unknown Auto 9216  Down
+Te2/0/18                                 N/A    Unknown Auto 9216  Down
+Te2/0/19                                 N/A    Unknown Auto 9216  Down
+Te2/0/20                                 N/A    Unknown Auto 9216  Down
+Te2/0/21  Interface 21                   Full   1000    Auto 9216  Up
+Te2/0/22                                 N/A    Unknown Auto 9216  Down
+Te2/0/23  Interface 23                   N/A    Unknown Auto 9216  Up
+Te2/0/24  Interface 24                   N/A    Unknown Auto 9216  Up
+
+
+Oob  Type                            Admin
+                                     State
+---  ------------------------------  -----
+oob  Out-Of-Band                     Up
+
+
+Port    Description                    MTU   Admin
+Channel                                      State
+------- ------------------------------ ----- -----
+Po1                                    9216  Up
+Po2                                    9216  Up
+Po3                                    9216  Up
+Po4                                    9216  Up
+Po5                                    9216  Up
+Po6                                    9216  Up
+Po7                                    9216  Up
+Po8                                    9216  Up
+Po9                                    9216  Up
+Po10    Port-channel10                 9216  Up
+Po11    Port-channel11                 9216  Up
+Po12                                   9216  Up
+Po13                                   9216  Up
+Po14                                   9216  Up
+Po15                                   9216  Up
+Po16                                   9216  Up
+Po17                                   9216  Up
+Po18                                   9216  Up
+Po19                                   9216  Up
+Po20                                   9216  Up
+Po21                                   9216  Up
+Po22                                   9216  Up
+Po23                                   9216  Up
+Po24                                   9216  Up
+Po25                                   9216  Up
+Po26                                   9216  Up
+Po27                                   9216  Up
+Po28                                   9216  Up
+Po29                                   9216  Up
+Po30                                   9216  Up
+Po31                                   9216  Up
+Po32                                   9216  Up
+Po33                                   9216  Up
+Po34                                   9216  Up
+Po35                                   9216  Up
+Po36                                   9216  Up
+Po37                                   9216  Up
+Po38                                   9216  Up
+Po39                                   9216  Up
+Po40                                   9216  Up
+Po41                                   9216  Up
+Po42                                   9216  Up
+Po43                                   9216  Up
+Po44                                   9216  Up
+Po45                                   9216  Up
+Po46                                   9216  Up
+Po47                                   9216  Up
+Po48                                   9216  Up
+Po49                                   9216  Up
+Po50    Port-channel50                 9216  Up
+Po51                                   9216  Up
+Po52                                   9216  Up
+Po53                                   9216  Up
+Po54                                   9216  Up
+Po55                                   9216  Up
+Po56                                   9216  Up
+Po57                                   9216  Up
+Po58                                   9216  Up
+Po59                                   9216  Up
+Po60                                   9216  Up
+Po61                                   9216  Up
+Po62                                   9216  Up
+Po63                                   9216  Up
+Po64                                   9216  Up
+Po65                                   9216  Up
+Po66                                   9216  Up
+Po67                                   9216  Up
+Po68                                   9216  Up
+Po69                                   9216  Up
+Po70                                   9216  Up
+Po71                                   9216  Up
+Po72                                   9216  Up
+Po73                                   9216  Up
+Po74                                   9216  Up
+Po75                                   9216  Up
+Po76                                   9216  Up
+Po77                                   9216  Up
+Po78                                   9216  Up
+Po79                                   9216  Up
+Po80                                   9216  Up
+Po81                                   9216  Up
+Po82                                   9216  Up
+Po83                                   9216  Up
+Po84                                   9216  Up
+Po85                                   9216  Up
+Po86                                   9216  Up
+Po87                                   9216  Up
+Po88                                   9216  Up
+Po89                                   9216  Up
+Po90                                   9216  Up
+Po91                                   9216  Up
+Po92                                   9216  Up
+Po93                                   9216  Up
+Po94                                   9216  Up
+Po95                                   9216  Up
+Po96                                   9216  Up
+Po97                                   9216  Up
+Po98                                   9216  Up
+Po99                                   9216  Up
+Po100                                  9216  Up
+Po101                                  9216  Up
+Po102                                  9216  Up
+Po103                                  9216  Up
+Po104                                  9216  Up
+Po105                                  9216  Up
+Po106                                  9216  Up
+Po107                                  9216  Up
+Po108                                  9216  Up
+Po109                                  9216  Up
+Po110                                  9216  Up
+Po111                                  9216  Up
+Po112                                  9216  Up
+Po113                                  9216  Up
+Po114                                  9216  Up
+Po115                                  9216  Up
+Po116                                  9216  Up
+Po117                                  9216  Up
+Po118                                  9216  Up
+Po119                                  9216  Up
+Po120                                  9216  Up
+Po121                                  9216  Up
+Po122                                  9216  Up
+Po123                                  9216  Up
+Po124                                  9216  Up
+Po125                                  9216  Up
+Po126                                  9216  Up
+Po127                                  9216  Up
+Po128                                  9216  Up

@@ -1,0 +1,488 @@
+{
+    "Tengigabitethernet1/0/1": {
+        "is_up": false,
+        "description": "Interface 1",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/2": {
+        "is_up": false,
+        "description": "Interface 2",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/3": {
+        "is_up": false,
+        "description": "Interface 3",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/4": {
+        "is_up": true,
+        "description": "Interface 4",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/5": {
+        "is_up": true,
+        "description": "Interface 5",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/6": {
+        "is_up": true,
+        "description": "Interface 6",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/7": {
+        "is_up": false,
+        "description": "Interface 7",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/8": {
+        "is_up": false,
+        "description": "blah",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": false
+    },
+    "Tengigabitethernet1/0/9": {
+        "is_up": true,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/10": {
+        "is_up": true,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/11": {
+        "is_up": false,
+        "description": "Interface 11",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/12": {
+        "is_up": true,
+        "description": "Interface 12",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/13": {
+        "is_up": true,
+        "description": "Interface 13",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/14": {
+        "is_up": true,
+        "description": "Interface 14",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/15": {
+        "is_up": true,
+        "description": "Interface 15",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/16": {
+        "is_up": true,
+        "description": "Interface 16",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/17": {
+        "is_up": true,
+        "description": "Interface 17",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/18": {
+        "is_up": false,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": false
+    },
+    "Tengigabitethernet1/0/19": {
+        "is_up": false,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": false
+    },
+    "Tengigabitethernet1/0/20": {
+        "is_up": false,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": false
+    },
+    "Tengigabitethernet1/0/21": {
+        "is_up": true,
+        "description": "Interface 21",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 1000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/22": {
+        "is_up": false,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": false
+    },
+    "Tengigabitethernet1/0/23": {
+        "is_up": true,
+        "description": "Interface 23",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet1/0/24": {
+        "is_up": true,
+        "description": "Interface 24",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet2/0/1": {
+        "is_up": true,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet2/0/2": {
+        "is_up": true,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet2/0/3": {
+        "is_up": true,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet2/0/4": {
+        "is_up": true,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet2/0/5": {
+        "is_up": true,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet2/0/6": {
+        "is_up": true,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet2/0/7": {
+        "is_up": false,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": true
+    },
+    "Tengigabitethernet2/0/8": {
+        "is_up": true,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet2/0/9": {
+        "is_up": true,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet2/0/10": {
+        "is_up": true,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet2/0/11": {
+        "is_up": true,
+        "description": "Interface 11",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet2/0/12": {
+        "is_up": true,
+        "description": "Interface 12",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet2/0/13": {
+        "is_up": true,
+        "description": "Interface 13",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet2/0/14": {
+        "is_up": false,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": false
+    },
+    "Tengigabitethernet2/0/15": {
+        "is_up": false,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": false
+    },
+    "Tengigabitethernet2/0/16": {
+        "is_up": false,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": false
+    },
+    "Tengigabitethernet2/0/17": {
+        "is_up": false,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": false
+    },
+    "Tengigabitethernet2/0/18": {
+        "is_up": false,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": false
+    },
+    "Tengigabitethernet2/0/19": {
+        "is_up": false,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": false
+    },
+    "Tengigabitethernet2/0/20": {
+        "is_up": false,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": -1,
+        "is_enabled": false
+    },
+    "Tengigabitethernet2/0/21": {
+        "is_up": true,
+        "description": "Interface 21",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "F8:B1:56:95:CF:F0",
+        "speed": 1000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet2/0/22": {
+        "is_up": false,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "",
+        "speed": -1,
+        "is_enabled": false
+    },
+    "Tengigabitethernet2/0/23": {
+        "is_up": true,
+        "description": "Interface 23",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "Tengigabitethernet2/0/24": {
+        "is_up": true,
+        "description": "Interface 24",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "",
+        "speed": 10000,
+        "is_enabled": true
+    },
+    "out-of-band": {
+        "is_up": true,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": -1,
+        "mac_address": "",
+        "speed": -1,
+        "is_enabled": true
+    },
+    "port-channel10": {
+        "is_up": true,
+        "description": "Port-channel10",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "",
+        "speed": -1,
+        "is_enabled": true
+    },
+    "port-channel11": {
+        "is_up": true,
+        "description": "Port-channel11",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "",
+        "speed": -1,
+        "is_enabled": true
+    },
+    "port-channel50": {
+        "is_up": true,
+        "description": "Port-channel50",
+        "last_flapped": -1.0,
+        "mtu": 9216,
+        "mac_address": "",
+        "speed": -1,
+        "is_enabled": true
+    },
+    "vlan 1": {
+        "is_up": false,
+        "is_enabled": true,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 1500,
+        "mac_address": "",
+        "speed": -1
+    },
+    "vlan 3840": {
+        "is_up": true,
+        "is_enabled": true,
+        "description": "",
+        "last_flapped": -1.0,
+        "mtu": 1500,
+        "mac_address": "",
+        "speed": -1
+    }
+}

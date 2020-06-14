@@ -365,13 +365,17 @@ class DellOS6Driver(NetworkDriver):
                 is_up = True
             # SVIs cannot be administratively disabled
             is_enabled = True
-            interface_dict[interface_name] = {"is_up": is_up, "is_enabled": is_enabled}
+            interface_dict[interface_name] = {
+                "is_up": is_up,
+                "is_enabled": is_enabled
+            }
         # Set some defaults
         for interface in interface_dict:
             interface_dict[interface]["description"] = ""
             interface_dict[interface]["last_flapped"] = last_flapped
             interface_dict[interface]["mtu"] = 1500
             interface_dict[interface]["mac_address"] = ""
+            interface_dict[interface]["speed"] = -1
         for interface in show_switch_stack_ports:
             interface_name = canonical_interface_name(
                 interface["interface"], addl_name_map=dellos6_interfaces
@@ -380,9 +384,8 @@ class DellOS6Driver(NetworkDriver):
                 is_up = False
             if re.search("link up", interface["link_state"], re.IGNORECASE):
                 is_up = True
-            if not interface["speed"].isdigit():
-                speed = -1
-            else:
+            speed = -1
+            if interface["speed"].isdigit():
                 # Speed is reported in Gbps
                 speed = int(interface["speed"]) * 1000
             interface_dict[interface_name]["is_up"] = is_up
@@ -396,10 +399,8 @@ class DellOS6Driver(NetworkDriver):
                     is_enabled = False
                 if re.search("up", interface["admin_state"], re.IGNORECASE):
                     is_enabled = True
-                if not interface["speed"].isdigit():
-                    speed = -1
-                else:
-                    speed = int(interface["speed"])
+                if interface["speed"].isdigit():
+                    interface_dict[interface_name]["speed"] = int(interface["speed"])
                 if not interface["mtu"].isdigit():
                     mtu = -1
                 else:

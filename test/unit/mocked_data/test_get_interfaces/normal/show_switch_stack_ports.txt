@@ -1,0 +1,52 @@
+
+          Configured Running    Link         Link         Admin
+Interface Stack Mode Stack Mode Status       Speed (Gb/s) Status
+--------- ---------- ---------- ------------ ------------ ------------
+Te1/0/1   Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te1/0/2   Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te1/0/3   Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te1/0/4   Ethernet   Ethernet   Link Up      10           Disabled
+Te1/0/5   Ethernet   Ethernet   Link Up      10           Disabled
+Te1/0/6   Ethernet   Ethernet   Link Up      10           Disabled
+Te1/0/7   Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te1/0/8   Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te1/0/9   Ethernet   Ethernet   Link Up      10           Disabled
+Te1/0/10  Ethernet   Ethernet   Link Up      10           Disabled
+Te1/0/11  Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te1/0/12  Ethernet   Ethernet   Link Up      10           Disabled
+Te1/0/13  Ethernet   Ethernet   Link Up      10           Disabled
+Te1/0/14  Ethernet   Ethernet   Link Up      10           Disabled
+Te1/0/15  Ethernet   Ethernet   Link Up      10           Disabled
+Te1/0/16  Ethernet   Ethernet   Link Up      10           Disabled
+Te1/0/17  Ethernet   Ethernet   Link Up      10           Disabled
+Te1/0/18  Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te1/0/19  Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te1/0/20  Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te1/0/21  Ethernet   Ethernet   Link Up      1            Disabled
+Te1/0/22  Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te1/0/23  Stack      Stack      Link Up      10           Enabled
+Te1/0/24  Stack      Stack      Link Up      10           Enabled
+Te2/0/1   Ethernet   Ethernet   Link Up      10           Disabled
+Te2/0/2   Ethernet   Ethernet   Link Up      10           Disabled
+Te2/0/3   Ethernet   Ethernet   Link Up      10           Disabled
+Te2/0/4   Ethernet   Ethernet   Link Up      10           Disabled
+Te2/0/5   Ethernet   Ethernet   Link Up      10           Disabled
+Te2/0/6   Ethernet   Ethernet   Link Up      10           Disabled
+Te2/0/7   Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te2/0/8   Ethernet   Ethernet   Link Up      10           Disabled
+Te2/0/9   Ethernet   Ethernet   Link Up      10           Disabled
+Te2/0/10  Ethernet   Ethernet   Link Up      10           Disabled
+Te2/0/11  Ethernet   Ethernet   Link Up      10           Disabled
+Te2/0/12  Ethernet   Ethernet   Link Up      10           Disabled
+Te2/0/13  Ethernet   Ethernet   Link Up      10           Disabled
+Te2/0/14  Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te2/0/15  Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te2/0/16  Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te2/0/17  Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te2/0/18  Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te2/0/19  Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te2/0/20  Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te2/0/21  Ethernet   Ethernet   Link Up      1            Disabled
+Te2/0/22  Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te2/0/23  Stack      Stack      Link Up      10           Enabled
+Te2/0/24  Stack      Stack      Link Up      10           Enabled

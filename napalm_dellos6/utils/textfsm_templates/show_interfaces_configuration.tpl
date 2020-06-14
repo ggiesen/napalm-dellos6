@@ -9,9 +9,9 @@ Value TYPE (\S+)
 
 Start
   ^Port\s+Description\s+Duplex\s+Speed\s+Neg\s+MTU\s+Admin -> Port
-  ^Oob\s+Type\s+Link -> Oob
+  ^Oob\s+Type\s+Admin -> Oob
   ^Port\s+Description\s+MTU\s+Admin -> PortChannel
-  
+
 Port
   ^\s+State
   ^---------\s+------------------------------\s+------\s+-------\s+----\s+-----\s+-----

@@ -1,0 +1,182 @@
+
+Port       Description
+---------  --------------------------------------------------------------------------
+Te1/0/1    Interface 1
+Te1/0/2    Interface 2
+Te1/0/3    Interface 3
+Te1/0/4    Interface 4
+Te1/0/5    Interface 5
+Te1/0/6    Interface 6
+Te1/0/7    Interface 7
+Te1/0/8      blah
+Te1/0/9
+Te1/0/10
+Te1/0/11   Interface 11
+Te1/0/12   Interface 12
+Te1/0/13   Interface 13
+Te1/0/14   Interface 14
+Te1/0/15   Interface 15
+Te1/0/16   Interface 16
+Te1/0/17   Interface 17
+Te1/0/18
+Te1/0/19
+Te1/0/20
+Te1/0/21   Interface 21
+Te1/0/22
+Te1/0/23   Interface 23
+Te1/0/24   Interface 24
+Te2/0/1
+Te2/0/2
+Te2/0/3
+Te2/0/4
+Te2/0/5
+Te2/0/6
+Te2/0/7
+Te2/0/8
+Te2/0/9
+Te2/0/10
+Te2/0/11   Interface 11
+Te2/0/12   Interface 12
+Te2/0/13   Interface 13
+Te2/0/14
+Te2/0/15
+Te2/0/16
+Te2/0/17
+Te2/0/18
+Te2/0/19
+Te2/0/20
+Te2/0/21   Interface 21
+Te2/0/22
+Te2/0/23   Interface 23
+Te2/0/24   Interface 24
+
+Port  Description
+----- --------------------------------------------------------------------------
+Po1
+Po2
+Po3
+Po4
+Po5
+Po6
+Po7
+Po8
+Po9
+Po10  Port-channel10
+Po11  Port-channel11
+Po12
+Po13
+Po14
+Po15
+Po16
+Po17
+Po18
+Po19
+Po20
+Po21
+Po22
+Po23
+Po24
+Po25
+Po26
+Po27
+Po28
+Po29
+Po30
+Po31
+Po32
+Po33
+Po34
+Po35
+Po36
+Po37
+Po38
+Po39
+Po40
+Po41
+Po42
+Po43
+Po44
+Po45
+Po46
+Po47
+Po48
+Po49
+Po50  Port-channel50
+Po51
+Po52
+Po53
+Po54
+Po55
+Po56
+Po57
+Po58
+Po59
+Po60
+Po61
+Po62
+Po63
+Po64
+Po65
+Po66
+Po67
+Po68
+Po69
+Po70
+Po71
+Po72
+Po73
+Po74
+Po75
+Po76
+Po77
+Po78
+Po79
+Po80
+Po81
+Po82
+Po83
+Po84
+Po85
+Po86
+Po87
+Po88
+Po89
+Po90
+Po91
+Po92
+Po93
+Po94
+Po95
+Po96
+Po97
+Po98
+Po99
+Po100
+Po101
+Po102
+Po103
+Po104
+Po105
+Po106
+Po107
+Po108
+Po109
+Po110
+Po111
+Po112
+Po113
+Po114
+Po115
+Po116
+Po117
+Po118
+Po119
+Po120
+Po121
+Po122
+Po123
+Po124
+Po125
+Po126
+Po127
+Po128

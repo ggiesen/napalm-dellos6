@@ -9,7 +9,7 @@ Start
   ^\s*Configured\s+Running\s+Link\s+Link\s+Admin
   ^Interface\s+Stack Mode\s+Stack Mode\s+Status\s+Speed \(Gb\/s\)\s+Status
   ^---------\s+----------\s+----------\s+------------\s+------------\s+------------
-  ^${INTERFACE}\s+${ADMIN_STACK_MODE}\s+${OPER_STACK_MODE}\s+${LINK_STATE}\s+${SPEED}\s+${ADMIN_STATE} -> Continue.Record
+  ^${INTERFACE}\s+${ADMIN_STACK_MODE}\s+${OPER_STACK_MODE}\s+${LINK_STATE}\s+${SPEED}\s+${ADMIN_STATE} -> Record
   ^\s*$$ -> Record Start
 
 EOF
