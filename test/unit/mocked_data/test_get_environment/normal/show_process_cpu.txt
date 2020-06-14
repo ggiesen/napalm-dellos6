@@ -1,0 +1,36 @@
+
+Memory Utilization Report
+
+status     KBytes
+------ ----------
+free       739904
+alloc      983232
+
+CPU Utilization:
+
+PID        Name                  5 Secs  60 Secs 300 Secs
+---------- ------------------- -------- -------- --------
+3          (ksoftirqd/0)         0.00%    0.00%    0.01%
+12         (migration/1)         0.14%    0.25%    0.27%
+2004       (nae_port_poll)       0.19%    0.12%    0.10%
+2076       (procmgr)             0.04%    0.01%    0.01%
+2207       bcmINTR               0.00%    0.02%    0.03%
+2211       bcmCNTR.0             0.38%    0.31%    0.29%
+2216       bcmRX                 0.04%    0.05%    0.04%
+2218       bcmATP-TX             0.00%    0.00%    0.01%
+2229       bcmLINK.0             0.43%    0.40%    0.39%
+2230       cpuUtilMonitorTask    0.09%    0.06%    0.06%
+2257       hapiRxTask            0.04%    0.01%    0.00%
+2264       hapiBroadBufferUsag   0.00%    0.04%    0.04%  --More-- or (q)uit
+2304       snoopTask             0.14%    0.10%    0.06%
+2330       spmTask               0.00%    0.01%    0.01%
+2337       ipMapForwardingTask   0.04%    0.01%    0.00%
+2361       openrTask             0.24%    0.21%    0.20%
+2374       (ospf_app)            0.04%    0.01%    0.00%
+2403       lldpTask              0.00%    0.01%    0.04%
+2415       RMONTask              0.04%    0.01%    0.02%
+2431       dot1as_ctrl_task      0.04%    0.06%    0.05%
+2433       dot1as_timer_task     0.09%    0.11%    0.10%
+2437       StatsAppTask          0.09%    0.08%    0.08%
+------------------------------ -------- -------- --------
+Total CPU Utilization            2.18%    2.05%    1.97%

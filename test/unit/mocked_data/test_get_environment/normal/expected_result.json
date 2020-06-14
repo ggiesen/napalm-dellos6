@@ -1,0 +1,124 @@
+{
+    "fans": {
+        "unit 1 Fan-1": {
+            "status": true
+        },
+        "unit 1 Fan-2": {
+            "status": true
+        },
+        "unit 1 Fan-3": {
+            "status": true
+        },
+        "unit 1 Fan-4": {
+            "status": true
+        },
+        "unit 1 PS-1 Fan": {
+            "status": true
+        },
+        "unit 1 PS-2 Fan": {
+            "status": true
+        },
+        "unit 2 Fan-1": {
+            "status": true
+        },
+        "unit 2 Fan-2": {
+            "status": true
+        },
+        "unit 2 Fan-3": {
+            "status": true
+        },
+        "unit 2 Fan-4": {
+            "status": true
+        },
+        "unit 2 PS-1 Fan": {
+            "status": true
+        },
+        "unit 2 PS-2 Fan": {
+            "status": true
+        }
+    },
+    "temperature": {
+        "unit 1 MAC": {
+            "temperature": 48.0,
+            "is_alert": false,
+            "is_critical": false
+        },
+        "unit 1 CPU": {
+            "temperature": 44.0,
+            "is_alert": false,
+            "is_critical": false
+        },
+        "unit 1 PHY (left side)": {
+            "temperature": 46.0,
+            "is_alert"
+            : false,
+            "is_critical": false
+        },
+        "unit 1 PHY (right side)": {
+            "temperature": 48.0,
+            "is_alert": false,
+            "is_critical": false
+        },
+        "unit 2 MAC": {
+            "temperature": 45.0,
+            "is_alert": false,
+            "is_critical": false
+        },
+        "unit 2 CPU": {
+            "temperature": 41.0,
+            "is_alert": false,
+            "is_critical": false
+        },
+        "unit 2 PHY (left side)": {
+            "temperature": 45.0,
+            "is_alert": false,
+            "is_critical": false
+        },
+        "unit 2 PHY (right side)": {
+            "temperature": 44.0,
+            "is_alert": false,
+            "is_critical": false
+        }
+    },
+    "power": {
+        "unit 1 System": {
+            "status": true,
+            "capacity": -1.0,
+            "output": 79.7
+        },
+        "unit 1 Internal(R)": {
+            "status": true,
+            "capacity": -1.0,
+            "output": 41.6
+        },
+        "unit 1 Internal(L)": {
+            "status": true,
+            "capacity": -1.0,
+            "output": 38.0
+        },
+        "unit 2 System": {
+            "status": true,
+            "capacity": -1.0,
+            "output": 70.6
+        },
+        "unit 2 Internal(R)": {
+            "status": true,
+            "capacity": -1.0,
+            "output": 38.0
+        },
+        "unit 2 Internal(L)": {
+            "status": true,
+            "capacity": -1.0,
+            "output": 32.6
+        }
+    },
+    "cpu": {
+        "0": {
+            "%usage": 2.05
+        }
+    },
+    "memory": {
+        "available_ram": 757661696,
+        "used_ram": 1006829568
+    }
+}

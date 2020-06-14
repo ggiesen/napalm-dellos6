@@ -536,45 +536,42 @@ class DellOS6Driver(NetworkDriver):
         environment.setdefault("memory", {})
 
         for fan in show_sys_fans:
-            environment["fans"].setdefault("unit " + fan["unit"], {})
-            environment["fans"]["unit " + fan["unit"]].setdefault(
-                fan["description"], {}
+            environment["fans"].setdefault(
+                "unit " + fan["unit"] + " " + fan["description"], {}
             )
             if fan["status"] == "OK":
-                environment["fans"]["unit " + fan["unit"]][fan["description"]][
+                environment["fans"]["unit " + fan["unit"] + " " + fan["description"]][
                     "status"
                 ] = True
             else:
-                environment["fans"]["unit " + fan["unit"]][fan["description"]][
+                environment["fans"]["unit " + fan["unit"] + " " + fan["description"]][
                     "status"
                 ] = False
         for temp in show_sys_temps:
-            environment["temperature"].setdefault("unit " + temp["unit"], {})
-            environment["temperature"]["unit " + temp["unit"]].setdefault(
-                temp["description"], {}
+            environment["temperature"].setdefault(
+                "unit " + temp["unit"] + " " + temp["description"], {}
             )
-            environment["temperature"]["unit " + temp["unit"]][temp["description"]] = {
+            environment["temperature"]["unit " + temp["unit"] + " " + temp["description"]] = {
                 "temperature": float(temp["temp"]),
                 "is_alert": False,
                 "is_critical": False,
             }
         for power in show_sys_power:
-            environment["power"].setdefault("unit " + power["unit"], {})
-            environment["power"]["unit " + power["unit"]].setdefault(
-                power["description"], {}
+            environment["power"].setdefault(
+                "unit " + power["unit"] + " " + power["description"], {}
             )
-            environment["power"]["unit " + power["unit"]][power["description"]] = {
+            environment["power"]["unit " + power["unit"] + " " + power["description"]] = {
                 "status": False,
                 "capacity": -1.0,
                 "output": float(power["pwr_cur"]),
             }
             if power["status"] == "OK":
-                environment["power"]["unit " + power["unit"]][power["description"]][
+                environment["power"]["unit " + power["unit"] + " " + power["description"]][
                     "status"
                 ] = True
         environment["cpu"][0] = {}
         environment["cpu"][0]["%usage"] = 0.0
-        environment["cpu"][0]["%usage"] = show_proc_cpu[0]["cpu_60"]
+        environment["cpu"][0]["%usage"] = float(show_proc_cpu[0]["cpu_60"])
         environment["memory"] = {
             "available_ram": int(show_proc_cpu[0]["mem_free"]) * 1024,
             "used_ram": int(show_proc_cpu[0]["mem_alloc"]) * 1024,
