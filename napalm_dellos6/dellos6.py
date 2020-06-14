@@ -934,8 +934,6 @@ class DellOS6Driver(NetworkDriver):
 
         show_arp = textfsm_extractor(self, "show_arp", raw_show_arp)
 
-        print(raw_show_arp)
-        print(show_arp)
         arp_table = []
         for entry in show_arp:
             arp_table.append(
