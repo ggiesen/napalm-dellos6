@@ -1,0 +1,73 @@
+
+Port      Description     Duplex Speed   Neg  Link   Flow  M  VLAN
+                                              State  Ctrl
+--------- --------------- ------ ------- ---- ------ ----- -- -------------------
+Te1/0/1   Interface 1     N/A    Unknown Auto Down   Off   A  0
+Te1/0/2   Interface 2     N/A    Unknown Auto Down   Off   A  0
+Te1/0/3   Interface 3     N/A    Unknown Auto Down   Off   A  1
+Te1/0/4   Interface 4     Full   10000   Auto Up     On    A  1
+Te1/0/5   Interface 5     Full   10000   Auto Up     On    A  1
+Te1/0/6   Interface 6     Full   10000   Auto Up     On    A  1
+Te1/0/7   Interface 7     N/A    Unknown Auto Down   Off   A  1
+Te1/0/8     blah          N/A    Unknown Auto Down   Off   A  1
+Te1/0/9                   Full   10000   Auto Up     On    A  1
+Te1/0/10                  Full   10000   Auto Up     On    A  1
+Te1/0/11  Interface 11    N/A    Unknown Auto Down   Off   A  1
+Te1/0/12  Interface 12    Full   10000   Auto Up     On    T  (1),699,707,710,
+                                                              3840,4000-4002
+Te1/0/13  Interface 13    Full   10000   Auto Up     On    T  (1),699,707,710,
+                                                              3840,4000-4002
+Te1/0/14  Interface 14    Full   10000   Auto Up     Off   A  1
+Te1/0/15  Interface 15    Full   10000   Auto Up     Off   A  1
+Te1/0/16  Interface 16    Full   10000   Auto Up     Off   A  1
+Te1/0/17  Interface 17    Full   10000   Auto Up     Off   A  1
+Te1/0/18                  N/A    Unknown Auto Down   Off   A  1
+Te1/0/19                  N/A    Unknown Auto Down   Off   A  1
+Te1/0/20                  N/A    Unknown Auto Down   Off   A  1
+Te1/0/21  Interface 21    Full   1000    Auto Up     Off   T  (1),699,707,710,
+                                                              3840,4002
+Te1/0/22                  N/A    Unknown Auto Down   Off   A  1
+Te1/0/23  Interface 23    N/A    N/A     N/A  Detach N/A
+Te1/0/24  Interface 24    N/A    N/A     N/A  Detach N/A
+Te2/0/1                   Full   10000   Auto Up     On    A  1
+Te2/0/2                   Full   10000   Auto Up     On    A  1
+Te2/0/3                   Full   10000   Auto Up     On    A  1
+Te2/0/4                   Full   10000   Auto Up     On    A  1
+Te2/0/5                   Full   10000   Auto Up     On    A  1
+Te2/0/6                   Full   10000   Auto Up     On    A  1
+Te2/0/7                   N/A    Unknown Auto Down   Off   A  1
+Te2/0/8                   Full   10000   Auto Up     On    A  1
+Te2/0/9                   Full   10000   Auto Up     On    A  1
+Te2/0/10                  Full   10000   Auto Up     On    A  1
+Te2/0/11  Interface 11    Full   10000   Auto Up     On    A  1
+Te2/0/12  Interface 12    Full   10000   Auto Up     On    T  (1),699,707,710,
+                                                              3840,4000-4002
+Te2/0/13  Interface 13    Full   10000   Auto Up     On    T  (1),699,707,710,
+                                                              3840,4000-4002
+Te2/0/14                  N/A    Unknown Auto Down   Off   A  1
+Te2/0/15                  N/A    Unknown Auto Down   Off   A  1
+Te2/0/16                  N/A    Unknown Auto Down   Off   A  1
+Te2/0/17                  N/A    Unknown Auto Down   Off   A  1
+Te2/0/18                  N/A    Unknown Auto Down   Off   A  1
+Te2/0/19                  N/A    Unknown Auto Down   Off   A  1
+Te2/0/20                  N/A    Unknown Auto Down   Off   A  1
+Te2/0/21  Interface 21    Full   1000    Auto Up     Off   T  (1),699,707,710,
+                                                              3840,4002
+Te2/0/22                  N/A    Unknown Auto Down   Off   A  1
+Te2/0/23  Interface 23    N/A    N/A     N/A  Detach N/A
+Te2/0/24  Interface 24    N/A    N/A     N/A  Detach N/A
+
+
+Oob  Type                            Link
+                                     State
+---  ------------------------------  -----
+oob  Out-Of-Band                     Up
+
+
+Port    Description                    Link    M  VLAN
+Channel                                State
+------- ------------------------------ ------- -- -------------------
+Po10    Port-channel10                 Up      A  1
+Po11    Port-channel11                 Up      A  1
+Po50    Port-channel50                 Up      T  (1),699,707,710,
+                                                 3840,4002

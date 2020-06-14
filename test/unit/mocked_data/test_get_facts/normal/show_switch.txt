@@ -1,0 +1,6 @@
+
+    Management Standby   Preconfig     Plugged-in    Switch        Code
+SW  Status     Status    Model ID      Model ID      Status        Version
+--- ---------- --------- ------------- ------------- ------------- -----------
+1   Stack Mbr  Oper Stby N4032         N4032         OK            6.2.0.5
+2   Mgmt Sw              N4032         N4032         OK            6.2.0.5

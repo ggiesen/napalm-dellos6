@@ -1,0 +1,15 @@
+
+Host name: switch1
+Default domain: example.com
+Name/address lookup is enabled
+Name servers (Preference order): Name servers are not configured
+Configured host name-to-address mapping:
+Host                      Addresses
+------------------------  ----------------------------------------
+No host name is configured to IP address
+
+cache: TTL (Hours)
+
+Host                     Total   Elapsed Type      Addresses
+------------------------ ------- ------- --------- -------------------------
+No hostname is mapped to an IP address
