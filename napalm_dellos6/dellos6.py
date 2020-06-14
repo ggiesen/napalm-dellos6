@@ -551,7 +551,9 @@ class DellOS6Driver(NetworkDriver):
             environment["temperature"].setdefault(
                 "unit " + temp["unit"] + " " + temp["description"], {}
             )
-            environment["temperature"]["unit " + temp["unit"] + " " + temp["description"]] = {
+            environment["temperature"][
+                "unit " + temp["unit"] + " " + temp["description"]
+            ] = {
                 "temperature": float(temp["temp"]),
                 "is_alert": False,
                 "is_critical": False,
@@ -560,15 +562,13 @@ class DellOS6Driver(NetworkDriver):
             environment["power"].setdefault(
                 "unit " + power["unit"] + " " + power["description"], {}
             )
-            environment["power"]["unit " + power["unit"] + " " + power["description"]] = {
-                "status": False,
-                "capacity": -1.0,
-                "output": float(power["pwr_cur"]),
-            }
+            environment["power"][
+                "unit " + power["unit"] + " " + power["description"]
+            ] = {"status": False, "capacity": -1.0, "output": float(power["pwr_cur"])}
             if power["status"] == "OK":
-                environment["power"]["unit " + power["unit"] + " " + power["description"]][
-                    "status"
-                ] = True
+                environment["power"][
+                    "unit " + power["unit"] + " " + power["description"]
+                ]["status"] = True
         environment["cpu"][0] = {}
         environment["cpu"][0]["%usage"] = 0.0
         environment["cpu"][0]["%usage"] = float(show_proc_cpu[0]["cpu_60"])
