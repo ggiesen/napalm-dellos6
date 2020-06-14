@@ -1,0 +1,17 @@
+
+LLDP Remote Device Detail
+
+Local Interface: Te1/0/9
+
+
+Remote Identifier: 201
+Chassis ID Subtype: MAC Address
+Chassis ID: F4:E9:D4:86:8F:50
+Port ID Subtype: MAC Address
+Port ID: F4:E9:D4:86:8F:50
+System Name:
+System Description:
+Port Description:
+System Capabilities Supported:
+System Capabilities Enabled:
+Time to Live: 94 seconds

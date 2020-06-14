@@ -1,0 +1,17 @@
+
+LLDP Remote Device Detail
+
+Local Interface: Te2/0/11
+
+
+Remote Identifier: 192
+Chassis ID Subtype: MAC Address
+Chassis ID: 18:66:DA:70:1F:C6
+Port ID Subtype: MAC Address
+Port ID: 18:66:DA:70:1F:C6
+System Name:
+System Description:
+Port Description:
+System Capabilities Supported:
+System Capabilities Enabled:
+Time to Live: 90 seconds

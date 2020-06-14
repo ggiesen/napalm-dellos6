@@ -1,0 +1,167 @@
+{
+    "Te1/0/10": [{
+            "parent_interface": "",
+            "remote_chassis_id": "F4:E9:D4:86:5F:80",
+            "remote_port": "F4:E9:D4:86:5F:80",
+            "remote_port_description": "",
+            "remote_system_capab": [],
+            "remote_system_description": "",
+            "remote_system_enable_capab": [],
+            "remote_system_name": ""
+        }
+    ],
+    "Te1/0/21": [{
+            "parent_interface": "",
+            "remote_chassis_id": "00:41:D2:17:2F:00",
+            "remote_port": "Gi1/0/1",
+            "remote_port_description": "GigabitEthernet1/0/1",
+            "remote_system_capab": ["bridge", "router"],
+            "remote_system_description": "Cisco IOS Software, Catalyst L3 Switch Software (CAT3K_CAA-UNIVERSALK9-M), Version 15.0(1)EX3, RELEASE SOFTWARE (fc2)",
+            "remote_system_enable_capab": ["bridge", "router"],
+            "remote_system_name": "switch2-loc123.example.com"
+        }
+    ],
+    "Te1/0/4": [{
+            "parent_interface": "",
+            "remote_chassis_id": "00:0E:1E:B0:5F:30",
+            "remote_port": "00:0E:1E:B0:5F:30",
+            "remote_port_description": "",
+            "remote_system_capab": [],
+            "remote_system_description": "",
+            "remote_system_enable_capab": [],
+            "remote_system_name": ""
+        }
+    ],
+    "Te1/0/5": [{
+            "parent_interface": "",
+            "remote_chassis_id": "00:0E:1E:B0:6F:E0",
+            "remote_port": "00:0E:1E:B0:6F:E0",
+            "remote_port_description": "",
+            "remote_system_capab": [],
+            "remote_system_description": "",
+            "remote_system_enable_capab": [],
+            "remote_system_name": ""
+        }
+    ],
+    "Te1/0/6": [{
+            "parent_interface": "",
+            "remote_chassis_id": "00:0E:1E:B0:6F:90",
+            "remote_port": "00:0E:1E:B0:6F:90",
+            "remote_port_description": "",
+            "remote_system_capab": [],
+            "remote_system_description": "",
+            "remote_system_enable_capab": [],
+            "remote_system_name": ""
+        }
+    ],
+    "Te1/0/9": [{
+            "parent_interface": "",
+            "remote_chassis_id": "F4:E9:D4:86:8F:50",
+            "remote_port": "F4:E9:D4:86:8F:50",
+            "remote_port_description": "",
+            "remote_system_capab": [],
+            "remote_system_description": "",
+            "remote_system_enable_capab": [],
+            "remote_system_name": ""
+        }
+    ],
+    "Te2/0/10": [{
+            "parent_interface": "",
+            "remote_chassis_id": "F4:E9:D4:86:5F:82",
+            "remote_port": "F4:E9:D4:86:5F:82",
+            "remote_port_description": "",
+            "remote_system_capab": [],
+            "remote_system_description": "",
+            "remote_system_enable_capab": [],
+            "remote_system_name": ""
+        }
+    ],
+    "Te2/0/11": [{
+            "parent_interface": "",
+            "remote_chassis_id": "18:66:DA:70:1F:C6",
+            "remote_port": "18:66:DA:70:1F:C6",
+            "remote_port_description": "",
+            "remote_system_capab": [],
+            "remote_system_description": "",
+            "remote_system_enable_capab": [],
+            "remote_system_name": ""
+        }
+    ],
+    "Te2/0/21": [{
+            "parent_interface": "",
+            "remote_chassis_id": "00:41:D2:17:2F:00",
+            "remote_port": "Gi2/0/1",
+            "remote_port_description": "GigabitEthernet2/0/1",
+            "remote_system_capab": ["bridge", "router"],
+            "remote_system_description": "Cisco IOS Software, Catalyst L3 Switch Software (CAT3K_CAA-UNIVERSALK9-M), Version 15.0(1)EX3, RELEASE SOFTWARE (fc2)",
+            "remote_system_enable_capab": ["bridge", "router"],
+            "remote_system_name": "switch2-loc123.example.com"
+        }
+    ],
+    "Te2/0/3": [{
+            "parent_interface": "",
+            "remote_chassis_id": "00:0E:1E:B0:4F:02",
+            "remote_port": "00:0E:1E:B0:4F:02",
+            "remote_port_description": "",
+            "remote_system_capab": [],
+            "remote_system_description": "",
+            "remote_system_enable_capab": [],
+            "remote_system_name": ""
+        }
+    ],
+    "Te2/0/4": [{
+            "parent_interface": "",
+            "remote_chassis_id": "00:0E:1E:B0:5F:32",
+            "remote_port": "00:0E:1E:B0:5F:32",
+            "remote_port_description": "",
+            "remote_system_capab": [],
+            "remote_system_description": "",
+            "remote_system_enable_capab": [],
+            "remote_system_name": ""
+        }
+    ],
+    "Te2/0/5": [{
+            "parent_interface": "",
+            "remote_chassis_id": "00:0E:1E:B0:6F:E2",
+            "remote_port": "00:0E:1E:B0:6F:E2",
+            "remote_port_description": "",
+            "remote_system_capab": [],
+            "remote_system_description": "",
+            "remote_system_enable_capab": [],
+            "remote_system_name": ""
+        }
+    ],
+    "Te2/0/6": [{
+            "parent_interface": "",
+            "remote_chassis_id": "00:0E:1E:B0:6F:92",
+            "remote_port": "00:0E:1E:B0:6F:92",
+            "remote_port_description": "",
+            "remote_system_capab": [],
+            "remote_system_description": "",
+            "remote_system_enable_capab": [],
+            "remote_system_name": ""
+        }
+    ],
+    "Te2/0/8": [{
+            "parent_interface": "",
+            "remote_chassis_id": "F4:E9:D4:86:3F:72",
+            "remote_port": "F4:E9:D4:86:3F:72",
+            "remote_port_description": "",
+            "remote_system_capab": [],
+            "remote_system_description": "",
+            "remote_system_enable_capab": [],
+            "remote_system_name": ""
+        }
+    ],
+    "Te2/0/9": [{
+            "parent_interface": "",
+            "remote_chassis_id": "F4:E9:D4:86:8F:52",
+            "remote_port": "F4:E9:D4:86:8F:52",
+            "remote_port_description": "",
+            "remote_system_capab": [],
+            "remote_system_description": "",
+            "remote_system_enable_capab": [],
+            "remote_system_name": ""
+        }
+    ]
+}

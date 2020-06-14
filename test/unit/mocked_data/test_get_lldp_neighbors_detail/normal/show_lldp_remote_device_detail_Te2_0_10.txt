@@ -1,0 +1,17 @@
+
+LLDP Remote Device Detail
+
+Local Interface: Te2/0/10
+
+
+Remote Identifier: 196
+Chassis ID Subtype: MAC Address
+Chassis ID: F4:E9:D4:86:5F:82
+Port ID Subtype: MAC Address
+Port ID: F4:E9:D4:86:5F:82
+System Name:
+System Description:
+Port Description:
+System Capabilities Supported:
+System Capabilities Enabled:
+Time to Live: 90 seconds

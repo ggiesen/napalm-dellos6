@@ -824,8 +824,7 @@ class DellOS6Driver(NetworkDriver):
                 "show_lldp_remote-device_detail",
                 raw_show_lldp_remote_device_detail,
             )
-            print(raw_show_lldp_remote_device_detail)
-            print(show_lldp_remote_device_detail)
+            # We don't yet support reporting the parent interface
             parent_interface = ""
             remote_chassis_id = lldp_entry["chassis_id"]
             remote_system_name = show_lldp_remote_device_detail[0]["host_name"]
@@ -849,7 +848,8 @@ class DellOS6Driver(NetworkDriver):
             else:
                 remote_system_enable_capab = []
 
-            lldp[lldp_entry["interface"]] = {
+            entry_list = []
+            entry = {
                 "parent_interface": parent_interface,
                 "remote_chassis_id": remote_chassis_id,
                 "remote_system_name": remote_system_name,
@@ -859,6 +859,8 @@ class DellOS6Driver(NetworkDriver):
                 "remote_system_capab": remote_system_capab,
                 "remote_system_enable_capab": remote_system_enable_capab,
             }
+            entry_list.append(entry)
+            lldp[lldp_entry["interface"]] = entry_list
 
         return lldp
 
