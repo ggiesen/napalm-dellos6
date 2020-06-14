@@ -1,0 +1,24 @@
+
+LLDP Remote Device Detail
+
+Local Interface: Te1/0/21
+
+
+Remote Identifier: 202
+Chassis ID Subtype: MAC Address
+Chassis ID: 00:41:D2:17:2F:00
+Port ID Subtype: Interface Name
+Port ID: Gi1/0/1
+System Name: switch2-loc123.example.com
+System Description: Cisco IOS Software, Catalyst L3 Switch Software (CAT3K_CAA-UNIVERSALK9-M), Version 15.0(1)EX3, RELEASE SOFTWARE (fc2)
+                                                                                                                                         Technical Support: http://www.cisco.com/techsupport 
+                                                                                                                                                                                            C
+opyright (c) 1986-2013 by Cisco Systems, Inc.
+                                             Compiled Mon 23-Sep-13 18:24 by prod_r
+Port Description: GigabitEthernet1/0/1
+System Capabilities Supported: bridge, router
+System Capabilities Enabled: bridge, router
+Management Address:
+    Type: IPv4
+    Address: 10.238.14.1
+Time to Live: 91 seconds

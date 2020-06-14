@@ -475,7 +475,10 @@ class DellOS6Driver(NetworkDriver):
 
         lldp = {}
         for lldp_entry in show_lldp_remote_device_all:
-            lldp[lldp_entry["interface"]] = []
+            interface = canonical_interface_name(
+                lldp_entry["interface"], addl_name_map=dellos6_interfaces
+            )
+            lldp[interface] = []
             hostname = lldp_entry["host_name"]
             if not hostname:
                 hostname = lldp_entry["chassis_id"]
@@ -491,7 +494,7 @@ class DellOS6Driver(NetworkDriver):
                     )
                     hostname = show_lldp_remote_device_detail[0]["host_name"]
             lldp_dict = {"port": lldp_entry["port_id"], "hostname": hostname}
-            lldp[lldp_entry["interface"]].append(lldp_dict)
+            lldp[interface].append(lldp_dict)
 
         return lldp
 

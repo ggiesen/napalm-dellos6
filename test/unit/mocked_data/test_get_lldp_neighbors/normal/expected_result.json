@@ -1,0 +1,77 @@
+{
+    "Tengigabitethernet1/0/10": [{
+            "hostname": "F4:E9:D4:86:5F:80",
+            "port": "F4:E9:D4:86:5F:80"
+        }
+    ],
+    "Tengigabitethernet1/0/21": [{
+            "hostname": "switch2-loc123.example.com",
+            "port": "Gi1/0/1"
+        }
+    ],
+    "Tengigabitethernet1/0/4": [{
+            "hostname": "00:0E:1E:B0:5F:30",
+            "port": "00:0E:1E:B0:5F:30"
+        }
+    ],
+    "Tengigabitethernet1/0/5": [{
+            "hostname": "00:0E:1E:B0:6F:E0",
+            "port": "00:0E:1E:B0:6F:E0"
+        }
+    ],
+    "Tengigabitethernet1/0/6": [{
+            "hostname": "00:0E:1E:B0:6F:90",
+            "port": "00:0E:1E:B0:6F:90"
+        }
+    ],
+    "Tengigabitethernet1/0/9": [{
+            "hostname": "F4:E9:D4:86:8F:50",
+            "port": "F4:E9:D4:86:8F:50"
+        }
+    ],
+    "Tengigabitethernet2/0/10": [{
+            "hostname": "F4:E9:D4:86:5F:82",
+            "port": "F4:E9:D4:86:5F:82"
+        }
+    ],
+    "Tengigabitethernet2/0/11": [{
+            "hostname": "18:66:DA:70:1F:C6",
+            "port": "18:66:DA:70:1F:C6"
+        }
+    ],
+    "Tengigabitethernet2/0/21": [{
+            "hostname": "switch2-loc123.example.com",
+            "port": "Gi2/0/1"
+        }
+    ],
+    "Tengigabitethernet2/0/3": [{
+            "hostname": "00:0E:1E:B0:4F:02",
+            "port": "00:0E:1E:B0:4F:02"
+        }
+    ],
+    "Tengigabitethernet2/0/4": [{
+            "hostname": "00:0E:1E:B0:5F:32",
+            "port": "00:0E:1E:B0:5F:32"
+        }
+    ],
+    "Tengigabitethernet2/0/5": [{
+            "hostname": "00:0E:1E:B0:6F:E2",
+            "port": "00:0E:1E:B0:6F:E2"
+        }
+    ],
+    "Tengigabitethernet2/0/6": [{
+            "hostname": "00:0E:1E:B0:6F:92",
+            "port": "00:0E:1E:B0:6F:92"
+        }
+    ],
+    "Tengigabitethernet2/0/8": [{
+            "hostname": "F4:E9:D4:86:3F:72",
+            "port": "F4:E9:D4:86:3F:72"
+        }
+    ],
+    "Tengigabitethernet2/0/9": [{
+            "hostname": "F4:E9:D4:86:8F:52",
+            "port": "F4:E9:D4:86:8F:52"
+        }
+    ]
+}
