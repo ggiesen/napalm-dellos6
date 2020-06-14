@@ -1,0 +1,9 @@
+
+Client Mode:                       Unicast
+Last Update Time:                  Jun 14 02:55:57 2020
+
+Unicast servers:
+Server          Status                 Last response
+--------------- ---------------------- --------------------------
+192.0.2.133     Success                20:34:48 Jun 10 2020      
+198.51.100.133  Success                02:55:57 Jun 14 2020      

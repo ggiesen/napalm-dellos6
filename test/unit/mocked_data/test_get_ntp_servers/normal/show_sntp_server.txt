@@ -1,0 +1,33 @@
+
+Server Host Address:               198.51.100.133      
+Server Type:                       IPv4
+Server Stratum:                    2
+Server Reference Id:               NTP Bits: 0x888cf93f
+Server Mode:                       Server
+Server Maximum Entries:            8
+Server Current Entries:            2
+
+SNTP Servers
+------------
+
+Host Address: 192.0.2.133
+Address Type: IPv4
+Priority: 1
+Version: 4
+Port: 123
+Last Update Time: Jun 10 20:34:48 2020
+Last Attempt Time: Jun 10 21:07:55 2020
+Last Update Status: Success
+Total Unicast Requests: 183689
+Failed Unicast Requests: 130
+
+Host Address: 198.51.100.133
+Address Type: IPv4
+Priority: 1
+Version: 4
+Port: 123
+Last Update Time: Jun 14 03:07:42 2020
+Last Attempt Time: Jun 14 03:13:02 2020
+Last Update Status: Success
+Total Unicast Requests: 141723
+Failed Unicast Requests: 130
