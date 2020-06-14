@@ -1,0 +1,51 @@
+{
+    "out-of-band": {
+        "ipv4": {
+            "10.238.12.11": {
+                "prefix_length": 23
+            }
+        },
+        "ipv6": {
+            "fd62:9fd2:ab76:6066::13": {
+                "prefix_length": 64
+            },
+            "fd62:9fd2:ab76:6067::12": {
+                "prefix_length": 64
+            },
+            "fe80::fab1:56ff:fe95:cfef": {
+                "prefix_length": 64
+            }
+        }
+    },
+    "vlan 1": {
+        "ipv6": {
+            "fe80::fab1:56ff:fe95:cff1": {
+                "prefix_length": 64
+            }
+        }
+    },
+    "vlan 3840": {
+        "ipv4": {
+            "192.0.2.5": {
+                "prefix_length": 30
+            },
+            "192.0.2.9": {
+                "prefix_length": 30
+            },
+            "10.99.39.17": {
+                "prefix_length": 27
+            }
+        },
+        "ipv6": {
+            "fd62:9fd2:ab76:6068::11": {
+                "prefix_length": 64
+            },
+            "fd62:9fd2:ab76:6069::10": {
+                "prefix_length": 64
+            },
+            "fe80::fab1:56ff:fe95:cff1": {
+                "prefix_length": 64
+            }
+        }
+    }
+}
