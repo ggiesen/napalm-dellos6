@@ -365,10 +365,7 @@ class DellOS6Driver(NetworkDriver):
                 is_up = True
             # SVIs cannot be administratively disabled
             is_enabled = True
-            interface_dict[interface_name] = {
-                "is_up": is_up,
-                "is_enabled": is_enabled
-            }
+            interface_dict[interface_name] = {"is_up": is_up, "is_enabled": is_enabled}
         # Set some defaults
         for interface in interface_dict:
             interface_dict[interface]["description"] = ""
