@@ -1281,3 +1281,68 @@ class DellOS6Driver(NetworkDriver):
                 "interfaces": canonical_interfaces,
             }
         return vlans
+
+    def get_mac_address_table(self):
+        """
+        Returns a lists of dictionaries. Each dictionary represents an entry in the MAC Address
+        Table, having the following keys:
+            * mac (string)
+            * interface (string)
+            * vlan (int)
+            * active (boolean)
+            * static (boolean)
+            * moves (int)
+            * last_move (float)
+        However, please note that not all vendors provide all these details.
+        E.g.: field last_move is not available on JUNOS devices etc.
+        Example::
+            [
+                {
+                    'mac'       : '00:1C:58:29:4A:71',
+                    'interface' : 'Ethernet47',
+                    'vlan'      : 100,
+                    'static'    : False,
+                    'active'    : True,
+                    'moves'     : 1,
+                    'last_move' : 1454417742.58
+                },
+                {
+                    'mac'       : '00:1C:58:29:4A:C1',
+                    'interface' : 'xe-1/0/1',
+                    'vlan'       : 100,
+                    'static'    : False,
+                    'active'    : True,
+                    'moves'     : 2,
+                    'last_move' : 1453191948.11
+                },
+                {
+                    'mac'       : '00:1C:58:29:4A:C2',
+                    'interface' : 'ae7.900',
+                    'vlan'      : 900,
+                    'static'    : False,
+                    'active'    : True,
+                    'moves'     : None,
+                    'last_move' : None
+                }
+            ]
+        """
+        raw_get_mac_address_table = self._send_command("show mac address-table")
+        get_mac_address_table = textfsm_extractor(
+            self, "show_mac_address_table", raw_get_mac_address_table
+        )
+        table = []
+        for entry in get_mac_address_table:
+            table.append(
+                {
+                    "mac": mac(entry["mac"]),
+                    "interface": canonical_interface_name(
+                        entry["port"], addl_name_map=dellos6_interfaces
+                    ),
+                    "vlan": mac(entry["vlan"]),
+                    "static": entry["vlan"] == "Static",
+                    "active": True,
+                    "moves": None,
+                    "last_move": None,
+                }
+            )
+        return table
