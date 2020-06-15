@@ -842,7 +842,10 @@ class DellOS6Driver(NetworkDriver):
 
         lldp = {}
         for lldp_entry in show_lldp_remote_device_all:
-            lldp[lldp_entry["interface"]] = {}
+            interface = canonical_interface_name(
+                        lldp_entry["interface"], addl_name_map=dellos6_interfaces
+                    )
+            lldp[interface] = {}
             raw_show_lldp_remote_device_detail = self._send_command(
                 "show lldp remote-device detail " + lldp_entry["interface"]
             )
@@ -887,7 +890,7 @@ class DellOS6Driver(NetworkDriver):
                 "remote_system_enable_capab": remote_system_enable_capab,
             }
             entry_list.append(entry)
-            lldp[lldp_entry["interface"]] = entry_list
+            lldp[interface] = entry_list
 
         return lldp
 
