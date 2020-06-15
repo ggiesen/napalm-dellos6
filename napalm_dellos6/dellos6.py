@@ -198,6 +198,33 @@ class DellOS6Driver(NetworkDriver):
 
         return interface_list
 
+    def _get_interface_dict(self):
+        """
+        Returns a dict of all interfaces on the device
+        """
+
+        raw_show_int_status = self._send_command("show interfaces status")
+        raw_show_ip_int = self._send_command("show ip interface")
+
+        show_int_status = textfsm_extractor(
+            self, "show_interfaces_status", raw_show_int_status
+        )
+        show_ip_int = textfsm_extractor(self, "show_ip_interface", raw_show_ip_int)
+
+        interface_dict = {}
+        for interface in show_int_status:
+            interface_name = canonical_interface_name(
+                interface["interface"], addl_name_map=dellos6_interfaces
+            )
+            interface_dict[interface_name] = {}
+        for interface in show_ip_int:
+            interface_name = canonical_interface_name(
+                interface["interface"], addl_name_map=dellos6_interfaces
+            )
+            interface_dict[interface_name] = {}
+
+        return interface_dict
+
     def get_facts(self):
         """
         Returns a dictionary containing the following information:
@@ -1265,17 +1292,18 @@ class DellOS6Driver(NetworkDriver):
         """
         raw_show_vlan = self._send_command("show vlan")
         show_vlan = textfsm_extractor(self, "show_vlan", raw_show_vlan)
+        interface_dict = self._get_interface_dict()
 
         vlans = {}
         for vlan_entry in show_vlan:
             canonical_interfaces = []
             ports = self._ensure_ports_split(vlan_entry["ports"])
             for interface in self._expand_ranges(ports):
-                canonical_interfaces.append(
-                    canonical_interface_name(
-                        interface, addl_name_map=dellos6_interfaces
-                    )
+                interface_name = canonical_interface_name(
+                    interface, addl_name_map=dellos6_interfaces
                 )
+                if interface_name in interface_dict.keys():
+                    canonical_interfaces.append(interface_name)
             vlans[int(vlan_entry["vlan_id"])] = {
                 "name": vlan_entry["vlan_name"],
                 "interfaces": canonical_interfaces,
@@ -1339,7 +1367,8 @@ class DellOS6Driver(NetworkDriver):
                         entry["port"], addl_name_map=dellos6_interfaces
                     ),
                     "vlan": int(entry["vlan"]),
-                    "static": entry["type"] == "Static" or entry["type"] == "Management",
+                    "static": entry["type"] == "Static"
+                    or entry["type"] == "Management",
                     "active": True,
                     "moves": -1,
                     "last_move": -1.0,
