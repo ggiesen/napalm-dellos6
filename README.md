@@ -1,6 +1,6 @@
 
 [![Build Status](https://travis-ci.org/ggiesen/napalm-dellos6.svg?branch=master)](https://travis-ci.org/ggiesen/napalm-dellos6)
-[![Coverage Status](https://coveralls.io/repos/github/javeedf/napalm-dellos10/badge.svg?branch=master)](https://coveralls.io/github/ggiesen/napalm-dellos6?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/ggiesen/napalm-dellos6/badge.svg?branch=master)](https://coveralls.io/github/ggiesen/napalm-dellos6?branch=master)
 # napalm-dellos6
 
 NAPALM driver for Dell EMC Networking OS6 Operating System.
