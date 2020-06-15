@@ -1378,3 +1378,34 @@ class DellOS6Driver(NetworkDriver):
                 }
             )
         return table
+
+    def get_config(self, retrieve="all", full=False, sanitized=False):
+        """
+        Return the configuration of a device.
+
+        Args:
+            retrieve(string): Which configuration type you want to populate, default is all of them.
+                              The rest will be set to "".
+            full(bool): Retrieve all the configuration. For instance, on ios, "sh run all".
+            sanitized(bool): Remove secret data. Default: ``False``.
+
+        Returns:
+          The object returned is a dictionary with a key for each configuration store:
+
+            - running(string) - Representation of the native running configuration
+            - candidate(string) - Representation of the native candidate configuration. If the
+              device doesnt differentiate between running and startup configuration this will an
+              empty string
+            - startup(string) - Representation of the native startup configuration. If the
+              device doesnt differentiate between running and startup configuration this will an
+              empty string
+        """
+        running_config = ""
+        startup_config = ""
+
+        if retrieve in ["all", "running"]:
+            running_config = self._send_command("show running-config")
+        if retrieve in ["all", "startup"]:
+            startup_config = self._send_command("show startup-config")
+
+        return {"running": running_config, "startup": startup_config, "condidate": ""}
