@@ -1220,3 +1220,129 @@ class DellOS6Driver(NetworkDriver):
                 }
 
         return interfaces_ip
+
+    def _expand_ranges(self, iflist):
+        """
+        In: ["Gi1/0/42-43"]
+        Out: ["Gi1/0/42", "Gi1/0/43"]
+        """
+        expanded_interfaces = []
+        for interface in iflist:
+            m = re.match(r"(\S\S|.+/)((\d+)-(\d+))", interface)
+            if m is None:
+                expanded_interfaces.append(interface)
+            else:
+                interfaces = []
+                for i in range(int(m.group(3)), int(m.group(4)) + 1):
+                    interfaces.append("%s%d" % (m.group(1), i))
+                expanded_interfaces = expanded_interfaces + interfaces
+        return expanded_interfaces
+
+    def _ensure_ports_split(self, ports):
+        "textFSM cannot split repeated values in the same line. Do it here."
+        result = []
+        for port in ports:
+            result = result + port.split(",")
+        return result
+
+    def get_vlans(self):
+        """
+        turn structure being spit balled is as follows.
+        vlan_id (int)
+                name (text_type)
+                interfaces (list)
+        Example:
+        {
+            1: {
+                "name": "default",
+                "interfaces": ["GigabitEthernet0/0/1", "GigabitEthernet0/0/2"]
+            },
+            2: {
+                "name": "vlan2",
+                "interfaces": []
+            }
+        }
+        """
+        raw_show_vlan = self._send_command("show vlan")
+        show_vlan = textfsm_extractor(self, "show_vlan", raw_show_vlan)
+
+        vlans = {}
+        for vlan_entry in show_vlan:
+            canonical_interfaces = []
+            ports = self._ensure_ports_split(vlan_entry["ports"])
+            for interface in self._expand_ranges(ports):
+                canonical_interfaces.append(
+                    canonical_interface_name(
+                        interface, addl_name_map=dellos6_interfaces
+                    )
+                )
+            vlans[int(vlan_entry["vlan_id"])] = {
+                "name": vlan_entry["vlan_name"],
+                "interfaces": canonical_interfaces,
+            }
+        return vlans
+
+    def get_mac_address_table(self):
+        """
+        Returns a lists of dictionaries. Each dictionary represents an entry in the MAC Address
+        Table, having the following keys:
+            * mac (string)
+            * interface (string)
+            * vlan (int)
+            * active (boolean)
+            * static (boolean)
+            * moves (int)
+            * last_move (float)
+        However, please note that not all vendors provide all these details.
+        E.g.: field last_move is not available on JUNOS devices etc.
+        Example::
+            [
+                {
+                    'mac'       : '00:1C:58:29:4A:71',
+                    'interface' : 'Ethernet47',
+                    'vlan'      : 100,
+                    'static'    : False,
+                    'active'    : True,
+                    'moves'     : 1,
+                    'last_move' : 1454417742.58
+                },
+                {
+                    'mac'       : '00:1C:58:29:4A:C1',
+                    'interface' : 'xe-1/0/1',
+                    'vlan'       : 100,
+                    'static'    : False,
+                    'active'    : True,
+                    'moves'     : 2,
+                    'last_move' : 1453191948.11
+                },
+                {
+                    'mac'       : '00:1C:58:29:4A:C2',
+                    'interface' : 'ae7.900',
+                    'vlan'      : 900,
+                    'static'    : False,
+                    'active'    : True,
+                    'moves'     : None,
+                    'last_move' : None
+                }
+            ]
+        """
+        raw_get_mac_address_table = self._send_command("show mac address-table")
+        get_mac_address_table = textfsm_extractor(
+            self, "show_mac_address_table", raw_get_mac_address_table
+        )
+        table = []
+        for entry in get_mac_address_table:
+            table.append(
+                {
+                    "mac": mac(entry["mac"]),
+                    "interface": canonical_interface_name(
+                        entry["port"], addl_name_map=dellos6_interfaces
+                    ),
+                    "vlan": mac(entry["vlan"]),
+                    "static": entry["vlan"] == "Static",
+                    "active": True,
+                    "moves": None,
+                    "last_move": None,
+                }
+            )
+        return table
