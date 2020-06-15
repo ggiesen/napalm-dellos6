@@ -1338,11 +1338,11 @@ class DellOS6Driver(NetworkDriver):
                     "interface": canonical_interface_name(
                         entry["port"], addl_name_map=dellos6_interfaces
                     ),
-                    "vlan": mac(entry["vlan"]),
-                    "static": entry["vlan"] == "Static",
+                    "vlan": int(entry["vlan"]),
+                    "static": entry["type"] == "Static" or entry["type"] == "Management",
                     "active": True,
-                    "moves": None,
-                    "last_move": None,
+                    "moves": -1,
+                    "last_move": -1.0,
                 }
             )
         return table

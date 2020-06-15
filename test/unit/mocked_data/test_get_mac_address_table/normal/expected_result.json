@@ -1,0 +1,641 @@
+[{
+    "active": true,
+    "interface": "Tengigabitethernet2/0/3",
+    "last_move": -1.0,
+    "mac": "00:0E:1E:B0:4F:03",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/4",
+    "last_move": -1.0,
+    "mac": "00:0E:1E:B0:5F:31",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/4",
+    "last_move": -1.0,
+    "mac": "00:0E:1E:B0:5F:33",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/6",
+    "last_move": -1.0,
+    "mac": "00:0E:1E:B0:6F:91",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/6",
+    "last_move": -1.0,
+    "mac": "00:0E:1E:B0:6F:93",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/5",
+    "last_move": -1.0,
+    "mac": "00:0E:1E:B0:6F:E1",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/5",
+    "last_move": -1.0,
+    "mac": "00:0E:1E:B0:6F:E3",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:41:D2:17:2F:01",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:41:D2:17:EF:81",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/11",
+    "last_move": -1.0,
+    "mac": "00:50:56:64:BF:A9",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/4",
+    "last_move": -1.0,
+    "mac": "00:50:56:65:1F:DD",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/9",
+    "last_move": -1.0,
+    "mac": "00:50:56:65:3F:1C",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/17",
+    "last_move": -1.0,
+    "mac": "00:50:56:65:7F:A7",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/10",
+    "last_move": -1.0,
+    "mac": "00:50:56:65:BF:23",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/13",
+    "last_move": -1.0,
+    "mac": "00:50:56:6B:0F:A5",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/8",
+    "last_move": -1.0,
+    "mac": "00:50:56:6C:2F:3A",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/5",
+    "last_move": -1.0,
+    "mac": "00:50:56:6C:9F:0F",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/6",
+    "last_move": -1.0,
+    "mac": "00:50:56:6D:2F:7D",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/3",
+    "last_move": -1.0,
+    "mac": "00:50:56:6D:3F:F8",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/12",
+    "last_move": -1.0,
+    "mac": "00:50:56:6E:BF:84",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/15",
+    "last_move": -1.0,
+    "mac": "00:50:56:6E:EF:59",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "port-channel10",
+    "last_move": -1.0,
+    "mac": "00:E0:ED:5A:0F:2A",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "port-channel11",
+    "last_move": -1.0,
+    "mac": "00:E0:ED:5B:0F:E0",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "port-channel11",
+    "last_move": -1.0,
+    "mac": "00:E0:ED:5B:0F:E1",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/13",
+    "last_move": -1.0,
+    "mac": "02:50:56:56:4F:52",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/11",
+    "last_move": -1.0,
+    "mac": "18:66:DA:70:1F:C7",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/8",
+    "last_move": -1.0,
+    "mac": "F4:E9:D4:86:3F:73",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/10",
+    "last_move": -1.0,
+    "mac": "F4:E9:D4:86:5F:81",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/10",
+    "last_move": -1.0,
+    "mac": "F4:E9:D4:86:5F:83",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/9",
+    "last_move": -1.0,
+    "mac": "F4:E9:D4:86:8F:51",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/9",
+    "last_move": -1.0,
+    "mac": "F4:E9:D4:86:8F:53",
+    "moves": -1,
+    "static": false,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "vlan 1",
+    "last_move": -1.0,
+    "mac": "F8:B1:56:95:CF:F1",
+    "moves": -1,
+    "static": true,
+    "vlan": 1
+}, {
+    "active": true,
+    "interface": "vlan 666",
+    "last_move": -1.0,
+    "mac": "F8:B1:56:95:CF:F1",
+    "moves": -1,
+    "static": true,
+    "vlan": 666
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:22:56:CC:FF:6E",
+    "moves": -1,
+    "static": false,
+    "vlan": 699
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/12",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:3F:F5",
+    "moves": -1,
+    "static": false,
+    "vlan": 699
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/13",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:DF:31",
+    "moves": -1,
+    "static": false,
+    "vlan": 699
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "54:75:D0:66:6F:7C",
+    "moves": -1,
+    "static": false,
+    "vlan": 699
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/13",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:0F:DB",
+    "moves": -1,
+    "static": false,
+    "vlan": 707
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/13",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:1F:9A",
+    "moves": -1,
+    "static": false,
+    "vlan": 707
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/13",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:2F:96",
+    "moves": -1,
+    "static": false,
+    "vlan": 707
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/13",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:6F:3A",
+    "moves": -1,
+    "static": false,
+    "vlan": 707
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/12",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:7F:B0",
+    "moves": -1,
+    "static": false,
+    "vlan": 707
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/13",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:DF:3E",
+    "moves": -1,
+    "static": false,
+    "vlan": 707
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/13",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:DF:6B",
+    "moves": -1,
+    "static": false,
+    "vlan": 707
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/13",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:EF:F4",
+    "moves": -1,
+    "static": false,
+    "vlan": 707
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/13",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:EF:AC",
+    "moves": -1,
+    "static": false,
+    "vlan": 707
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "54:75:D0:66:6F:7C",
+    "moves": -1,
+    "static": false,
+    "vlan": 707
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "58:8D:09:04:EF:D0",
+    "moves": -1,
+    "static": false,
+    "vlan": 707
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/13",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:8F:2B",
+    "moves": -1,
+    "static": false,
+    "vlan": 710
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "E0:5F:B9:C7:BF:C1",
+    "moves": -1,
+    "static": false,
+    "vlan": 710
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:00:5E:00:0F:28",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:1E:79:04:9F:C4",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:1E:BD:86:FF:D3",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:21:A1:B2:5F:C4",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:22:56:CC:FF:6E",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:24:98:D8:6F:C4",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:41:D2:17:2F:71",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/12",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:9F:70",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:80:A3:8D:3F:6B",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:C0:B7:53:DF:F4",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:C0:B7:87:4F:E9",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:C0:B7:87:4F:EC",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:C0:B7:CC:7F:8C",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:C8:8B:16:5F:9D",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:F2:8B:E7:2F:10",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "54:75:D0:66:6F:7C",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "BC:C4:93:22:2F:43",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "F8:66:F2:FD:1F:25",
+    "moves": -1,
+    "static": false,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "vlan 3840",
+    "last_move": -1.0,
+    "mac": "F8:B1:56:95:CF:F1",
+    "moves": -1,
+    "static": true,
+    "vlan": 3840
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/12",
+    "last_move": -1.0,
+    "mac": "00:50:56:64:4F:AD",
+    "moves": -1,
+    "static": false,
+    "vlan": 4000
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/13",
+    "last_move": -1.0,
+    "mac": "00:50:56:69:0F:F1",
+    "moves": -1,
+    "static": false,
+    "vlan": 4000
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/12",
+    "last_move": -1.0,
+    "mac": "00:50:56:63:1F:57",
+    "moves": -1,
+    "static": false,
+    "vlan": 4001
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/13",
+    "last_move": -1.0,
+    "mac": "00:50:56:65:0F:42",
+    "moves": -1,
+    "static": false,
+    "vlan": 4001
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/12",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:BF:5C",
+    "moves": -1,
+    "static": false,
+    "vlan": 4001
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:50:56:87:2F:01",
+    "moves": -1,
+    "static": false,
+    "vlan": 4002
+}, {
+    "active": true,
+    "interface": "port-channel50",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:0F:CD",
+    "moves": -1,
+    "static": false,
+    "vlan": 4002
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet2/0/13",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:1F:A0",
+    "moves": -1,
+    "static": false,
+    "vlan": 4002
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/13",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:4F:23",
+    "moves": -1,
+    "static": false,
+    "vlan": 4002
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/12",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:6F:E1",
+    "moves": -1,
+    "static": false,
+    "vlan": 4002
+}, {
+    "active": true,
+    "interface": "Tengigabitethernet1/0/13",
+    "last_move": -1.0,
+    "mac": "00:50:56:92:9F:4C",
+    "moves": -1,
+    "static": false,
+    "vlan": 4002
+}]
