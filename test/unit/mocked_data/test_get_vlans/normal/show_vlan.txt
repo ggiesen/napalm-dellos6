@@ -1,0 +1,31 @@
+
+VLAN   Name                             Ports          Type
+-----  ---------------                  -------------  --------------
+1      default                          Po1-49,        Default
+                                        Po51-128,
+                                        Te1/0/3-20,
+                                        Te1/0/22,
+                                        Te2/0/3-20,
+                                        Te2/0/22
+666    TEST                             Po1,Po50       Static
+699    Management1                      Po1,Po50,      Static
+                                        Te1/0/12-13,
+                                        Te2/0/12-13
+707    Site1                            Po1,Po50,      Static
+                                        Te1/0/12-13,
+                                        Te2/0/12-13
+710    Internet-Transit                 Po1,Po50,      Static
+                                        Te1/0/12-13,
+                                        Te2/0/12-13
+3840   MGMT                             Po1,Po50,      Static
+                                        Te1/0/12-13,
+                                        Te2/0/12-13
+4000   VXLAN                            Po1,           Static
+                                        Te1/0/12-13,
+                                        Te2/0/12-13
+4001   Vmotion                          Po1,           Static
+                                        Te1/0/12-13,
+                                        Te2/0/12-13
+4002   Replication                      Po1,Po50,      Static
+                                        Te1/0/12-13,
+                                        Te2/0/12-13

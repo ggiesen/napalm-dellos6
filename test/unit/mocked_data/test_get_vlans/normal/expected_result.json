@@ -1,0 +1,103 @@
+{
+    "1": {
+        "interfaces": ["port-channel10",
+            "port-channel11",
+            "Tengigabitethernet1/0/3",
+            "Tengigabitethernet1/0/4",
+            "Tengigabitethernet1/0/5",
+            "Tengigabitethernet1/0/6",
+            "Tengigabitethernet1/0/7",
+            "Tengigabitethernet1/0/8",
+            "Tengigabitethernet1/0/9",
+            "Tengigabitethernet1/0/10",
+            "Tengigabitethernet1/0/11",
+            "Tengigabitethernet1/0/12",
+            "Tengigabitethernet1/0/13",
+            "Tengigabitethernet1/0/14",
+            "Tengigabitethernet1/0/15",
+            "Tengigabitethernet1/0/16",
+            "Tengigabitethernet1/0/17",
+            "Tengigabitethernet1/0/18",
+            "Tengigabitethernet1/0/19",
+            "Tengigabitethernet1/0/20",
+            "Tengigabitethernet1/0/22",
+            "Tengigabitethernet2/0/3",
+            "Tengigabitethernet2/0/4",
+            "Tengigabitethernet2/0/5",
+            "Tengigabitethernet2/0/6",
+            "Tengigabitethernet2/0/7",
+            "Tengigabitethernet2/0/8",
+            "Tengigabitethernet2/0/9",
+            "Tengigabitethernet2/0/10",
+            "Tengigabitethernet2/0/11",
+            "Tengigabitethernet2/0/12",
+            "Tengigabitethernet2/0/13",
+            "Tengigabitethernet2/0/14",
+            "Tengigabitethernet2/0/15",
+            "Tengigabitethernet2/0/16",
+            "Tengigabitethernet2/0/17",
+            "Tengigabitethernet2/0/18",
+            "Tengigabitethernet2/0/19",
+            "Tengigabitethernet2/0/20",
+            "Tengigabitethernet2/0/22"],
+        "name": "default"
+    },
+    "666": {
+        "interfaces": ["port-channel50"],
+        "name": "TEST"
+    },
+    "699": {
+        "interfaces": ["port-channel50",
+            "Tengigabitethernet1/0/12",
+            "Tengigabitethernet1/0/13",
+            "Tengigabitethernet2/0/12",
+            "Tengigabitethernet2/0/13"],
+        "name": "Management1"
+    },
+    "707": {
+        "interfaces": ["port-channel50",
+            "Tengigabitethernet1/0/12",
+            "Tengigabitethernet1/0/13",
+            "Tengigabitethernet2/0/12",
+            "Tengigabitethernet2/0/13"],
+        "name": "Site1"
+    },
+    "710": {
+        "interfaces": ["port-channel50",
+            "Tengigabitethernet1/0/12",
+            "Tengigabitethernet1/0/13",
+            "Tengigabitethernet2/0/12",
+            "Tengigabitethernet2/0/13"],
+        "name": "Internet-Transit"
+    },
+    "3840": {
+        "interfaces": ["port-channel50",
+            "Tengigabitethernet1/0/12",
+            "Tengigabitethernet1/0/13",
+            "Tengigabitethernet2/0/12",
+            "Tengigabitethernet2/0/13"],
+        "name": "MGMT"
+    },
+    "4000": {
+        "interfaces": ["Tengigabitethernet1/0/12",
+            "Tengigabitethernet1/0/13",
+            "Tengigabitethernet2/0/12",
+            "Tengigabitethernet2/0/13"],
+        "name": "VXLAN"
+    },
+    "4001": {
+        "interfaces": ["Tengigabitethernet1/0/12",
+            "Tengigabitethernet1/0/13",
+            "Tengigabitethernet2/0/12",
+            "Tengigabitethernet2/0/13"],
+        "name": "Vmotion"
+    },
+    "4002": {
+        "interfaces": ["port-channel50",
+            "Tengigabitethernet1/0/12",
+            "Tengigabitethernet1/0/13",
+            "Tengigabitethernet2/0/12",
+            "Tengigabitethernet2/0/13"],
+        "name": "Replication"
+    }
+}
