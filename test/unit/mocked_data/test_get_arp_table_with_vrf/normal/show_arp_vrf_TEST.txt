@@ -1,0 +1,17 @@
+
+Static ARP entries are only active
+when the IP address is reachable on a local subnet
+
+
+Age Time (seconds)............................. 1200
+Response Time (seconds)........................ 1
+Retries........................................ 4
+Cache Size..................................... 4096
+Dynamic Renew Mode ............................ Enable
+Total Entry Count Current / Peak .............. 1 / 1
+Static Entry Count Configured / Active / Max .. 0 / 0 / 128
+
+IP Address       MAC Address        Interface       Type      Age
+---------------  -----------------  --------------  --------  -----------
+192.0.2.129      F8B1.5695.CFF1     Vl666           Local         n/a
+192.0.2.130      0022.56CC.FF6E     Vl666           Dynamic   0h  9m 45s
