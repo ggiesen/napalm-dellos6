@@ -20,6 +20,7 @@ NAPALM driver for Dell EMC Networking OS6 Operating System.
 * cli
 * get_interfaces_ip
 * get_mac_address_table
+* get_config
 * get_vlans
 
 ### Missing APIs
@@ -42,7 +43,6 @@ NAPALM driver for Dell EMC Networking OS6 Operating System.
 * traceroute
 * get_users
 * get_optics
-* get_config
 * get_network_instances
 * get_firewall_policies
 * get_ipv6_neighbors_table
