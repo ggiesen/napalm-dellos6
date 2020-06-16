@@ -1,0 +1,12 @@
+{
+    "test": {
+        "level": 1,
+        "password": "da1809c347677d690402d93be40ceaa1",
+        "sshkeys": []
+    },
+    "test2": {
+        "level": 1,
+        "password": "b785b999908fe325a81b7be93a8a5332",
+        "sshkeys": []
+    }
+}
