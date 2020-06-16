@@ -1,0 +1,10 @@
+username "test" password da1809c347677d690402d93be40ceaa1 admin-profile network-operator dhcp-admin encrypted
+username "test2" password b785b999908fe325a81b7be93a8a5332 privilege 1 encrypted
+aaa authentication login "CL-INFRA" radius local
+radius-server host auth 10.99.39.18
+name "radius1"
+timeout 3
+source-ip 192.0.2.129
+usage login
+key "Eeng7sa9Cohhook2"
+exit

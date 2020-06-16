@@ -1,0 +1,8 @@
+
+ UserName                 Privilege  Password       Password         Lockout
+                                      Aging         Expiry date
+------------------------  ---------  --------  --------------------  --------
+test                      1          ---       ---                   False
+   Administrative Profile(s): network-operator dhcp-admin
+test2                     1          ---       ---                   False
+   Administrative Profile(s):
