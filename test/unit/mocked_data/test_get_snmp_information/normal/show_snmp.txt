@@ -1,0 +1,31 @@
+
+Community-String     Community-Access View Name        IP Address
+-------------------- ---------------- ---------------- ----------------
+public               Read Only        Default          All
+private              Read/Write       Default          192.0.2.249
+
+
+Community-String     Group Name                     IP Address
+-------------------- ------------------------------ ----------------
+public               DefaultRead                    All
+private              DefaultWrite                   All
+
+Traps are enabled.
+Authentication trap is enabled.
+
+
+Version 1,2 notifications
+Target Address   Type    Community            Version UDP    Filter   TO Retries
+                                                      Port   name     Sec
+---------------- ------- -------------------- ------- ------ -------- --- ------
+192.0.2.249      Trap    public               2       162
+
+
+Version 3 notifications
+Target Address   Type    Username           Security UDP    Filter   TO  Retries
+                                            Level    Port   name     Sec
+---------------- ------- ------------------ -------- ------ -------- --- -------
+
+
+System Contact:
+System Location: LOC

@@ -1385,6 +1385,75 @@ class DellOS6Driver(NetworkDriver):
             )
         return table
 
+    def get_snmp_information(self):
+
+        """
+        Returns a dict of dicts containing SNMP configuration.
+        Each inner dictionary contains these fields
+            * chassis_id (string)
+            * community (dictionary)
+            * contact (string)
+            * location (string)
+        'community' is a dictionary with community string specific information, as follows:
+            * acl (string) # acl number or name
+            * mode (string) # read-write (rw), read-only (ro)
+        Example::
+            {
+                'chassis_id': u'Asset Tag 54670',
+                'community': {
+                    u'private': {
+                        'acl': u'12',
+                        'mode': u'rw'
+                    },
+                    u'public': {
+                        'acl': u'11',
+                        'mode': u'ro'
+                    },
+                    u'public_named_acl': {
+                        'acl': u'ALLOW-SNMP-ACL',
+                        'mode': u'ro'
+                    },
+                    u'public_no_acl': {
+                        'acl': u'N/A',
+                        'mode': u'ro'
+                    }
+                },
+                'contact' : u'Joe Smith',
+                'location': u'123 Anytown USA Rack 404'
+            }
+        """
+
+        raw_show_sys = self._send_command("show system")
+        raw_show_snmp = self._send_command("show snmp")
+
+        show_sys = textfsm_extractor(self, "show_system-basic", raw_show_sys)
+        show_snmp_basic = textfsm_extractor(self, "show_snmp-basic", raw_show_snmp)
+        show_snmp_communities = textfsm_extractor(
+            self, "show_snmp-communities", raw_show_snmp
+        )
+        snmp_info = {
+            # Dell OS6 doesn't support setting the chassis ID, it's derived from the hostname
+            "chassis_id": show_sys[0]["sys_name"],
+            "community": {},
+            "contact": show_snmp_basic[0]["contact"],
+            "location": show_snmp_basic[0]["location"],
+        }
+
+        for entry in show_snmp_communities:
+            community = entry["community"]
+            if entry["acl"] == "All":
+                acl = u"N/A"
+            else:
+                # Dell OS6 only supports direct host entries, no ACLs
+                acl = entry["acl"] + "/32"
+            if entry["mode"] == "Read Only":
+                mode = u"ro"
+            if entry["mode"] == "Read/Write":
+                mode = u"rw"
+            snmp_info["community"][community] = {"acl": acl, "mode": mode}
+
+        return snmp_info
+
     def get_users(self):
         """
         Returns a dictionary with the configured users.
