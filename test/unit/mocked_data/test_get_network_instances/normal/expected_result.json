@@ -1,0 +1,39 @@
+{
+    "TEST": {
+        "interfaces": {
+            "interface": {
+                "Loopback63": {},
+                "vlan 666": {}
+            }
+        },
+        "name": "TEST",
+        "state": {
+            "route_distinguisher": ""
+        },
+        "type": "L3VRF"
+    },
+    "TEST_2": {
+        "interfaces": {
+            "interface": {}
+        },
+        "name": "TEST_2",
+        "state": {
+            "route_distinguisher": ""
+        },
+        "type": "L3VRF"
+    },
+    "default": {
+        "interfaces": {
+            "interface": {
+                "out-of-band": {},
+                "vlan 1": {},
+                "vlan 3840": {}
+            }
+        },
+        "name": "default",
+        "state": {
+            "route_distinguisher": ""
+        },
+        "type": "DEFAULT_INSTANCE"
+    }
+}

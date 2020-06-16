@@ -1,0 +1,8 @@
+
+           Oper.
+Interface  Mode     IPv6 Address/Length
+---------- -------- ---------------------------------
+Vl1        Disabled fe80::fab1:56ff:fe95:cff1/64                       [TENT]
+Vl3840     Enabled  fe80::fab1:56ff:fe95:cff1/64
+                    fd62:9fd2:ab76:6069::10/64
+                    fd62:9fd2:ab76:6068::11/64

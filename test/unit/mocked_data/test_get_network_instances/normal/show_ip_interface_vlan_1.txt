@@ -1,0 +1,15 @@
+
+Routing interface status....................... Down
+Method......................................... None
+Routing Mode................................... Enable
+Administrative Mode............................ Enable
+Forward Net Directed Broadcasts................ Disable
+Proxy ARP...................................... Enable
+Local Proxy ARP................................ Disable
+Active State................................... Active
+MAC Address.................................... F8B1.5695.CFF1
+Encapsulation Type............................. Ethernet
+IP MTU......................................... 9198
+Bandwidth...................................... 10000 kbps
+Destination Unreachables....................... Enabled
+ICMP Redirects................................. Enabled
