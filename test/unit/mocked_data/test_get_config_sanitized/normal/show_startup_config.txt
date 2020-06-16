@@ -1,0 +1,331 @@
+!Current Configuration:
+!System Description "Dell Networking N4032, 6.2.0.5, Linux 3.7.10-4134a969"
+!System Software Version 6.2.0.5
+!Cut-through mode is configured as disabled
+!
+configure
+vlan 699,707,710,3840,4000-4002
+exit
+vlan 699
+name "Management1"
+exit
+vlan 707
+name "Site1"
+exit
+vlan 710
+name "Internet-Transit"
+exit
+vlan 3840
+name "MGMT"
+exit
+vlan 4000
+name "VXLAN"
+exit
+vlan 4001
+name "Vmotion"
+exit
+vlan 4002
+name "Replication"
+exit
+snmp-server location "LOC"
+hostname "switch1"
+slot 1/0 2    ! Dell Networking N4032
+slot 2/0 2    ! Dell Networking N4032
+sntp unicast client enable
+sntp server 192.0.2.133
+sntp server 198.51.100.133
+clock summer-time recurring USA zone "PDT"
+clock timezone -8 minutes 0 zone "PST"
+stack
+member 1 1    ! N4032
+member 2 1    ! N4032
+exit
+interface out-of-band
+ip address 10.238.12.11 255.255.254.0 10.238.12.1
+ipv6 address fd62:9fd2:ab76:6067::12/64
+ipv6 address fd62:9fd2:ab76:6066::13/64
+exit
+ip vrf TEST
+exit
+ip domain-name "example.com"
+logging cli-command
+logging snmp
+logging buffered debugging
+logging 192.0.2.246
+description "syslog"
+level debugging
+exit
+system jumbo mtu 9216
+no ip http server
+interface vlan 1
+exit
+interface vlan 3840
+ip address 10.99.39.17 255.255.255.224
+ip address 192.0.2.5 255.255.255.252 secondary
+ip address 192.0.2.9 255.255.255.252 secondary
+ipv6 address fd62:9fd2:ab76:6069::10/64
+ipv6 address fd62:9fd2:ab76:6068::11/64
+exit
+ip default-gateway 192.0.2.130
+no passwords min-length
+username "test" password da1809c347677d690402d93be40ceaa1 privilege 15 encrypted
+aaa authentication login "INFRA" radius local
+radius-server host auth 192.0.2.250
+name "radius1"
+timeout 3
+source-ip 192.0.2.129
+usage login
+key "Eeng7sa9Cohhook2"
+exit
+radius-server host acct 192.0.2.250
+key "Eeng7sa9Cohhook2"
+name "radius1"  
+exit
+line console
+exec-timeout 30
+exit
+line telnet
+exec-timeout 30
+exit
+line ssh
+exec-timeout 30
+exit
+ip ssh server
+management access-list "MGMT"
+permit ip-source 192.0.2.0 mask 255.255.255.0 priority 1
+exit
+management access-class MGMT
+!
+interface Te1/0/1
+channel-group 10 mode active
+description "Interface 1"
+spanning-tree portfast
+exit
+!
+interface Te1/0/2
+channel-group 11 mode active
+description "Interface 2"
+spanning-tree portfast
+exit
+!
+interface Te1/0/3
+description "Interface 3"
+spanning-tree portfast
+exit
+!
+interface Te1/0/4 
+description "Interface 4"
+spanning-tree portfast
+exit
+!
+interface Te1/0/5
+description "Interface 5"
+spanning-tree portfast
+exit
+!
+interface Te1/0/6
+description "Interface 6"
+spanning-tree portfast
+exit
+!
+interface Te1/0/7
+description "Interface 7"
+spanning-tree portfast
+exit
+!
+interface Te1/0/8
+shutdown
+description "  blah "
+spanning-tree portfast
+exit
+!
+interface Te1/0/9
+spanning-tree portfast
+exit
+!
+interface Te1/0/10
+spanning-tree portfast
+exit
+!
+interface Te1/0/11
+description "Interface 11"
+spanning-tree portfast
+exit
+!
+interface Te1/0/12
+description "Interface 12"
+spanning-tree portfast
+switchport mode trunk
+switchport trunk allowed vlan 1,699,707,710,3840,4000-4002
+exit
+!
+interface Te1/0/13
+description "Interface 13"
+spanning-tree portfast
+switchport mode trunk
+switchport trunk allowed vlan 1,699,707,710,3840,4000-4002
+exit
+!
+interface Te1/0/14
+description "Interface 14"
+spanning-tree portfast
+exit
+!
+interface Te1/0/15
+description "Interface 15"
+spanning-tree portfast
+exit
+!
+interface Te1/0/16
+description "Interface 16"
+spanning-tree portfast
+exit
+!
+interface Te1/0/17
+description "Interface 17"
+spanning-tree portfast
+exit
+!
+interface Te1/0/18
+shutdown
+spanning-tree portfast
+exit
+!
+interface Te1/0/19
+shutdown
+spanning-tree portfast
+exit
+!
+interface Te1/0/20
+shutdown
+spanning-tree portfast
+exit
+!
+interface Te1/0/21
+channel-group 50 mode active
+description "Interface 21"
+spanning-tree portfast
+switchport mode trunk
+exit
+!
+interface Te1/0/22
+shutdown
+spanning-tree portfast
+exit
+!
+interface Te1/0/23
+description "Interface 23"
+spanning-tree portfast
+exit
+!
+interface Te1/0/24
+description "Interface 24"
+spanning-tree portfast
+exit
+!
+interface Te2/0/1
+channel-group 10 mode active
+exit
+!
+interface Te2/0/2
+channel-group 11 mode active
+exit
+!
+interface Te2/0/11
+description "Interface 11"
+exit
+!
+interface Te2/0/12
+description "Interface 12"
+switchport mode trunk
+switchport trunk allowed vlan 1,699,707,710,3840,4000-4002
+exit
+!
+interface Te2/0/13
+description "Interface 13"
+switchport mode trunk
+switchport trunk allowed vlan 1,699,707,710,3840,4000-4002
+exit
+!
+interface Te2/0/14
+shutdown
+exit
+!
+interface Te2/0/15
+shutdown
+exit
+!
+interface Te2/0/16
+shutdown
+exit
+!
+interface Te2/0/17
+shutdown
+exit
+!
+interface Te2/0/18
+shutdown
+exit
+!
+interface Te2/0/19
+shutdown
+exit
+!
+interface Te2/0/20
+shutdown
+exit
+!
+interface Te2/0/21
+channel-group 50 mode active
+description "Interface 21"
+switchport mode trunk
+exit
+!
+interface Te2/0/22
+shutdown
+exit
+!
+interface Te2/0/23
+description "Interface 23"
+exit
+!
+interface Te2/0/24
+description "Interface 24"
+exit
+!
+interface port-channel 1
+switchport mode trunk
+vpc 1
+exit
+!
+interface port-channel 10
+description "Port-channel10"
+exit
+!
+interface port-channel 11
+description "Port-channel11"
+exit
+!
+interface port-channel 50
+description "Port-channel50"
+switchport mode trunk
+switchport trunk allowed vlan 699,707,710,3840,4002
+exit
+snmp-server engineid local ef4eba9cfb702d20f5b3dc
+snmp-server community "public" ro
+snmp-server host 192.0.2.133 traps version 2 "public"
+snmp-server enable traps bgp state-changes limited
+snmp-server enable traps dvmrp
+snmp-server enable traps pim
+snmp-server enable traps captive-portal
+snmp-server enable traps captive-portal client-auth-failure
+snmp-server enable traps captive-portal client-connect
+snmp-server enable traps captive-portal client-db-full
+snmp-server enable traps captive-portal client-disconnect
+enable password 38d0fe97e68c78d01484299c1eba409f encrypted
+feature vpc
+vpc domain 1
+peer-keepalive enable
+peer detection enable
+exit
+exit

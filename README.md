@@ -19,6 +19,9 @@ NAPALM driver for Dell EMC Networking OS6 Operating System.
 * get_ntp_stats
 * cli
 * get_interfaces_ip
+* get_mac_address_table
+* get_config
+* get_vlans
 
 ### Missing APIs
 
@@ -32,7 +35,6 @@ NAPALM driver for Dell EMC Networking OS6 Operating System.
 * get_bgp_neighbors
 * get_bgp_config
 * get_bgp_neighbors_detail
-* get_mac_address_table
 * get_route_to
 * get_snmp_information
 * get_probes_config
@@ -41,11 +43,9 @@ NAPALM driver for Dell EMC Networking OS6 Operating System.
 * traceroute
 * get_users
 * get_optics
-* get_config
 * get_network_instances
 * get_firewall_policies
 * get_ipv6_neighbors_table
-* get_vlans
 * compliance_report
 
 This driver is in the early stages, and is a work in progress. Feel free to submit a PR to add additional getters or better implementations of existing getters.
