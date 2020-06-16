@@ -1,0 +1,66 @@
+
+System Description: Dell Networking Switch
+System Up Time: 1190 days, 08h:42m:44s
+System Contact:
+System Name: switch1
+System Location: LOC
+Burned In MAC Address: F8B1.5695.CF02
+System Object ID: 1.3.6.1.4.1.674.10895.3042
+System Model ID: N4032
+Machine Type: Dell Networking N4032
+
+System Thermal Conditions:
+
+Unit Temperature State
+      (Celsius)
+---- ----------- -----------
+1    48          Medium
+2    45          Medium
+
+Temperature Sensors:
+
+Unit Description        Temperature
+                         (Celsius)
+---- ------------------ -----------
+1    MAC                48
+1    CPU                44
+1    PHY (left side)    46
+1    PHY (right side)   48
+2    MAC                45
+2    CPU                41
+2    PHY (left side)    45
+2    PHY (right side)   44
+
+Fans:
+
+Unit Description Status
+---- ----------- ------
+1    Fan-1         OK
+1    Fan-2         OK
+1    Fan-3         OK
+1    Fan-4         OK
+1    PS-1 Fan      OK
+1    PS-2 Fan      OK
+2    Fan-1         OK
+2    Fan-2         OK
+2    Fan-3         OK
+2    Fan-4         OK
+2    PS-1 Fan      OK
+2    PS-2 Fan      OK
+
+Power Supplies:
+
+Unit  Description    Status     Average     Current          Since
+                                 Power       Power         Date/Time
+                                (Watts)     (Watts)
+----  -----------  -----------  ----------  --------  -------------------
+1     System       OK            0.1        79.7
+1     Internal(R)  OK           41.5        41.6      07/25/2019 05:08:38
+1     Internal(L)  OK           38.0        38.0      07/25/2019 05:08:38
+2     System       OK            0.0        70.6
+2     Internal(R)  OK           37.8        38.0      07/25/2019 05:06:45
+2     Internal(L)  OK           32.0        32.6      07/25/2019 05:06:45
+
+USB Port Power Status:
+----------------------
+Device Not Present
