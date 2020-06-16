@@ -1424,3 +1424,90 @@ class DellOS6Driver(NetworkDriver):
             return sanitize_configs(configs, D6C.DELLOS6_SANITIZE_FILTERS)
 
         return configs
+
+    def get_network_instances(self, name=""):
+        """
+        Return a dictionary of network instances (VRFs) configured, including default/global
+        Args:
+            name(string) - Name of the network instance to return, default is all.
+        Returns:
+            A dictionary of network instances in OC format:
+            * name (dict)
+                * name (unicode)
+                * type (unicode)
+                * state (dict)
+                    * route_distinguisher (unicode)
+                * interfaces (dict)
+                    * interface (dict)
+                        * interface name: (dict)
+        Example::
+            {
+                u'MGMT': {
+                    u'name': u'MGMT',
+                    u'type': u'L3VRF',
+                    u'state': {
+                        u'route_distinguisher': u'123:456',
+                    },
+                    u'interfaces': {
+                        u'interface': {
+                            u'Management1': {}
+                        }
+                    }
+                },
+                u'default': {
+                    u'name': u'default',
+                    u'type': u'DEFAULT_INSTANCE',
+                    u'state': {
+                        u'route_distinguisher': None,
+                    },
+                    u'interfaces: {
+                        u'interface': {
+                            u'Ethernet1': {}
+                            u'Ethernet2': {}
+                            u'Ethernet3': {}
+                            u'Ethernet4': {}
+                        }
+                    }
+                }
+            }
+        """
+
+        raw_show_ip_vrf = self._send_command("show ip vrf")
+        raw_show_ip_vrf_interface = self._send_command("show ip vrf interface")
+        show_ip_vrf = textfsm_extractor(self, "show_ip_vrf", raw_show_ip_vrf)
+        show_ip_vrf_interface = textfsm_extractor(
+            self, "show_ip_vrf_interface", raw_show_ip_vrf_interface
+        )
+
+        default_ip_interfaces = self.get_interfaces_ip()
+
+        network_instances = {}
+        network_instances[u"default"] = {
+            u"name": u"default",
+            u"type": u"DEFAULT_INSTANCE",
+            u"state": {u"route_distinguisher": ""},
+            u"interfaces": {u"interface": {}},
+        }
+
+        for interface in default_ip_interfaces.keys():
+            network_instances["default"]["interfaces"]["interface"][interface] = {}
+
+        for vrf in show_ip_vrf:
+            network_instances[vrf["vrf_name"]] = {
+                u"name": vrf["vrf_name"],
+                u"type": u"L3VRF",
+                u"state": {
+                    # Dell OS6 doesn't support RDs
+                    u"route_distinguisher": ""
+                },
+                u"interfaces": {u"interface": {}},
+            }
+
+        for interface in show_ip_vrf_interface:
+            vrf_name = interface["vrf_name"]
+            interface_name = canonical_interface_name(
+                interface["int_name"], addl_name_map=dellos6_interfaces
+            )
+            network_instances[vrf_name]["interfaces"]["interface"][interface_name] = {}
+
+        return network_instances
