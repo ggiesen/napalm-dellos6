@@ -1408,4 +1408,4 @@ class DellOS6Driver(NetworkDriver):
         if retrieve in ["all", "startup"]:
             startup_config = self._send_command("show startup-config")
 
-        return {"running": running_config, "startup": startup_config, "condidate": ""}
+        return {"running": running_config, "startup": startup_config, "candidate": ""}
