@@ -22,9 +22,15 @@ import re
 import socket
 from ipaddress import IPv4Interface, IPv6Interface
 
+import napalm_dellos6.dellos6_constants as D6C
 from napalm.base import NetworkDriver
 from napalm.base.exceptions import CommandErrorException, ConnectionClosedException
-from napalm.base.helpers import canonical_interface_name, mac, textfsm_extractor
+from napalm.base.helpers import (
+    canonical_interface_name,
+    mac,
+    sanitize_configs,
+    textfsm_extractor,
+)
 
 from napalm_dellos6.dellos6_canonical_map import dellos6_interfaces
 
@@ -1408,4 +1414,13 @@ class DellOS6Driver(NetworkDriver):
         if retrieve in ["all", "startup"]:
             startup_config = self._send_command("show startup-config")
 
-        return {"running": running_config, "startup": startup_config, "candidate": ""}
+        configs = {
+            "running": running_config,
+            "startup": startup_config,
+            "candidate": "",
+        }
+
+        if sanitized:
+            return sanitize_configs(configs, D6C.DELLOS6_SANITIZE_FILTERS)
+
+        return configs
