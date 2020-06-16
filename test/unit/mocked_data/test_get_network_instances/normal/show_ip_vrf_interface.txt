@@ -1,0 +1,5 @@
+
+VRF Name              Interface    State  IP Address      IP Mask         Method
+--------------------  ----------   -----  --------------- --------------- -------
+TEST                 Vl666        Up     192.0.2.129     255.255.255.252 Manual
+TEST                 Lo63         Down   0.0.0.0         0.0.0.0         None

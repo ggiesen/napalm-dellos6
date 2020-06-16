@@ -1385,6 +1385,128 @@ class DellOS6Driver(NetworkDriver):
             )
         return table
 
+    def get_snmp_information(self):
+
+        """
+        Returns a dict of dicts containing SNMP configuration.
+        Each inner dictionary contains these fields
+            * chassis_id (string)
+            * community (dictionary)
+            * contact (string)
+            * location (string)
+        'community' is a dictionary with community string specific information, as follows:
+            * acl (string) # acl number or name
+            * mode (string) # read-write (rw), read-only (ro)
+        Example::
+            {
+                'chassis_id': u'Asset Tag 54670',
+                'community': {
+                    u'private': {
+                        'acl': u'12',
+                        'mode': u'rw'
+                    },
+                    u'public': {
+                        'acl': u'11',
+                        'mode': u'ro'
+                    },
+                    u'public_named_acl': {
+                        'acl': u'ALLOW-SNMP-ACL',
+                        'mode': u'ro'
+                    },
+                    u'public_no_acl': {
+                        'acl': u'N/A',
+                        'mode': u'ro'
+                    }
+                },
+                'contact' : u'Joe Smith',
+                'location': u'123 Anytown USA Rack 404'
+            }
+        """
+
+        raw_show_sys = self._send_command("show system")
+        raw_show_snmp = self._send_command("show snmp")
+
+        show_sys = textfsm_extractor(self, "show_system-basic", raw_show_sys)
+        show_snmp_basic = textfsm_extractor(self, "show_snmp-basic", raw_show_snmp)
+        show_snmp_communities = textfsm_extractor(
+            self, "show_snmp-communities", raw_show_snmp
+        )
+        snmp_info = {
+            # Dell OS6 doesn't support setting the chassis ID, it's derived from the hostname
+            "chassis_id": show_sys[0]["sys_name"],
+            "community": {},
+            "contact": show_snmp_basic[0]["contact"],
+            "location": show_snmp_basic[0]["location"],
+        }
+
+        for entry in show_snmp_communities:
+            community = entry["community"]
+            if entry["acl"] == "All":
+                acl = u"N/A"
+            else:
+                # Dell OS6 only supports direct host entries, no ACLs
+                acl = entry["acl"] + "/32"
+            if entry["mode"] == "Read Only":
+                mode = u"ro"
+            if entry["mode"] == "Read/Write":
+                mode = u"rw"
+            snmp_info["community"][community] = {"acl": acl, "mode": mode}
+
+        return snmp_info
+
+    def get_users(self):
+        """
+        Returns a dictionary with the configured users.
+        The keys of the main dictionary represents the username. The values represent the details
+        of the user, represented by the following keys:
+            * level (int)
+            * password (str)
+            * sshkeys (list)
+        The level is an integer between 0 and 15, where 0 is the lowest access and 15 represents
+        full access to the device.
+        Example::
+            {
+                'mircea': {
+                    'level': 15,
+                    'password': '$1$0P70xKPa$z46fewjo/10cBTckk6I/w/',
+                    'sshkeys': [
+                        'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4pFn+shPwTb2yELO4L7NtQrKOJXNeCl1je\
+                         l9STXVaGnRAnuc2PXl35vnWmcUq6YbUEcgUTRzzXfmelJKuVJTJIlMXii7h2xkbQp0YZIEs4P\
+                         8ipwnRBAxFfk/ZcDsN3mjep4/yjN56eorF5xs7zP9HbqbJ1dsqk1p3A/9LIL7l6YewLBCwJj6\
+                         D+fWSJ0/YW+7oH17Fk2HH+tw0L5PcWLHkwA4t60iXn16qDbIk/ze6jv2hDGdCdz7oYQeCE55C\
+                         CHOHMJWYfN3jcL4s0qv8/u6Ka1FVkV7iMmro7ChThoV/5snI4Ljf2wKqgHH7TfNaCfpU0WvHA\
+                         nTs8zhOrGScSrtb mircea@master-roshi'
+                    ]
+                }
+            }
+        """
+
+        username_regex = (
+            r"^username\s+\"(?P<username>\S+)\"\s+password\s+(?P<pwd_hash>[0-9a-f]+).*"
+        )
+
+        raw_show_users_accounts = self._send_command("show users accounts")
+        show_users_accounts = textfsm_extractor(
+            self, "show_users_accounts", raw_show_users_accounts
+        )
+        users = {}
+        for user in show_users_accounts:
+            users[user["username"]] = {
+                "level": int(user["priv"]),
+                "password": "",
+                "sshkeys": [],
+            }
+
+        command = "show running-config | section username"
+        output = self._send_command(command)
+
+        for match in re.finditer(username_regex, output, re.M):
+            username = match.groupdict()["username"]
+            pwd_hash = match.groupdict()["pwd_hash"]
+            users[username]["password"] = pwd_hash
+
+        return users
+
     def get_config(self, retrieve="all", full=False, sanitized=False):
         """
         Return the configuration of a device.
@@ -1424,3 +1546,90 @@ class DellOS6Driver(NetworkDriver):
             return sanitize_configs(configs, D6C.DELLOS6_SANITIZE_FILTERS)
 
         return configs
+
+    def get_network_instances(self, name=""):
+        """
+        Return a dictionary of network instances (VRFs) configured, including default/global
+        Args:
+            name(string) - Name of the network instance to return, default is all.
+        Returns:
+            A dictionary of network instances in OC format:
+            * name (dict)
+                * name (unicode)
+                * type (unicode)
+                * state (dict)
+                    * route_distinguisher (unicode)
+                * interfaces (dict)
+                    * interface (dict)
+                        * interface name: (dict)
+        Example::
+            {
+                u'MGMT': {
+                    u'name': u'MGMT',
+                    u'type': u'L3VRF',
+                    u'state': {
+                        u'route_distinguisher': u'123:456',
+                    },
+                    u'interfaces': {
+                        u'interface': {
+                            u'Management1': {}
+                        }
+                    }
+                },
+                u'default': {
+                    u'name': u'default',
+                    u'type': u'DEFAULT_INSTANCE',
+                    u'state': {
+                        u'route_distinguisher': None,
+                    },
+                    u'interfaces: {
+                        u'interface': {
+                            u'Ethernet1': {}
+                            u'Ethernet2': {}
+                            u'Ethernet3': {}
+                            u'Ethernet4': {}
+                        }
+                    }
+                }
+            }
+        """
+
+        raw_show_ip_vrf = self._send_command("show ip vrf")
+        raw_show_ip_vrf_interface = self._send_command("show ip vrf interface")
+        show_ip_vrf = textfsm_extractor(self, "show_ip_vrf", raw_show_ip_vrf)
+        show_ip_vrf_interface = textfsm_extractor(
+            self, "show_ip_vrf_interface", raw_show_ip_vrf_interface
+        )
+
+        default_ip_interfaces = self.get_interfaces_ip()
+
+        network_instances = {}
+        network_instances[u"default"] = {
+            u"name": u"default",
+            u"type": u"DEFAULT_INSTANCE",
+            u"state": {u"route_distinguisher": ""},
+            u"interfaces": {u"interface": {}},
+        }
+
+        for interface in default_ip_interfaces.keys():
+            network_instances["default"]["interfaces"]["interface"][interface] = {}
+
+        for vrf in show_ip_vrf:
+            network_instances[vrf["vrf_name"]] = {
+                u"name": vrf["vrf_name"],
+                u"type": u"L3VRF",
+                u"state": {
+                    # Dell OS6 doesn't support RDs
+                    u"route_distinguisher": ""
+                },
+                u"interfaces": {u"interface": {}},
+            }
+
+        for interface in show_ip_vrf_interface:
+            vrf_name = interface["vrf_name"]
+            interface_name = canonical_interface_name(
+                interface["int_name"], addl_name_map=dellos6_interfaces
+            )
+            network_instances[vrf_name]["interfaces"]["interface"][interface_name] = {}
+
+        return network_instances

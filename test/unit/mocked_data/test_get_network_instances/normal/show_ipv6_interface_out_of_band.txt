@@ -1,0 +1,9 @@
+
+IPv6 Administrative Mode....................... Enabled
+IPv6 Prefix is................................. fe80::fab1:56ff:fe95:cfef/64
+                                                fd62:9fd2:ab76:6067::12/64
+                                                fd62:9fd2:ab76:6066::13/64
+IPv6 Default Router............................
+Configured IPv6 Protocol....................... None
+IPv6 AutoConfig Mode........................... Disabled
+MAC Address.................................... F8B1.5695.CFEF

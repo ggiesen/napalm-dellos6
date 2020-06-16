@@ -1,0 +1,15 @@
+{
+    "chassis_id": "switch1",
+    "community": {
+        "public": {
+            "acl": "N/A",
+            "mode": "ro"
+        },
+        "private": {
+            "acl": "192.0.2.249/32",
+            "mode": "rw"
+        }
+    },
+    "contact": "",
+    "location": "LOC"
+}

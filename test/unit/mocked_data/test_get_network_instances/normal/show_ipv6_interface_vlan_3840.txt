@@ -1,0 +1,36 @@
+
+IPv6 is enabled
+IPv6 Prefix is ................................ fe80::fab1:56ff:fe95:cff1/64
+                                                fd62:9fd2:ab76:6069::10/64
+                                                fd62:9fd2:ab76:6068::11/64
+Routing Mode................................... Enabled
+IPv6 Enable Mode............................... Disabled
+Administrative Mode............................ Enabled
+IPv6 Operational Mode.......................... Enabled
+Interface Maximum Transmit Unit................ 9198
+Router Duplicate Address Detection Transmits... 1
+Address Autoconfigure Mode..................... Disabled
+Address DHCP Mode.............................. Disabled
+IPv6 Hop Limit Unspecified..................... Disabled
+Router Advertisement NS Interval............... 0
+Router Lifetime Interval....................... 1800
+Router Advertisement Reachable Time............ 0
+Router Advertisement Interval.................. 600
+Router Advertisement Managed Config Flag....... Disabled
+Router Advertisement Other Config Flag......... Disabled
+Router Advertisement Suppress Flag............. Disabled
+IPv6 Destination Unreachables.................. Enabled
+
+
+Prefix fd62:9fd2:ab76:6069::10/64
+Preferred Lifetime............................. 604800
+Valid Lifetime................................. 2592000
+Onlink Flag.................................... Enabled
+Autonomous Flag................................ Enabled
+
+
+Prefix fd62:9fd2:ab76:6068::11/64
+Preferred Lifetime............................. 604800
+Valid Lifetime................................. 2592000
+Onlink Flag.................................... Enabled
+Autonomous Flag................................ Enabled

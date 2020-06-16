@@ -1,0 +1,18 @@
+
+Routing interface status....................... Up
+Primary IP Address............................. 10.99.39.17/255.255.255.224
+Secondary IP Address(es)....................... 192.0.2.5/255.255.255.252
+............................................... 192.0.2.9/255.255.255.252
+Method......................................... Manual
+Routing Mode................................... Enable
+Administrative Mode............................ Enable
+Forward Net Directed Broadcasts................ Disable
+Proxy ARP...................................... Enable
+Local Proxy ARP................................ Disable
+Active State................................... Active
+MAC Address.................................... F8B1.5695.CF1
+Encapsulation Type............................. Ethernet
+IP MTU......................................... 9198
+Bandwidth...................................... 10000 kbps
+Destination Unreachables....................... Enabled
+ICMP Redirects................................. Enabled
