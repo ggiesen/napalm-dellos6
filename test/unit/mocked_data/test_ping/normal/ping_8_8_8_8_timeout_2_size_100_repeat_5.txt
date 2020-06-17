@@ -1,0 +1,11 @@
+ Pinging 8.8.8.8 with 100 bytes of data:
+
+Reply From 8.8.8.8: icmp_seq = 0. time= 53458 usec.
+Reply From 8.8.8.8: icmp_seq = 1. time= 53536 usec.
+Reply From 8.8.8.8: icmp_seq = 2. time= 53547 usec.
+Reply From 8.8.8.8: icmp_seq = 3. time= 53628 usec.
+Reply From 8.8.8.8: icmp_seq = 4. time= 53438 usec.
+
+----8.8.8.8 PING statistics----
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip (msec) min/avg/max = 53/53/53
