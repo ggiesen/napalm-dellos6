@@ -21,8 +21,9 @@ Read https://napalm.readthedocs.io for more information.
 import re
 import socket
 from ipaddress import IPv4Interface, IPv6Interface
+from statistics import stdev
 
-import napalm_dellos6.dellos6_constants as D6C
+import napalm.base.constants as C
 from napalm.base import NetworkDriver
 from napalm.base.exceptions import CommandErrorException, ConnectionClosedException
 from napalm.base.helpers import (
@@ -32,6 +33,7 @@ from napalm.base.helpers import (
     textfsm_extractor,
 )
 
+import napalm_dellos6.dellos6_constants as D6C
 from napalm_dellos6.dellos6_canonical_map import dellos6_interfaces
 
 from netmiko import ConnectHandler
@@ -1453,6 +1455,163 @@ class DellOS6Driver(NetworkDriver):
             snmp_info["community"][community] = {"acl": acl, "mode": mode}
 
         return snmp_info
+
+    def ping(
+        self,
+        destination,
+        source=C.PING_SOURCE,
+        ttl=C.PING_TTL,
+        timeout=C.PING_TIMEOUT,
+        size=C.PING_SIZE,
+        count=C.PING_COUNT,
+        vrf=C.PING_VRF,
+    ):
+        """
+        Executes ping on the device and returns a dictionary with the result
+        :param destination: Host or IP Address of the destination
+        :param source (optional): Source address of echo request
+        :param ttl (optional): Maximum number of hops
+        :param timeout (optional): Maximum seconds to wait after sending final packet
+        :param size (optional): Size of request (bytes)
+        :param count (optional): Number of ping request to send
+        Output dictionary has one of following keys:
+            * success
+            * error
+        In case of success, inner dictionary will have the followin keys:
+            * probes_sent (int)
+            * packet_loss (int)
+            * rtt_min (float)
+            * rtt_max (float)
+            * rtt_avg (float)
+            * rtt_stddev (float)
+            * results (list)
+        'results' is a list of dictionaries with the following keys:
+            * ip_address (str)
+            * rtt (float)
+        Example::
+            {
+                'success': {
+                    'probes_sent': 5,
+                    'packet_loss': 0,
+                    'rtt_min': 72.158,
+                    'rtt_max': 72.433,
+                    'rtt_avg': 72.268,
+                    'rtt_stddev': 0.094,
+                    'results': [
+                        {
+                            'ip_address': u'1.1.1.1',
+                            'rtt': 72.248
+                        },
+                        {
+                            'ip_address': '2.2.2.2',
+                            'rtt': 72.299
+                        }
+                    ]
+                }
+            }
+            OR
+            {
+                'error': 'unknown host 8.8.8.8.8'
+            }
+        """
+
+        vrf_name = ""
+        if vrf:
+            vrf_name = " vrf " + str(vrf)
+
+        params = ""
+        if source:
+            params = params + " source "
+        if timeout:
+            params = params + " timeout " + str(timeout)
+        if size:
+            params = params + " size " + str(size)
+        if count:
+            params = params + " repeat " + str(count)
+
+        cmd = "ping{} {}{}".format(vrf_name, destination, params)
+        ping_dict = {}
+
+        send_received_regexp = (
+            r"(\d+)\s+packets transmitted\S+\s+(\d+)\s+"
+            r"packets received\S+\s+\S+\s+packet loss"
+        )
+        icmp_result_regexp = (
+            r"Reply From\s+(\S+)\:\s+icmp_seq\s+=\s+(\d+)\.\s+"
+            r"time=\s+(\d+)\s+usec\."
+        )
+        min_avg_max_reg_exp = (
+            r"round-trip \(msec\)\s+min\/avg\/max\s+=\s+(\S+)\/" r"(\S+)\/(\S+)"
+        )
+
+        output = self._send_command(cmd)
+        print(output)
+
+        if "% Error" in output:
+            status = "error"
+            ping_dict = {"results": ("command :: " + cmd + " :: " + output)}
+        elif "packets transmitted" in output:
+            ping_dict = {
+                "probes_sent": 0,
+                "packet_loss": 0,
+                "rtt_min": 0.0,
+                "rtt_max": 0.0,
+                "rtt_avg": 0.0,
+                "rtt_stddev": 0.0,
+                "results": [],
+            }
+
+            results_array = []
+            std_dev_list = []
+            for line in output.splitlines():
+                status = "success"
+                if "packets transmitted" in line:
+                    sent_and_received = re.search(send_received_regexp, line)
+                    probes_sent = int(sent_and_received.groups()[0])
+                    probes_received = int(sent_and_received.groups()[1])
+                    if probes_received == 0:
+                        status = "error"
+                    ping_dict["probes_sent"] = probes_sent
+                    ping_dict["packet_loss"] = probes_sent - probes_received
+                elif "icmp_seq" in line:
+                    print(line)
+                    icmp_result = re.search(icmp_result_regexp, line)
+                    results_array.append(
+                        {
+                            "ip_address": icmp_result.groups()[0],
+                            "rtt": float(icmp_result.groups()[2]) / 1000,
+                        }
+                    )
+                    ping_dict.update({"results": results_array})
+                    std_dev_list.append(float(icmp_result.groups()[2]) / 1000)
+                elif "round-trip (msec)" in line:
+                    min_avg = re.search(min_avg_max_reg_exp, line)
+                    if std_dev_list:
+                        rtt_stddev = stdev(std_dev_list)
+                    else:
+                        rtt_stddev = 0.0
+                    if min_avg.groups()[0] == "<10":
+                        rtt_min = 0.0
+                    else:
+                        rtt_min = float(min_avg.groups()[0])
+                    if min_avg.groups()[1] == "<10":
+                        rtt_avg = 0.0
+                    else:
+                        rtt_avg = float(min_avg.groups()[1])
+                    if min_avg.groups()[2] == "<10":
+                        rtt_max = 0.0
+                    else:
+                        rtt_max = float(min_avg.groups()[2])
+                    ping_dict.update(
+                        {
+                            "rtt_min": rtt_min,
+                            "rtt_avg": rtt_avg,
+                            "rtt_max": rtt_max,
+                            "rtt_stddev": rtt_stddev,
+                        }
+                    )
+
+        return {status: ping_dict}
 
     def get_users(self):
         """
