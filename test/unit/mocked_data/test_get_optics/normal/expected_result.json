@@ -1,0 +1,30 @@
+{
+    "Tengigabitethernet2/0/23": {
+        "physical_channels": {
+            "channel": [{
+                    "index": 0,
+                    "state": {
+                        "input_power": {
+                            "instant": -36.990,
+                            "avg": -0.0,
+                            "min": -0.0,
+                            "max": -0.0
+                        },
+                        "output_power": {
+                            "instant": -2.184,
+                            "avg": -0.0,
+                            "min": -0.0,
+                            "max": -0.0
+                        },
+                        "laser_bias_current": {
+                            "instant": 7.5,
+                            "avg": -0.0,
+                            "min": -0.0,
+                            "max": -0.0
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

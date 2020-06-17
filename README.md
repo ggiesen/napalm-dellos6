@@ -23,6 +23,7 @@ NAPALM driver for Dell EMC Networking OS6 Operating System.
 * get_snmp_information
 * ping
 * get_users
+* get_optics
 * get_config
 * get_network_instances
 * get_vlans
@@ -43,7 +44,6 @@ NAPALM driver for Dell EMC Networking OS6 Operating System.
 * get_probes_config
 * get_probes_results
 * traceroute
-* get_optics
 * get_firewall_policies
 * get_ipv6_neighbors_table
 * compliance_report

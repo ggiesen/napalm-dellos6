@@ -1,0 +1,5 @@
+                               Output  Input
+Port      Temp Voltage Current Power   Power   TX    LOS
+          [C]  [Volt]    [mA]  [dBm]   [dBm]   Fault
+--------- ---- ------- ------- ------- ------- ----- ---
+Te2/0/23  22.5 3.296       7.5  -2.184 -36.990 No    Yes
