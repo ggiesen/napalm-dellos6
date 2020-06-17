@@ -1,0 +1,14 @@
+[{
+    "interface": "vlan 3840",
+    "mac": "02:01:D0:59:6F:CB",
+    "ip": "fe80::1:d0ff:fe59:6fcb",
+    "age": -0.0,
+    "state": "REACH"
+}, {
+    "interface": "vlan 3840",
+    "mac": "02:01:D0:61:6F:97",
+    "ip": "fe80::7:d0ff:fed7:6f1b",
+    "age": -0.0,
+    "state": "STALE"
+}
+]
