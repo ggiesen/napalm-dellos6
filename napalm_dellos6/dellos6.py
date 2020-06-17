@@ -1385,6 +1385,128 @@ class DellOS6Driver(NetworkDriver):
             )
         return table
 
+    def get_snmp_information(self):
+
+        """
+        Returns a dict of dicts containing SNMP configuration.
+        Each inner dictionary contains these fields
+            * chassis_id (string)
+            * community (dictionary)
+            * contact (string)
+            * location (string)
+        'community' is a dictionary with community string specific information, as follows:
+            * acl (string) # acl number or name
+            * mode (string) # read-write (rw), read-only (ro)
+        Example::
+            {
+                'chassis_id': u'Asset Tag 54670',
+                'community': {
+                    u'private': {
+                        'acl': u'12',
+                        'mode': u'rw'
+                    },
+                    u'public': {
+                        'acl': u'11',
+                        'mode': u'ro'
+                    },
+                    u'public_named_acl': {
+                        'acl': u'ALLOW-SNMP-ACL',
+                        'mode': u'ro'
+                    },
+                    u'public_no_acl': {
+                        'acl': u'N/A',
+                        'mode': u'ro'
+                    }
+                },
+                'contact' : u'Joe Smith',
+                'location': u'123 Anytown USA Rack 404'
+            }
+        """
+
+        raw_show_sys = self._send_command("show system")
+        raw_show_snmp = self._send_command("show snmp")
+
+        show_sys = textfsm_extractor(self, "show_system-basic", raw_show_sys)
+        show_snmp_basic = textfsm_extractor(self, "show_snmp-basic", raw_show_snmp)
+        show_snmp_communities = textfsm_extractor(
+            self, "show_snmp-communities", raw_show_snmp
+        )
+        snmp_info = {
+            # Dell OS6 doesn't support setting the chassis ID, it's derived from the hostname
+            "chassis_id": show_sys[0]["sys_name"],
+            "community": {},
+            "contact": show_snmp_basic[0]["contact"],
+            "location": show_snmp_basic[0]["location"],
+        }
+
+        for entry in show_snmp_communities:
+            community = entry["community"]
+            if entry["acl"] == "All":
+                acl = u"N/A"
+            else:
+                # Dell OS6 only supports direct host entries, no ACLs
+                acl = entry["acl"] + "/32"
+            if entry["mode"] == "Read Only":
+                mode = u"ro"
+            if entry["mode"] == "Read/Write":
+                mode = u"rw"
+            snmp_info["community"][community] = {"acl": acl, "mode": mode}
+
+        return snmp_info
+
+    def get_users(self):
+        """
+        Returns a dictionary with the configured users.
+        The keys of the main dictionary represents the username. The values represent the details
+        of the user, represented by the following keys:
+            * level (int)
+            * password (str)
+            * sshkeys (list)
+        The level is an integer between 0 and 15, where 0 is the lowest access and 15 represents
+        full access to the device.
+        Example::
+            {
+                'mircea': {
+                    'level': 15,
+                    'password': '$1$0P70xKPa$z46fewjo/10cBTckk6I/w/',
+                    'sshkeys': [
+                        'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4pFn+shPwTb2yELO4L7NtQrKOJXNeCl1je\
+                         l9STXVaGnRAnuc2PXl35vnWmcUq6YbUEcgUTRzzXfmelJKuVJTJIlMXii7h2xkbQp0YZIEs4P\
+                         8ipwnRBAxFfk/ZcDsN3mjep4/yjN56eorF5xs7zP9HbqbJ1dsqk1p3A/9LIL7l6YewLBCwJj6\
+                         D+fWSJ0/YW+7oH17Fk2HH+tw0L5PcWLHkwA4t60iXn16qDbIk/ze6jv2hDGdCdz7oYQeCE55C\
+                         CHOHMJWYfN3jcL4s0qv8/u6Ka1FVkV7iMmro7ChThoV/5snI4Ljf2wKqgHH7TfNaCfpU0WvHA\
+                         nTs8zhOrGScSrtb mircea@master-roshi'
+                    ]
+                }
+            }
+        """
+
+        username_regex = (
+            r"^username\s+\"(?P<username>\S+)\"\s+password\s+(?P<pwd_hash>[0-9a-f]+).*"
+        )
+
+        raw_show_users_accounts = self._send_command("show users accounts")
+        show_users_accounts = textfsm_extractor(
+            self, "show_users_accounts", raw_show_users_accounts
+        )
+        users = {}
+        for user in show_users_accounts:
+            users[user["username"]] = {
+                "level": int(user["priv"]),
+                "password": "",
+                "sshkeys": [],
+            }
+
+        command = "show running-config | section username"
+        output = self._send_command(command)
+
+        for match in re.finditer(username_regex, output, re.M):
+            username = match.groupdict()["username"]
+            pwd_hash = match.groupdict()["pwd_hash"]
+            users[username]["password"] = pwd_hash
+
+        return users
+
     def get_config(self, retrieve="all", full=False, sanitized=False):
         """
         Return the configuration of a device.
