@@ -1545,7 +1545,6 @@ class DellOS6Driver(NetworkDriver):
         )
 
         output = self._send_command(cmd)
-        print(output)
 
         if "% Error" in output:
             status = "error"
@@ -1574,7 +1573,6 @@ class DellOS6Driver(NetworkDriver):
                     ping_dict["probes_sent"] = probes_sent
                     ping_dict["packet_loss"] = probes_sent - probes_received
                 elif "icmp_seq" in line:
-                    print(line)
                     icmp_result = re.search(icmp_result_regexp, line)
                     results_array.append(
                         {
@@ -1665,6 +1663,116 @@ class DellOS6Driver(NetworkDriver):
             users[username]["password"] = pwd_hash
 
         return users
+
+    def get_optics(self):
+        """Fetches the power usage on the various transceivers installed
+        on the switch (in dbm), and returns a view that conforms with the
+        openconfig model openconfig-platform-transceiver.yang
+        Returns a dictionary where the keys are as listed below:
+            * intf_name (unicode)
+                * physical_channels
+                    * channels (list of dicts)
+                        * index (int)
+                        * state
+                            * input_power
+                                * instant (float)
+                                * avg (float)
+                                * min (float)
+                                * max (float)
+                            * output_power
+                                * instant (float)
+                                * avg (float)
+                                * min (float)
+                                * max (float)
+                            * laser_bias_current
+                                * instant (float)
+                                * avg (float)
+                                * min (float)
+                                * max (float)
+        Example::
+            {
+                'et1': {
+                    'physical_channels': {
+                        'channel': [
+                            {
+                                'index': 0,
+                                'state': {
+                                    'input_power': {
+                                        'instant': 0.0,
+                                        'avg': 0.0,
+                                        'min': 0.0,
+                                        'max': 0.0,
+                                    },
+                                    'output_power': {
+                                        'instant': 0.0,
+                                        'avg': 0.0,
+                                        'min': 0.0,
+                                        'max': 0.0,
+                                    },
+                                    'laser_bias_current': {
+                                        'instant': 0.0,
+                                        'avg': 0.0,
+                                        'min': 0.0,
+                                        'max': 0.0,
+                                    },
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        """
+
+        raw_show_fiber_ports_optical_transceiver = self._send_command(
+            "show fiber-ports optical transceiver"
+        )
+        show_fiber_ports_optical_transceiver = textfsm_extractor(
+            self,
+            "show_fiber-ports_optical-transceiver",
+            raw_show_fiber_ports_optical_transceiver,
+        )
+
+        optics = {}
+        for interface in show_fiber_ports_optical_transceiver:
+            interface_name = canonical_interface_name(
+                interface["int_name"], addl_name_map=dellos6_interfaces
+            )
+            pwr_rx = float(interface["pwr_rx"])
+            pwr_tx = float(interface["pwr_tx"])
+            current = float(interface["current"])
+
+            optics[interface_name] = {
+                "physical_channels": {
+                    "channel": [
+                        {
+                            # We do not yet support multiple channels
+                            "index": 0,
+                            "state": {
+                                "input_power": {
+                                    "instant": pwr_rx,
+                                    "avg": -0.0,
+                                    "min": -0.0,
+                                    "max": -0.0,
+                                },
+                                "output_power": {
+                                    "instant": pwr_tx,
+                                    "avg": -0.0,
+                                    "min": -0.0,
+                                    "max": -0.0,
+                                },
+                                "laser_bias_current": {
+                                    "instant": current,
+                                    "avg": -0.0,
+                                    "min": -0.0,
+                                    "max": -0.0,
+                                },
+                            },
+                        }
+                    ]
+                }
+            }
+
+        return optics
 
     def get_config(self, retrieve="all", full=False, sanitized=False):
         """
