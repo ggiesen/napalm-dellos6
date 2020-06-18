@@ -1259,6 +1259,61 @@ class DellOS6Driver(NetworkDriver):
 
         return interfaces_ip
 
+    def get_ipv6_neighbors_table(self):
+        """
+        Get IPv6 neighbors table information.
+        Return a list of dictionaries having the following set of keys:
+            * interface (string)
+            * mac (string)
+            * ip (string)
+            * age (float) in seconds
+            * state (string)
+        For example::
+            [
+                {
+                    'interface' : 'MgmtEth0/RSP0/CPU0/0',
+                    'mac'       : '5c:5e:ab:da:3c:f0',
+                    'ip'        : '2001:db8:1:1::1',
+                    'age'       : 1454496274.84,
+                    'state'     : 'REACH'
+                },
+                {
+                    'interface': 'MgmtEth0/RSP0/CPU0/0',
+                    'mac'       : '66:0e:94:96:e0:ff',
+                    'ip'        : '2001:db8:1:1::2',
+                    'age'       : 1435641582.49,
+                    'state'     : 'STALE'
+                }
+            ]
+        """
+
+        raw_show_ipv6_neighbors = self._send_command("show ipv6 neighbors")
+        show_ipv6_neighbors = textfsm_extractor(
+            self, "show_ipv6_neighbors", raw_show_ipv6_neighbors
+        )
+
+        ipv6_neighbors = []
+        for neighbor in show_ipv6_neighbors:
+            interface_name = canonical_interface_name(
+                neighbor["int_name"], addl_name_map=dellos6_interfaces
+            )
+            mac_addr = mac(neighbor["mac_addr"])
+            ipv6_addr = neighbor["ipv6_addr"]
+            # Dell OS6 doesn't support age
+            age = -0.0
+            state = neighbor["state"].upper()
+            ipv6_neighbors.append(
+                {
+                    "interface": interface_name,
+                    "mac": mac_addr,
+                    "ip": ipv6_addr,
+                    "age": age,
+                    "state": state,
+                }
+            )
+
+        return ipv6_neighbors
+
     def _expand_ranges(self, iflist):
         """
         In: ["Gi1/0/42-43"]

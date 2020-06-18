@@ -1,0 +1,6 @@
+Neighbor Last
+IPv6 Address           MAC Address       isRtr State   Updated
+                                                       Interface
+---------------------- ----------------- ----- ------- ---------
+fe80::1:d0ff:fe59:6fcb 0201.D059.6FCB    No    Reach   Vl3840
+fe80::7:d0ff:fed7:6f1b 0201.D061.6F97    No    Stale   Vl3840
