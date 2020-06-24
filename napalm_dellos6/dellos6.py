@@ -531,6 +531,134 @@ class DellOS6Driver(NetworkDriver):
 
         return lldp
 
+    def get_bgp_neighbors(self):
+        """
+        Returns a dictionary of dictionaries. The keys for the first dictionary will be the vrf
+        (global if no vrf). The inner dictionary will contain the following data for each vrf:
+          * router_id
+          * peers - another dictionary of dictionaries. Outer keys are the IPs of the neighbors. \
+            The inner keys are:
+             * local_as (int)
+             * remote_as (int)
+             * remote_id - peer router id
+             * is_up (True/False)
+             * is_enabled (True/False)
+             * description (string)
+             * uptime (int in seconds)
+             * address_family (dictionary) - A dictionary of address families available for the \
+               neighbor. So far it can be 'ipv4' or 'ipv6'
+                * received_prefixes (int)
+                * accepted_prefixes (int)
+                * sent_prefixes (int)
+            Note, if is_up is False and uptime has a positive value then this indicates the
+            uptime of the last active BGP session.
+            Example::
+                {
+                  "global": {
+                    "router_id": "10.0.1.1",
+                    "peers": {
+                      "10.0.0.2": {
+                        "local_as": 65000,
+                        "remote_as": 65000,
+                        "remote_id": "10.0.1.2",
+                        "is_up": True,
+                        "is_enabled": True,
+                        "description": "internal-2",
+                        "uptime": 4838400,
+                        "address_family": {
+                          "ipv4": {
+                            "sent_prefixes": 637213,
+                            "accepted_prefixes": 3142,
+                            "received_prefixes": 3142
+                          },
+                          "ipv6": {
+                            "sent_prefixes": 36714,
+                            "accepted_prefixes": 148,
+                            "received_prefixes": 148
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+        """
+
+        raw_show_ip_bgp_summary = self._send_command("show ip bgp summary")
+        raw_show_ip_bgp_neighbors = self._send_command("show ip bgp neighbors")
+        raw_show_bgp_ipv6_neighbors = self._send_command("show bgp ipv6 neighbors")
+
+        show_ip_bgp_summary = textfsm_extractor(
+            self, "show_ip_bgp_summary", raw_show_ip_bgp_summary
+        )
+        show_ip_bgp_neighbors = textfsm_extractor(
+            self, "show_ip_bgp_neighbors", raw_show_ip_bgp_neighbors
+        )
+        show_bgp_ipv6_neighbors = textfsm_extractor(
+            self, "show_bgp_ipv6_neighbors", raw_show_bgp_ipv6_neighbors
+        )
+
+        router_id = show_ip_bgp_summary[0]["bgp_router_id"]
+        local_as = int(show_ip_bgp_summary[0]["local_as"])
+        bgp_neighbors = {"global": {"router_id": router_id, "peers": {}}}
+        for neighbor in show_ip_bgp_neighbors:
+            peer_addr = neighbor["peer_addr"]
+            bgp_neighbors["global"]["peers"][peer_addr] = {
+                "local_as": local_as,
+                "remote_as": int(neighbor["peer_as"]),
+                "remote_id": neighbor["peer_id"],
+                "is_up": (neighbor["peer_state"] == "ESTABLISHED"),
+                "is_enabled": (neighbor["peer_status_admin"] == "START"),
+                "description": "",
+                "uptime": -1,
+                "address_family": {},
+            }
+            if neighbor["ipv4_ucast"] != "None":
+                bgp_neighbors["global"]["peers"][peer_addr]["address_family"][
+                    "ipv4"
+                ] = {
+                    "sent_prefixes": int(neighbor["ipv4_pfx_adv_tx"]),
+                    "accepted_prefixes": int(neighbor["ipv4_pfx_current_rx"]),
+                    "received_prefixes": int(neighbor["ipv4_pfx_adv_rx"]),
+                }
+            if neighbor["ipv6_ucast"] != "None":
+                bgp_neighbors["global"]["peers"][peer_addr]["address_family"][
+                    "ipv6"
+                ] = {
+                    "sent_prefixes": int(neighbor["ipv6_pfx_adv_tx"]),
+                    "accepted_prefixes": int(neighbor["ipv6_pfx_current_rx"]),
+                    "received_prefixes": int(neighbor["ipv6_pfx_adv_rx"]),
+                }
+        for neighbor in show_bgp_ipv6_neighbors:
+            peer_addr = neighbor["peer_addr"]
+            bgp_neighbors["global"]["peers"][peer_addr] = {
+                "local_as": local_as,
+                "remote_as": int(neighbor["peer_as"]),
+                "remote_id": neighbor["peer_id"],
+                "is_up": (neighbor["peer_state"] == "ESTABLISHED"),
+                "is_enabled": (neighbor["peer_status_admin"] == "START"),
+                "description": neighbor["desc"],
+                "uptime": -1,
+                "address_family": {},
+            }
+            if neighbor["ipv4_ucast"] != "None":
+                bgp_neighbors["global"]["peers"][peer_addr]["address_family"][
+                    "ipv4"
+                ] = {
+                    "sent_prefixes": int(neighbor["ipv4_pfx_adv_tx"]),
+                    "accepted_prefixes": int(neighbor["ipv4_pfx_current_rx"]),
+                    "received_prefixes": int(neighbor["ipv4_pfx_adv_rx"]),
+                }
+            if neighbor["ipv6_ucast"] != "None":
+                bgp_neighbors["global"]["peers"][peer_addr]["address_family"][
+                    "ipv6"
+                ] = {
+                    "sent_prefixes": int(neighbor["ipv6_pfx_adv_tx"]),
+                    "accepted_prefixes": int(neighbor["ipv6_pfx_current_rx"]),
+                    "received_prefixes": int(neighbor["ipv6_pfx_adv_rx"]),
+                }
+
+        return bgp_neighbors
+
     def get_environment(self):
         """
         Returns a dictionary where:

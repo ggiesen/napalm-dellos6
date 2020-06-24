@@ -1,0 +1,107 @@
+Remote Address ................................ 10.10.10.10
+Remote AS ..................................... 65000
+Peer ID ....................................... 0.0.0.0
+Peer Admin Status ............................. START
+Peer State .................................... IDLE
+Local Interface Address ....................... 10.10.10.3
+Local Port .................................... 179
+Remote Port ................................... 54474
+Connection Retry Interval ..................... 2 sec
+Neighbor Capabilities ......................... None
+Next Hop Self ................................. Disable
+IPv4 Unicast Support .......................... Sent
+IPv6 Unicast Support .......................... Sent
+Template Name ................................. None
+Update Source ................................. None
+Configured Hold Time .......................... None
+Configured Keep Alive Time .................... None
+Prefix Limit .................................. 8160
+Prefix Warning Threshold ...................... 75
+Warning Only On Prefix Limit .................. False
+MD5 Password .................................. None
+Originate Default ............................. False
+
+Last Error (Sent) ............................. OPEN Message Error
+Last SubError ................................. Bad Peer AS
+Time Since Last Error ......................... 0 days 00 hrs 00 mins 02 secs
+Established Transitions ....................... 0
+Established Time .............................. 0 days 01 hrs 45 mins 20 secs
+Time Since Last Update ........................ No UPDATE received
+IPv4 Outbound Update Group .................... None
+
+
+             Open    Update    Keepalive    Notification    Refresh     Total
+Msgs Sent    2287         0            0            2122          0      4409
+Msgs Rcvd    2122         0            0               0          0      2122
+
+Received UPDATE Queue Size: 0 bytes. High: 0 Limit: 392192 Drops: 0
+
+IPv4 Prefix Statistics:
+                           Inbound       Outbound
+Prefixes Advertised              0              0
+Prefixes Withdrawn               0              0
+Prefixes Current                 0              0
+Prefixes Accepted                0            N/A
+Prefixes Rejected                0            N/A
+Max NLRI per Update              0              0
+Min NLRI per Update              0              0
+
+IPv6 Prefix Statistics:
+                           Inbound       Outbound
+Prefixes Advertised              0              0
+Prefixes Withdrawn               0              0
+Prefixes Current                 0              0
+Prefixes Accepted                0            N/A
+Prefixes Rejected                0            N/A
+Max NLRI per Update              0              0
+Min NLRI per Update              0              0
+
+
+Remote Address ................................ 172.20.1.100
+Remote AS ..................................... 100
+Peer ID ....................................... 14.3.0.1
+Peer Admin Status ............................. START
+Peer State .................................... ESTABLISHED
+Local Interface Address ....................... 172.20.1.2
+Local Port .................................... 179
+Remote Port ................................... 58265
+Connection Retry Interval ..................... 120 sec
+Neighbor Capabilities ......................... None
+Next Hop Self ................................. Disable
+IPv4 Unicast Support .......................... Sent
+IPv6 Unicast Support .......................... None
+Template Name ................................. None
+Update Source..................................
+Configured Hold Time .......................... 90 sec
+Configured Keep Alive Time..................... 30 sec
+Negotiated Hold Time .......................... 30 sec
+Keep Alive Time ............................... 10 sec
+Prefix Limit................................... None
+Prefix Warning Threshold....................... 75%
+Warning Only On Prefix Limit................... TRUE
+MD5 Password................................... password
+Originate Default.............................. TRUE
+Last Error (Sent).............................. Hold Timer Expired
+Last SubError.................................. None
+Time Since Last Error.......................... 0 day 0 hr 4 min 27 sec
+Established Transitions ....................... 1
+Established Time .............................. 0 day 0 hr 4 min 25 sec
+Time Since Last Update ........................ 0 day 0 hr 4 min 25 sec
+IPv4 Outbound Update Group .................... 3
+
+
+             Open    Update    Keepalive    Notification    Refresh     Total
+Msgs Sent       1         0           10               0          0        11
+Msgs Rcvd       1         1           11               0          0        12
+
+Received UPDATE Queue Size: 0 bytes. High: 0 Limit: 123456 Drops: 0
+
+IPv4 Prefix Statistics:
+                           Inbound       Outbound
+Prefixes Advertised              1              0
+Prefixes Withdrawn               0              0
+Prefixes Current                 1              0
+Prefixes Accepted                0            N/A
+Prefixes Rejected                0            N/A
+Max NLRI per Update              1              0
+Min NLRI per Update              1              0

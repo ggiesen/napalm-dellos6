@@ -1,0 +1,28 @@
+
+IPv4 Routing .................................. Enable
+BGP Admin Mode ................................ Enable
+BGP Router ID ................................. 0.0.0.100
+Local AS Number ............................... 65001
+Traps ......................................... Disable
+Maximum Paths ................................. 1
+Maximum Paths iBGP ............................ 1
+Default Keep Alive Time ....................... 30
+Default Hold Time ............................. 90
+Number of Network Entries ..................... 3
+Number of AS Paths ............................ 0
+Dynamic Neighbors Current/High/Limit .......... 1/1/20
+Default Metric ................................ Not Configured
+Default Route Advertise ....................... No
+
+Redistributing:
+Source    Metric     Dist List                        Route Map
+--------- ---------- -------------------------------- ----------------------
+static
+ospf      300
+  ospf match: int
+
+
+Neighbor         ASN   MsgRcvd  MsgSent  State         Up/Down Time   Pfx Rcvd
+---------------- ----- -------- -------- ------------- -------------- ------
+10.10.10.10      65000 2269     4666     IDLE          0:00:45:20     0
+172.20.1.100     100   12       11       ESTABLISHED   0:00:04:25     0
