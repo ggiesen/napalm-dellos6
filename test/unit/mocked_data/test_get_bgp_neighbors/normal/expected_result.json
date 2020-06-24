@@ -1,0 +1,81 @@
+{
+    "global": {
+        "router_id": "0.0.0.100",
+        "peers": {
+            "10.10.10.10": {
+                "local_as": 65001,
+                "remote_as": 65000,
+                "remote_id": "0.0.0.0",
+                "is_up": false,
+                "is_enabled": true,
+                "description": "",
+                "uptime": -1,
+                "address_family": {
+                    "ipv4": {
+                        "sent_prefixes": 0,
+                        "accepted_prefixes": 0,
+                        "received_prefixes": 0
+                    },
+                    "ipv6": {
+                        "sent_prefixes": 0,
+                        "accepted_prefixes": 0,
+                        "received_prefixes": 0
+                    }
+                }
+            },
+            "172.20.1.100": {
+                "local_as": 65001,
+                "remote_as": 100,
+                "remote_id": "14.3.0.1",
+                "is_up": true,
+                "is_enabled": true,
+                "description": "",
+                "uptime": -1,
+                "address_family": {
+                    "ipv4": {
+                        "sent_prefixes": 0,
+                        "accepted_prefixes": 1,
+                        "received_prefixes": 1
+                    }
+                }
+            },
+            "fe80::2": {
+                "local_as": 65001,
+                "remote_as": 100,
+                "remote_id": "14.3.0.1",
+                "is_up": true,
+                "is_enabled": true,
+                "description": "spine 1 router 1",
+                "uptime": -1,
+                "address_family": {
+                    "ipv6": {
+                        "sent_prefixes": 0,
+                        "accepted_prefixes": 1,
+                        "received_prefixes": 1
+                    }
+                }
+            },
+            "fe80::3": {
+                "local_as": 65001,
+                "remote_as": 100,
+                "remote_id": "14.3.0.2",
+                "is_up": true,
+                "is_enabled": true,
+                "description": "spine 1 router 2",
+                "uptime": -1,
+                "address_family": {
+                    "ipv4": {
+                        "sent_prefixes": 5,
+                        "accepted_prefixes": 1,
+                        "received_prefixes": 10
+                    },
+                    "ipv6": {
+                        "sent_prefixes": 0,
+                        "accepted_prefixes": 1,
+                        "received_prefixes": 1
+                    }
+                }
+            }
+        }
+    }
+}
