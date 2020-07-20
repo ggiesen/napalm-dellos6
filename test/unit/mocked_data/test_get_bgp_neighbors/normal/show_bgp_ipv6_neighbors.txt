@@ -1,0 +1,108 @@
+Description: spine 1 router 1
+
+Remote Address................................ fe80::2
+Interface..................................... 0/1
+Remote AS..................................... 100
+Peer ID....................................... 14.3.0.1
+Peer Admin Status............................. START
+Peer State.................................... ESTABLISHED
+Peer Type..................................... DYNAMIC
+Local Port.................................... 179
+Remote Port................................... 58265
+Connection Retry Interval..................... 120 sec
+Neighbor Capabilities......................... None
+IPv4 Unicast Support.......................... None
+IPv6 Unicast Support.......................... Both
+RFC 5549 Support.............................. Enable
+Update Source................................. None
+Local Interface Address....................... fe80::2
+Configured Hold Time.......................... 90 sec
+Configured Keep Alive Time.................... 30 sec
+Negotiated Hold Time.......................... 30 sec
+Keep Alive Time............................... 10 sec
+MD5 Password.................................. password
+
+Last Error (Sent).............................. Hold Timer Expired
+Last SubError.................................. None
+Time Since Last Error.......................... 0 day 0 hr 4 min 27 sec
+Established Transitions........................ 1
+Established Time............................... 0 day 0 hr 4 min 25 sec
+Time Since Last Update......................... 0 day 0 hr 4 min 24 sec
+IPv6 Outbound Update Group..................... 7
+
+
+             Open   Update   Keepalive   Notification   Refresh   Total
+Msgs Sent       1        0          10              0         0      11
+Msgs Rcvd       1        1          11              0         0      12
+
+Received UPDATE Queue Size:  0 bytes. High: 355. Limit 196096. Drops 0.
+
+IPv6 Prefix Statistics:
+                        Inbound         Outbound
+Prefixes Advertised           1                0
+Prefixes Withdrawn            0                0
+Prefixes Current              1                0
+Prefixes Accepted             1              N/A
+Prefixes Rejected             1              N/A
+Max NLRI per Update           1                0
+Min NLRI per Update           1                0
+
+
+Description: spine 1 router 2
+
+Remote Address................................ fe80::3
+Interface..................................... 0/1
+Remote AS..................................... 100
+Peer ID....................................... 14.3.0.2
+Peer Admin Status............................. START
+Peer State.................................... ESTABLISHED
+Peer Type..................................... DYNAMIC
+Local Port.................................... 179
+Remote Port................................... 12345
+Connection Retry Interval..................... 120 sec
+Neighbor Capabilities......................... None
+IPv4 Unicast Support.......................... Both
+IPv6 Unicast Support.......................... Both
+RFC 5549 Support.............................. Enable
+Update Source................................. None
+Local Interface Address....................... fe80::3
+Configured Hold Time.......................... 90 sec
+Configured Keep Alive Time.................... 30 sec
+Negotiated Hold Time.......................... 30 sec
+Keep Alive Time............................... 10 sec
+MD5 Password.................................. password
+
+Last Error (Sent).............................. Hold Timer Expired
+Last SubError.................................. None
+Time Since Last Error.......................... 0 day 0 hr 4 min 27 sec
+Established Transitions........................ 1
+Established Time............................... 0 day 0 hr 4 min 25 sec
+Time Since Last Update......................... 0 day 0 hr 4 min 24 sec
+IPv6 Outbound Update Group..................... 7
+
+
+             Open   Update   Keepalive   Notification   Refresh   Total
+Msgs Sent       1        0          10              0         0      11
+Msgs Rcvd       1        1          11              0         0      12
+
+Received UPDATE Queue Size:  0 bytes. High: 355. Limit 196096. Drops 0.
+
+IPv4 Prefix Statistics:
+                        Inbound         Outbound
+Prefixes Advertised          10                5
+Prefixes Withdrawn            0                0
+Prefixes Current              1                0
+Prefixes Accepted             1              N/A
+Prefixes Rejected             1              N/A
+Max NLRI per Update           1                0
+Min NLRI per Update           1                0
+
+IPv6 Prefix Statistics:
+                        Inbound         Outbound
+Prefixes Advertised           1                0
+Prefixes Withdrawn            0                0
+Prefixes Current              1                0
+Prefixes Accepted             1              N/A
+Prefixes Rejected             1              N/A
+Max NLRI per Update           1                0
+Min NLRI per Update           1                0

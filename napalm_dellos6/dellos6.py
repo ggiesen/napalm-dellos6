@@ -21,8 +21,9 @@ Read https://napalm.readthedocs.io for more information.
 import re
 import socket
 from ipaddress import IPv4Interface, IPv6Interface
+from statistics import stdev
 
-import napalm_dellos6.dellos6_constants as D6C
+import napalm.base.constants as C
 from napalm.base import NetworkDriver
 from napalm.base.exceptions import CommandErrorException, ConnectionClosedException
 from napalm.base.helpers import (
@@ -32,6 +33,7 @@ from napalm.base.helpers import (
     textfsm_extractor,
 )
 
+import napalm_dellos6.dellos6_constants as D6C
 from napalm_dellos6.dellos6_canonical_map import dellos6_interfaces
 
 from netmiko import ConnectHandler
@@ -95,7 +97,7 @@ class DellOS6Driver(NetworkDriver):
         self.device = None
         self.config_replace = False
 
-        self.profile = ["dellos10"]
+        self.profile = ["dellos6"]
 
     def open(self):
         """Open a connection to the device."""
@@ -528,6 +530,134 @@ class DellOS6Driver(NetworkDriver):
             lldp[interface].append(lldp_dict)
 
         return lldp
+
+    def get_bgp_neighbors(self):
+        """
+        Returns a dictionary of dictionaries. The keys for the first dictionary will be the vrf
+        (global if no vrf). The inner dictionary will contain the following data for each vrf:
+          * router_id
+          * peers - another dictionary of dictionaries. Outer keys are the IPs of the neighbors. \
+            The inner keys are:
+             * local_as (int)
+             * remote_as (int)
+             * remote_id - peer router id
+             * is_up (True/False)
+             * is_enabled (True/False)
+             * description (string)
+             * uptime (int in seconds)
+             * address_family (dictionary) - A dictionary of address families available for the \
+               neighbor. So far it can be 'ipv4' or 'ipv6'
+                * received_prefixes (int)
+                * accepted_prefixes (int)
+                * sent_prefixes (int)
+            Note, if is_up is False and uptime has a positive value then this indicates the
+            uptime of the last active BGP session.
+            Example::
+                {
+                  "global": {
+                    "router_id": "10.0.1.1",
+                    "peers": {
+                      "10.0.0.2": {
+                        "local_as": 65000,
+                        "remote_as": 65000,
+                        "remote_id": "10.0.1.2",
+                        "is_up": True,
+                        "is_enabled": True,
+                        "description": "internal-2",
+                        "uptime": 4838400,
+                        "address_family": {
+                          "ipv4": {
+                            "sent_prefixes": 637213,
+                            "accepted_prefixes": 3142,
+                            "received_prefixes": 3142
+                          },
+                          "ipv6": {
+                            "sent_prefixes": 36714,
+                            "accepted_prefixes": 148,
+                            "received_prefixes": 148
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+        """
+
+        raw_show_ip_bgp_summary = self._send_command("show ip bgp summary")
+        raw_show_ip_bgp_neighbors = self._send_command("show ip bgp neighbors")
+        raw_show_bgp_ipv6_neighbors = self._send_command("show bgp ipv6 neighbors")
+
+        show_ip_bgp_summary = textfsm_extractor(
+            self, "show_ip_bgp_summary", raw_show_ip_bgp_summary
+        )
+        show_ip_bgp_neighbors = textfsm_extractor(
+            self, "show_ip_bgp_neighbors", raw_show_ip_bgp_neighbors
+        )
+        show_bgp_ipv6_neighbors = textfsm_extractor(
+            self, "show_bgp_ipv6_neighbors", raw_show_bgp_ipv6_neighbors
+        )
+
+        router_id = show_ip_bgp_summary[0]["bgp_router_id"]
+        local_as = int(show_ip_bgp_summary[0]["local_as"])
+        bgp_neighbors = {"global": {"router_id": router_id, "peers": {}}}
+        for neighbor in show_ip_bgp_neighbors:
+            peer_addr = neighbor["peer_addr"]
+            bgp_neighbors["global"]["peers"][peer_addr] = {
+                "local_as": local_as,
+                "remote_as": int(neighbor["peer_as"]),
+                "remote_id": neighbor["peer_id"],
+                "is_up": (neighbor["peer_state"] == "ESTABLISHED"),
+                "is_enabled": (neighbor["peer_status_admin"] == "START"),
+                "description": "",
+                "uptime": -1,
+                "address_family": {},
+            }
+            if neighbor["ipv4_ucast"] != "None":
+                bgp_neighbors["global"]["peers"][peer_addr]["address_family"][
+                    "ipv4"
+                ] = {
+                    "sent_prefixes": int(neighbor["ipv4_pfx_adv_tx"]),
+                    "accepted_prefixes": int(neighbor["ipv4_pfx_current_rx"]),
+                    "received_prefixes": int(neighbor["ipv4_pfx_adv_rx"]),
+                }
+            if neighbor["ipv6_ucast"] != "None":
+                bgp_neighbors["global"]["peers"][peer_addr]["address_family"][
+                    "ipv6"
+                ] = {
+                    "sent_prefixes": int(neighbor["ipv6_pfx_adv_tx"]),
+                    "accepted_prefixes": int(neighbor["ipv6_pfx_current_rx"]),
+                    "received_prefixes": int(neighbor["ipv6_pfx_adv_rx"]),
+                }
+        for neighbor in show_bgp_ipv6_neighbors:
+            peer_addr = neighbor["peer_addr"]
+            bgp_neighbors["global"]["peers"][peer_addr] = {
+                "local_as": local_as,
+                "remote_as": int(neighbor["peer_as"]),
+                "remote_id": neighbor["peer_id"],
+                "is_up": (neighbor["peer_state"] == "ESTABLISHED"),
+                "is_enabled": (neighbor["peer_status_admin"] == "START"),
+                "description": neighbor["desc"],
+                "uptime": -1,
+                "address_family": {},
+            }
+            if neighbor["ipv4_ucast"] != "None":
+                bgp_neighbors["global"]["peers"][peer_addr]["address_family"][
+                    "ipv4"
+                ] = {
+                    "sent_prefixes": int(neighbor["ipv4_pfx_adv_tx"]),
+                    "accepted_prefixes": int(neighbor["ipv4_pfx_current_rx"]),
+                    "received_prefixes": int(neighbor["ipv4_pfx_adv_rx"]),
+                }
+            if neighbor["ipv6_ucast"] != "None":
+                bgp_neighbors["global"]["peers"][peer_addr]["address_family"][
+                    "ipv6"
+                ] = {
+                    "sent_prefixes": int(neighbor["ipv6_pfx_adv_tx"]),
+                    "accepted_prefixes": int(neighbor["ipv6_pfx_current_rx"]),
+                    "received_prefixes": int(neighbor["ipv6_pfx_adv_rx"]),
+                }
+
+        return bgp_neighbors
 
     def get_environment(self):
         """
@@ -1257,6 +1387,61 @@ class DellOS6Driver(NetworkDriver):
 
         return interfaces_ip
 
+    def get_ipv6_neighbors_table(self):
+        """
+        Get IPv6 neighbors table information.
+        Return a list of dictionaries having the following set of keys:
+            * interface (string)
+            * mac (string)
+            * ip (string)
+            * age (float) in seconds
+            * state (string)
+        For example::
+            [
+                {
+                    'interface' : 'MgmtEth0/RSP0/CPU0/0',
+                    'mac'       : '5c:5e:ab:da:3c:f0',
+                    'ip'        : '2001:db8:1:1::1',
+                    'age'       : 1454496274.84,
+                    'state'     : 'REACH'
+                },
+                {
+                    'interface': 'MgmtEth0/RSP0/CPU0/0',
+                    'mac'       : '66:0e:94:96:e0:ff',
+                    'ip'        : '2001:db8:1:1::2',
+                    'age'       : 1435641582.49,
+                    'state'     : 'STALE'
+                }
+            ]
+        """
+
+        raw_show_ipv6_neighbors = self._send_command("show ipv6 neighbors")
+        show_ipv6_neighbors = textfsm_extractor(
+            self, "show_ipv6_neighbors", raw_show_ipv6_neighbors
+        )
+
+        ipv6_neighbors = []
+        for neighbor in show_ipv6_neighbors:
+            interface_name = canonical_interface_name(
+                neighbor["int_name"], addl_name_map=dellos6_interfaces
+            )
+            mac_addr = mac(neighbor["mac_addr"])
+            ipv6_addr = neighbor["ipv6_addr"]
+            # Dell OS6 doesn't support age
+            age = -0.0
+            state = neighbor["state"].upper()
+            ipv6_neighbors.append(
+                {
+                    "interface": interface_name,
+                    "mac": mac_addr,
+                    "ip": ipv6_addr,
+                    "age": age,
+                    "state": state,
+                }
+            )
+
+        return ipv6_neighbors
+
     def _expand_ranges(self, iflist):
         """
         In: ["Gi1/0/42-43"]
@@ -1454,6 +1639,161 @@ class DellOS6Driver(NetworkDriver):
 
         return snmp_info
 
+    def ping(
+        self,
+        destination,
+        source=C.PING_SOURCE,
+        ttl=C.PING_TTL,
+        timeout=C.PING_TIMEOUT,
+        size=C.PING_SIZE,
+        count=C.PING_COUNT,
+        vrf=C.PING_VRF,
+    ):
+        """
+        Executes ping on the device and returns a dictionary with the result
+        :param destination: Host or IP Address of the destination
+        :param source (optional): Source address of echo request
+        :param ttl (optional): Maximum number of hops
+        :param timeout (optional): Maximum seconds to wait after sending final packet
+        :param size (optional): Size of request (bytes)
+        :param count (optional): Number of ping request to send
+        Output dictionary has one of following keys:
+            * success
+            * error
+        In case of success, inner dictionary will have the followin keys:
+            * probes_sent (int)
+            * packet_loss (int)
+            * rtt_min (float)
+            * rtt_max (float)
+            * rtt_avg (float)
+            * rtt_stddev (float)
+            * results (list)
+        'results' is a list of dictionaries with the following keys:
+            * ip_address (str)
+            * rtt (float)
+        Example::
+            {
+                'success': {
+                    'probes_sent': 5,
+                    'packet_loss': 0,
+                    'rtt_min': 72.158,
+                    'rtt_max': 72.433,
+                    'rtt_avg': 72.268,
+                    'rtt_stddev': 0.094,
+                    'results': [
+                        {
+                            'ip_address': u'1.1.1.1',
+                            'rtt': 72.248
+                        },
+                        {
+                            'ip_address': '2.2.2.2',
+                            'rtt': 72.299
+                        }
+                    ]
+                }
+            }
+            OR
+            {
+                'error': 'unknown host 8.8.8.8.8'
+            }
+        """
+
+        vrf_name = ""
+        if vrf:
+            vrf_name = " vrf " + str(vrf)
+
+        params = ""
+        if source:
+            params = params + " source "
+        if timeout:
+            params = params + " timeout " + str(timeout)
+        if size:
+            params = params + " size " + str(size)
+        if count:
+            params = params + " repeat " + str(count)
+
+        cmd = "ping{} {}{}".format(vrf_name, destination, params)
+        ping_dict = {}
+
+        send_received_regexp = (
+            r"(\d+)\s+packets transmitted\S+\s+(\d+)\s+"
+            r"packets received\S+\s+\S+\s+packet loss"
+        )
+        icmp_result_regexp = (
+            r"Reply From\s+(\S+)\:\s+icmp_seq\s+=\s+(\d+)\.\s+"
+            r"time=\s+(\d+)\s+usec\."
+        )
+        min_avg_max_reg_exp = (
+            r"round-trip \(msec\)\s+min\/avg\/max\s+=\s+(\S+)\/" r"(\S+)\/(\S+)"
+        )
+
+        output = self._send_command(cmd)
+
+        if "% Error" in output:
+            status = "error"
+            ping_dict = {"results": ("command :: " + cmd + " :: " + output)}
+        elif "packets transmitted" in output:
+            ping_dict = {
+                "probes_sent": 0,
+                "packet_loss": 0,
+                "rtt_min": 0.0,
+                "rtt_max": 0.0,
+                "rtt_avg": 0.0,
+                "rtt_stddev": 0.0,
+                "results": [],
+            }
+
+            results_array = []
+            std_dev_list = []
+            for line in output.splitlines():
+                status = "success"
+                if "packets transmitted" in line:
+                    sent_and_received = re.search(send_received_regexp, line)
+                    probes_sent = int(sent_and_received.groups()[0])
+                    probes_received = int(sent_and_received.groups()[1])
+                    if probes_received == 0:
+                        status = "error"
+                    ping_dict["probes_sent"] = probes_sent
+                    ping_dict["packet_loss"] = probes_sent - probes_received
+                elif "icmp_seq" in line:
+                    icmp_result = re.search(icmp_result_regexp, line)
+                    results_array.append(
+                        {
+                            "ip_address": icmp_result.groups()[0],
+                            "rtt": float(icmp_result.groups()[2]) / 1000,
+                        }
+                    )
+                    ping_dict.update({"results": results_array})
+                    std_dev_list.append(float(icmp_result.groups()[2]) / 1000)
+                elif "round-trip (msec)" in line:
+                    min_avg = re.search(min_avg_max_reg_exp, line)
+                    if std_dev_list:
+                        rtt_stddev = stdev(std_dev_list)
+                    else:
+                        rtt_stddev = 0.0
+                    if min_avg.groups()[0] == "<10":
+                        rtt_min = 0.0
+                    else:
+                        rtt_min = float(min_avg.groups()[0])
+                    if min_avg.groups()[1] == "<10":
+                        rtt_avg = 0.0
+                    else:
+                        rtt_avg = float(min_avg.groups()[1])
+                    if min_avg.groups()[2] == "<10":
+                        rtt_max = 0.0
+                    else:
+                        rtt_max = float(min_avg.groups()[2])
+                    ping_dict.update(
+                        {
+                            "rtt_min": rtt_min,
+                            "rtt_avg": rtt_avg,
+                            "rtt_max": rtt_max,
+                            "rtt_stddev": rtt_stddev,
+                        }
+                    )
+
+        return {status: ping_dict}
+
     def get_users(self):
         """
         Returns a dictionary with the configured users.
@@ -1506,6 +1846,116 @@ class DellOS6Driver(NetworkDriver):
             users[username]["password"] = pwd_hash
 
         return users
+
+    def get_optics(self):
+        """Fetches the power usage on the various transceivers installed
+        on the switch (in dbm), and returns a view that conforms with the
+        openconfig model openconfig-platform-transceiver.yang
+        Returns a dictionary where the keys are as listed below:
+            * intf_name (unicode)
+                * physical_channels
+                    * channels (list of dicts)
+                        * index (int)
+                        * state
+                            * input_power
+                                * instant (float)
+                                * avg (float)
+                                * min (float)
+                                * max (float)
+                            * output_power
+                                * instant (float)
+                                * avg (float)
+                                * min (float)
+                                * max (float)
+                            * laser_bias_current
+                                * instant (float)
+                                * avg (float)
+                                * min (float)
+                                * max (float)
+        Example::
+            {
+                'et1': {
+                    'physical_channels': {
+                        'channel': [
+                            {
+                                'index': 0,
+                                'state': {
+                                    'input_power': {
+                                        'instant': 0.0,
+                                        'avg': 0.0,
+                                        'min': 0.0,
+                                        'max': 0.0,
+                                    },
+                                    'output_power': {
+                                        'instant': 0.0,
+                                        'avg': 0.0,
+                                        'min': 0.0,
+                                        'max': 0.0,
+                                    },
+                                    'laser_bias_current': {
+                                        'instant': 0.0,
+                                        'avg': 0.0,
+                                        'min': 0.0,
+                                        'max': 0.0,
+                                    },
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        """
+
+        raw_show_fiber_ports_optical_transceiver = self._send_command(
+            "show fiber-ports optical transceiver"
+        )
+        show_fiber_ports_optical_transceiver = textfsm_extractor(
+            self,
+            "show_fiber-ports_optical-transceiver",
+            raw_show_fiber_ports_optical_transceiver,
+        )
+
+        optics = {}
+        for interface in show_fiber_ports_optical_transceiver:
+            interface_name = canonical_interface_name(
+                interface["int_name"], addl_name_map=dellos6_interfaces
+            )
+            pwr_rx = float(interface["pwr_rx"])
+            pwr_tx = float(interface["pwr_tx"])
+            current = float(interface["current"])
+
+            optics[interface_name] = {
+                "physical_channels": {
+                    "channel": [
+                        {
+                            # We do not yet support multiple channels
+                            "index": 0,
+                            "state": {
+                                "input_power": {
+                                    "instant": pwr_rx,
+                                    "avg": -0.0,
+                                    "min": -0.0,
+                                    "max": -0.0,
+                                },
+                                "output_power": {
+                                    "instant": pwr_tx,
+                                    "avg": -0.0,
+                                    "min": -0.0,
+                                    "max": -0.0,
+                                },
+                                "laser_bias_current": {
+                                    "instant": current,
+                                    "avg": -0.0,
+                                    "min": -0.0,
+                                    "max": -0.0,
+                                },
+                            },
+                        }
+                    ]
+                }
+            }
+
+        return optics
 
     def get_config(self, retrieve="all", full=False, sanitized=False):
         """
