@@ -5,6 +5,8 @@
 
 NAPALM driver for Dell EMC Networking OS6 Operating System.
 
+*I no longer have access to this hardware, so as such this repository is now archived. Feel free to ask for a transfer of ownership if you'd like to take it over, or you can simply fork it.*
+
 ### Implemented APIs
 
 * get_facts
